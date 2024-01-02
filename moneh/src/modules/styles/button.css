@@ -1,0 +1,36 @@
+.btn {
+    border: none !important;
+}
+.btn-danger {
+    background: var(--warningBG) !important;
+}
+.btn-primary {
+    background: var(--primaryColor) !important;
+}
+.btn-info {
+    background: var(--infoBG) !important;
+}
+.btn-success {
+    background: var(--successBG) !important;
+}
+.dropdown-toggle {
+    font-size: var(--textLG) !important;
+    border-radius: var(--roundedMD) !important;
+    padding: var(--spaceMD) var(--spaceXMD) !important;
+}
+.dropdown-menu {
+    border-radius: var(--roundedMD) !important;
+    margin-top: var(--spaceSM) !important;
+    padding: var(--spaceSM) !important;
+    background: var(--darkColor) !important;
+    border: 0 !important;
+}
+.dropdown-item {
+    color: var(--whiteColor) !important;
+    border-radius: var(--roundedSM) !important;
+    padding: var(--spaceSM) !important;
+}
+.dropdown-item:hover {
+    color: var(--darkColor) !important;
+    background: var(--primaryColor) !important;
+}

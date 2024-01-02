@@ -1,0 +1,103 @@
+:root {   
+  /* Typography */
+  --textHuge : 78px;
+  --textXJumbo : 48px;
+  --textJumbo : 26px;
+  --textXLG : 18px;
+  --textLG : 16px;
+  --textXMD : 14px;
+  --textMD : 13px;
+  --textSM : 12px;
+  --textXSM : 11px;
+
+  /* Rounded */
+  --roundedCircle : 100%;
+  --roundedJumbo : 34px;
+  --roundedXLG : 20px;
+  --roundedLG : 18px;
+  --roundedMD : 14px;
+  --roundedSM : 10px;
+  --roundedMini : 6px;
+
+  /* Spacing */
+  --spaceJumbo : 35px;
+  --spaceXLG : 24px;
+  --spaceLG : 20px;
+  --spaceXMD : 16px;
+  --spaceMD : 12px;
+  --spaceSM : 10px;
+  --spaceXSM : 8px;
+  --spaceXXSM : 6px;
+  --spaceMini : 4px;
+
+  /* Table column min width */
+  --tcolMinXSM : 60px;
+  --tcolMinSM : 120px;
+  --tcolMinMD : 140px;
+  --tcolMinLG : 180px;
+  --tcolMinJumbo : 240px;
+  --tcolMinHuge : 360px;
+
+  /* Color Pallete */
+  --primaryLightBG : #DEF8D6;
+  --successBG : #3D9B52;
+  --successDarkBG : #009B56;
+  --warningBG : #FF0063;
+  --warningDarkBG : #c6044e;
+  --infoBG : #006CD0;
+  --infoLightBG : #E7F4FE;
+  --hoverBG : #F2F2F2;
+
+  --primaryColor : #f9aa0c;
+  --blackColor : #212121;
+  --darkColor : #5B5B5B;
+  --whiteColor : #FFFFFF;
+  --greyColor : #C3C3C3;
+  --shadowColor : #808080;
+}
+body {
+  background: var(--blackColor) !important;
+}
+.content-grid {
+  width: 1280px;
+  margin-inline: auto;
+  padding: var(--spaceXLG) 0;
+}
+.grid-item {
+  margin-bottom: var(--spaceLG);
+}
+.img-profile {
+  border-radius: var(--roundedCircle);
+  margin-top: var(--spaceLG);
+  border: var(--spaceXSM) solid var(--primaryColor);
+}
+
+.form-lable {
+  font-weight: 500;
+  margin-top: var(--spaceSM);
+  margin-bottom: var(--spaceMini);
+  color: var(--whiteColor);
+}
+.form-control {
+  background: transparent !important;
+  color: var(--whiteColor) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primaryColor) !important;
+}
+
+.modal-content {
+  border-radius: var(--roundedLG) !important;
+  background: var(--blackColor) !important;
+}
+
+/* Apexchart */
+.apexcharts-legend-text  {
+  color: var(--whiteColor) !important;
+  font-size: var(--textMD);
+}
+.apexcharts-text tspan {
+  fill: var(--whiteColor) !important;
+  font-size: var(--textMD);
+}

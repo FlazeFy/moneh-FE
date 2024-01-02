@@ -1,0 +1,14 @@
+thead tr td {
+    background: var(--infoBG) !important;
+    color: var(--whiteColor) !important;
+}
+table th {
+    font-weight: normal;
+}
+table td {
+    color: var(--primaryColor);
+}
+table tbody th {
+    background: transparent !important;
+    color: var(--whiteColor) !important;
+}
