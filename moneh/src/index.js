@@ -19,6 +19,7 @@ import './modules/styles/button.css';
 import Flow_Index from './pages/flow/index';
 import StatsFlow_Index from "./pages/stats_flow";
 import StatsOther_Index from "./pages/stats_other";
+import About_Index from "./pages/about";
 
 export default function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/flow" element={<Flow_Index />}></Route>
           <Route path="/stats_flow" element={<StatsFlow_Index />}></Route>
           <Route path="/stats_others" element={<StatsOther_Index />}></Route>
+          <Route path="/about" element={<About_Index />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
