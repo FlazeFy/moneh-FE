@@ -1,11 +1,11 @@
 // Toast
 import CustomToast from "../modals/toast"
 import { toast } from 'react-toastify'
-import { ucFirstWord } from "@/modules/helpers/converter"
+import { ucFirstWord } from "../../modules/helpers/converter"
 
 export default function GetLimit({ctx, type}) {
     function navigate(ctx, ord){
-        sessionStorage.setItem(`${ucFirst(type)}_limit_${ctx}`, ord)
+        sessionStorage.setItem(`${ucFirstWord(type)}_limit_${ctx}`, ord)
         toast.success(<CustomToast msg={ctx + " filtered"} />)
     }
 

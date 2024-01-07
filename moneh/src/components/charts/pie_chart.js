@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Chart from 'react-apexcharts';
+import GetLimit from '../controls/limit';
 
-import dynamic from 'next/dynamic';
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-
-import GetLimit from '../controls/limit'
-
-export default function GetPieChart({items, filter_name}) {
+export default function GetPieChart({items, filter_name}){
     //Initial variable
     var chart = [];
 
@@ -53,4 +50,3 @@ export default function GetPieChart({items, filter_name}) {
         </div>
     );
 }
-  

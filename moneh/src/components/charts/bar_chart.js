@@ -1,8 +1,5 @@
-import React from 'react'
-
-import dynamic from 'next/dynamic';
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-
+import React from 'react';
+import Chart from 'react-apexcharts';
 import GetLimit from '../controls/limit'
 
 export default function GetBarChart({items, filter_name}) {
