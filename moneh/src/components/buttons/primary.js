@@ -2,7 +2,7 @@
 import button from './buttons.module.css'
 
 // Modules JS
-import { ucFirstWord } from '@/modules/helpers/converter'
+import { ucFirstWord } from '../../modules/helpers/converter'
 
 export default function GetButtonPrimary({refs, name, bg}) {
     // Convert

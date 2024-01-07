@@ -1,8 +1,8 @@
 // Modules CSS
+import { ucFirstWord } from '../../modules/helpers/converter'
 import button from './buttons.module.css'
 
 // Modules JS
-import { ucFirstWord } from '@/modules/helpers/converter'
 
 export default function GetButtonTag({slug, name}) {
     // Convert

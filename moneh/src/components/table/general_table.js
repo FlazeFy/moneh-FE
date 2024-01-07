@@ -4,9 +4,9 @@ import Axios from "axios"
 import PageBar from '../bars/page_bar'
 import GetOrdering from '../controls/ordering'
 import GetManageModal from '../modals/manage'
-import { removeHTMLTags, ucFirstChar } from '@/modules/helpers/converter'
-import { parseJSON } from '@/modules/helpers/decode'
+import { parseJSON } from '../../modules/helpers/decode'
 import GetButtonTag from '../buttons/tag'
+import { removeHTMLTags, ucFirstChar } from '../../modules/helpers/converter'
 
 export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlDel}) {
     function getExtraDesc(ext, val){
@@ -28,7 +28,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
         } catch (err) {
             alert(err)
         }
-        location.reload()
+        // location.reload()
     };
 
     return (
