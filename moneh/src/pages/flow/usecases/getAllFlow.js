@@ -28,7 +28,7 @@ export default function GetAllFlow({ctx}) {
             sessionStorage.setItem("Table_order_Flow", "asc");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/flows?page=${keyPage}`)
+        fetch(`http://127.0.0.1:1323/api/v1/flows/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -99,7 +99,7 @@ export default function GetAllFlow({ctx}) {
     } else {
         return (
             <> 
-                <h2>{getCleanTitleFromCtx(ctx)}</h2>
+                <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Animal"} urlDel={""}/>  
             </>
         )

@@ -1,5 +1,5 @@
 // Components
-import GetLabel from '@/components/labels/label'
+import GetLabel from '../../components/labels/label'
 import GetBreakLine from '../others/breakLine'
 import GetDropDownDctDynamic from '../others/dropdown'
 
@@ -34,8 +34,15 @@ export default function GetFormTemplate({type, props}) {
                             return (
                                 <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                     <GetLabel title={elmt.label} type="input"/>
-                                    <GetDropDownDctDynamic url={elmt.url} elmt={elmt}/>
+                                    <GetDropDownDctDynamic url={elmt.url} elmt={elmt} ctx="dropdown"/>
                                     <GetLabel title={elmt.errorMsg} type="error"/>
+                                </div>
+                            )
+                        } else if (elmt.type === 'checkbox') {
+                            return (
+                                <div class="form-check ms-3">
+                                    <input className={elmt.class} type={elmt.type} id="disabledFieldsetCheck" onChange={elmt.handleChange}></input>
+                                    <GetLabel title={elmt.label} type="input"/>
                                 </div>
                             )
                         } else if (elmt.type === 'submit') {

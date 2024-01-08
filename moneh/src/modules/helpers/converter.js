@@ -20,6 +20,18 @@ export const ucFirstWord = (val) => {
     }
 }
 
+export const getBoolCheck = (val) => {
+    try {
+        if(val == "on"){
+            return 1
+        } else {
+            return 0
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
 export const getCleanTitleFromCtx = (val) => {
     try {
         const newVal = val.replaceAll('_', ' ')
