@@ -13,6 +13,11 @@
 .btn-success {
     background: var(--successBG) !important;
 }
+.btn-tag {
+    background: var(--primaryColor) !important;
+    border-radius: var(--roundedMD);
+    margin-right: var(--spaceXSM);
+}
 .dropdown-toggle {
     font-size: var(--textLG) !important;
     border-radius: var(--roundedMD) !important;

@@ -106,6 +106,16 @@ export default function PostFlow({ctx}) {
             errorMsg: resMsgFlowAmmount,
         },
         {
+            type: 'tag',
+            class: 'btn btn-tag',
+            label: 'Flow Tag',
+            handleChange: (event) => {
+                setFlowTag(event)
+            },
+            errorMsg: resMsgFlowTag,
+            url: 'http://127.0.0.1:1323/api/v1/tag/desc?page=1'
+        },
+        {
             type: 'checkbox',
             class: 'form-check-input',
             label: 'Is Shared',
