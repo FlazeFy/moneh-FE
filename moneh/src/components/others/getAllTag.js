@@ -6,6 +6,8 @@ import { getCleanTitleFromCtx } from '../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../modules/storages/local'
+import GetLabel from '../labels/label'
+import GetBreakLine from './breakLine'
 
 export default function GetAllTag({url, cls, func}) {
     //Initial variable
@@ -45,9 +47,15 @@ export default function GetAllTag({url, cls, func}) {
         )
     },[])
 
+    const removeTag = (slug) => {        
+        let updatedTags = selectedTag.filter((val, i) => val.props.value !== slug)
+
+        setSelectedTag(updatedTags)
+    }
+
     const selectTag = (i, slug, name) => {
         setSelectedTag(selectedTag.concat(
-            <button key={i} className={cls}>{name}</button>
+            <button key={i} className={cls} value={slug} title="Unselect this tag" onClick={(e) => removeTag(slug)}>{name}</button>
         ))
     }
 
@@ -65,13 +73,30 @@ export default function GetAllTag({url, cls, func}) {
                 {
                     items.map((val, i, index) => {
                         return (
-                            <button key={i} className={cls} onClick={(e) => {
-                                func(val['tags_slug'])
-                                selectTag(i, val['tags_slug'], val['tags_name'])
+                            <button key={i} title="Select this tag" className={cls} onClick={() => {
+                                if(selectedTag.length == 0){
+                                    func(val['tags_slug'])
+                                    selectTag(i, val['tags_slug'], val['tags_name'])
+                                } else {
+                                    let found = false
+                                    selectedTag.map((slct, j, index) => {
+                                        if(slct.props.value == val['tags_slug']){
+                                            found = true
+                                        }
+                                    })
+
+                                    if(!found){
+                                        selectTag(i, val['tags_slug'], val['tags_name'])
+                                    }
+                                }
                             }} >{val['tags_name']}</button>
                         );
                     })
                 }
+                <GetBreakLine length={2}/>
+                <GetLabel title="Selected Tag" type="input"/>
+                <GetBreakLine length={1}/>
+                <div className="mt-2"/>
                 {selectedTag}
             </>
         )
