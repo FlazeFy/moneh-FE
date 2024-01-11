@@ -8,7 +8,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
-export default function GetAllFlow({ctx}) {
+export default function GetAllPocket({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -18,17 +18,17 @@ export default function GetAllFlow({ctx}) {
 
     useEffect(() => {
         //Default config
-        const keyPage = sessionStorage.getItem("Table_Flow")
-        const keyOrder = sessionStorage.getItem("Table_order_Flow")
+        const keyPage = sessionStorage.getItem("Table_Pocket")
+        const keyOrder = sessionStorage.getItem("Table_order_Pocket")
 
         if(keyPage == null){
-            sessionStorage.setItem("Table_Flow", "1");
+            sessionStorage.setItem("Table_Pocket", "1");
         }
         if(keyOrder == null){
-            sessionStorage.setItem("Table_order_Flow", "asc");
+            sessionStorage.setItem("Table_order_Pocket", "asc");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/flows/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:1323/api/v1/pockets/headers/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -51,35 +51,24 @@ export default function GetAllFlow({ctx}) {
 
     const builder = [
         {
-            column_name: "Type",
-            object_name: "flows_type",
-            extra_desc: null,
-        },
-        {
-            column_name: "Category",
-            object_name: "flows_category",
-            extra_desc: null
-        },
-        {
             column_name: "Name",
-            object_name: "flows_name",
-            extra_desc: null
+            object_name: "pockets_name",
+            extra_desc: null,
         },
         {
             column_name: "Description",
-            object_name: "flows_desc",
+            object_name: "pockets_desc",
             extra_desc: null
         },
         {
-            column_name: "Ammount",
-            object_name: "flows_ammount",
+            column_name: "Type",
+            object_name: "pockets_type",
             extra_desc: null
         },
         {
-            column_name: "tag",
-            object_name: "flows_tag",
-            extra_desc: null,
-            type_content: "tag"
+            column_name: "Limit",
+            object_name: "pockets_limit",
+            extra_desc: null
         },
         {
             column_name: "Manage",
@@ -100,7 +89,7 @@ export default function GetAllFlow({ctx}) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={""}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlDel={""}/>  
             </>
         )
     }
