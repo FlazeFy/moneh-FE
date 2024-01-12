@@ -102,7 +102,7 @@ export default function PostPocket({ctx}) {
             data.append('pockets_type', pocketType);
             data.append('pockets_limit', pocketLimit);
             
-            const response = await Axios.post("http://127.0.0.1:1323/api/v1/flows", data, {
+            const response = await Axios.post("http://127.0.0.1:1323/api/v1/pockets", data, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }

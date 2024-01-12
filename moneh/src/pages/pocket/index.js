@@ -6,8 +6,8 @@ const Pocket_Index = () => {
     return (
         <div className='content-grid'>
             <GetNavbar active="pocket"/>
-            <GetAllPocket ctx="get_all_pocket"/>
             <PostPocket ctx="post_pocket"/>
+            <GetAllPocket ctx="get_all_pocket"/>
         </div>
     );
 }
