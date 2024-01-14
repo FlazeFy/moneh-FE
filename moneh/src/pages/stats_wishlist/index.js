@@ -1,4 +1,5 @@
 import GetNavbar from "../../components/bars/navbar";
+import GetTotalWishlistByIsAchieved from "./usecases/get_total_wishlist_by_is_achieved";
 import GetTotalWishlistByPriority from "./usecases/get_total_wishlist_by_priority";
 import GetTotalWishlistByType from "./usecases/get_total_wishlist_by_type";
 
@@ -12,6 +13,9 @@ const StatsWishlist_Index = () => {
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">
                     <GetTotalWishlistByPriority ctx="get_total_wishlist_by_priority"/>
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <GetTotalWishlistByIsAchieved ctx="get_total_wishlist_by_is_achieved"/>
                 </div>
             </div>
         </div>
