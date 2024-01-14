@@ -1,4 +1,5 @@
 import GetNavbar from "../../components/bars/navbar";
+import GetTotalWishlistByPriority from "./usecases/get_total_wishlist_by_priority";
 import GetTotalWishlistByType from "./usecases/get_total_wishlist_by_type";
 
 const StatsWishlist_Index = () => {
@@ -8,6 +9,9 @@ const StatsWishlist_Index = () => {
             <div className="row mt-5">
                 <div className="col-lg-6 col-md-6 col-sm-12">
                     <GetTotalWishlistByType ctx="get_total_wishlist_by_type"/>
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <GetTotalWishlistByPriority ctx="get_total_wishlist_by_priority"/>
                 </div>
             </div>
         </div>
