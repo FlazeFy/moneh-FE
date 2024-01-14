@@ -23,6 +23,7 @@ import About_Index from "./pages/about";
 import Pocket_Index from "./pages/pocket";
 import StatsPocket_Index from "./pages/stats_pocket";
 import StatsWishlist_Index from "./pages/stats_wishlist";
+import Wishlist_Index from "./pages/wishlist";
 
 export default function App() {
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function App() {
         <Routes>
           <Route path="/flow" element={<Flow_Index />}></Route>
           <Route path="/pocket" element={<Pocket_Index />}></Route>
+          <Route path="/wishlist" element={<Wishlist_Index />}></Route>
           <Route path="/stats_flow" element={<StatsFlow_Index />}></Route>
           <Route path="/stats_pocket" element={<StatsPocket_Index />}></Route>
           <Route path="/stats_wishlist" element={<StatsWishlist_Index />}></Route>

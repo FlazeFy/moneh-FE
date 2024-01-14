@@ -1,0 +1,21 @@
+.wish_box {
+    border: 2px var(--greyColor) solid;
+    border-radius: var(--roundedLG);
+    padding: var(--spaceMD);
+    margin-bottom: var(--spaceMD);
+    text-align: center;
+    cursor: pointer;
+}
+.wish_box:hover {
+    border: 2px var(--primaryColor) solid;
+}
+.wish_img {
+    border-radius: var(--roundedLG);
+    height: 300px;
+    width: 300px;
+    margin-inline: auto;
+    display: block;
+}
+.wish_box p {
+    color: var(--whiteColor);
+}
