@@ -100,7 +100,7 @@ export default function GetAllFlow({ctx}) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={""}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={"http://127.0.0.1:1323/api/v1/flows/destroy/"}/>  
             </>
         )
     }
