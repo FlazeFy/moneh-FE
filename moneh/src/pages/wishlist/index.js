@@ -1,6 +1,8 @@
 import GetNavbar from "../../components/bars/navbar";
+import GetBreakLine from "../../components/others/breakLine";
 import GetAllWishlist from "./usecases/getAllWishlist";
 import GetSummaryWishlist from "./usecases/getSummary";
+import PostWishlist from "./usecases/postWishlist";
 
 const Wishlist_Index = () => {
     return (
@@ -11,6 +13,8 @@ const Wishlist_Index = () => {
                     <GetAllWishlist ctx="get_all_wishlist"/>
                 </div>
                 <div className="col-lg-3 col-md-8 col-sm-12">
+                    <GetBreakLine length={1}/>
+                    <PostWishlist ctx="post_wishlist"/>
                     <GetSummaryWishlist ctx="summary"/>
                 </div>
             </div>
