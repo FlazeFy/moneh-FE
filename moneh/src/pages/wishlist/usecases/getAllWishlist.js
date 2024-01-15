@@ -70,7 +70,7 @@ export default function GetAllWishlist({ctx}) {
     } else {
         return (
             <> 
-                <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
+                <h2 className='my-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 <div className='row'>
                     {
                         items.map((val, i, index) => {

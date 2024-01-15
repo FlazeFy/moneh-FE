@@ -2,7 +2,7 @@
     border: 2px var(--greyColor) solid;
     border-radius: var(--roundedLG);
     padding: var(--spaceMD);
-    margin-bottom: var(--spaceMD);
+    margin-bottom: var(--spaceXLG);
     text-align: center;
     cursor: pointer;
 }
@@ -11,8 +11,8 @@
 }
 .wish_img {
     border-radius: var(--roundedLG);
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     margin-inline: auto;
     display: block;
 }
