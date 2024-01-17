@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
-import { v4 } from "uuid"
 import Axios from 'axios'
 
 // Component
-import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import modal from '../../../components/modals/modals.module.css'
 import GetFormTemplate from '../../../components/containers/form'
 
@@ -12,7 +9,9 @@ import GetFormTemplate from '../../../components/containers/form'
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { storage } from "../../../modules/configs/firebase"
+
+// Modules
+import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 export default function PostFlow({ctx}) {
     //Initial variable

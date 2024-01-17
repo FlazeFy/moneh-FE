@@ -19,6 +19,7 @@
     border-radius: 0 0 var(--roundedJumbo) var(--roundedJumbo);
 }
 .footer {
+    margin-top: var(--spaceJumbo) !important;
     border-radius: var(--roundedJumbo) var(--roundedJumbo) 0 0;
 }
 

@@ -71,7 +71,9 @@ body {
   margin-top: var(--spaceLG);
   border: var(--spaceXSM) solid var(--primaryColor);
 }
-
+.bg-secondary {
+  background: var(--darkColor) !important;
+}
 .form-lable {
   font-weight: 500;
   margin-top: var(--spaceSM);
@@ -90,6 +92,13 @@ h1, h2, h3, h4, h5, h6 {
 .modal-content {
   border-radius: var(--roundedLG) !important;
   background: var(--blackColor) !important;
+}
+
+.container-form {
+  background: var(--blackColor);
+  border-radius: var(--roundedLG);
+  padding: var(--spaceLG);
+  border: 2px solid var(--primaryColor);
 }
 
 /* Apexchart */
