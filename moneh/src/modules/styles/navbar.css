@@ -1,21 +1,27 @@
 /*Navbar desktop*/
-.navbar {
+.navbar, .footer {
     padding: 0 !important;
     margin: 0 !important;
 }
-.navbar ul {
+.navbar ul, .footer {
     margin: 0;
     padding: var(--spaceMD);
     display: flex;
     list-style: none;
     align-items: center;
     margin-inline: auto;
-    border-radius: 0 0 var(--roundedJumbo) var(--roundedJumbo);
     border: 2px solid var(--primaryColor) !important;
     border-top: none !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--darkColor);
+    background: var(--darkColor) !important;
 }
+.navbar ul {
+    border-radius: 0 0 var(--roundedJumbo) var(--roundedJumbo);
+}
+.footer {
+    border-radius: var(--roundedJumbo) var(--roundedJumbo) 0 0;
+}
+
 .navbar li {
     position: relative;
     margin-right: var(--spaceLG);

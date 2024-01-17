@@ -24,6 +24,7 @@ import Pocket_Index from "./pages/pocket";
 import StatsPocket_Index from "./pages/stats_pocket";
 import StatsWishlist_Index from "./pages/stats_wishlist";
 import Wishlist_Index from "./pages/wishlist";
+import Home_Index from "./pages/home";
 
 export default function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home_Index />}></Route>
           <Route path="/flow" element={<Flow_Index />}></Route>
           <Route path="/pocket" element={<Pocket_Index />}></Route>
           <Route path="/wishlist" element={<Wishlist_Index />}></Route>
