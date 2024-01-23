@@ -11,6 +11,7 @@ export default function GetNavbar({active, subactive}) {
         <nav id="navbar" className="navbar">
             <ul>
                 <li><a className={"nav-link " + getActive(active,"home")} href="/">Home</a></li>
+                <li><a className={"nav-link " + getActive(active,"dashboard")} href="/dashboard">Dashboard</a></li>
                 <li><a className={"nav-link " + getActive(active,"flow")} href="/flow">Flows</a></li>
                 <li><a className={"nav-link " + getActive(active,"pocket")} href="/pocket">Pocket</a></li>
                 <li><a className={"nav-link " + getActive(active,"wishlist")} href="/wishlist">Wishlist</a></li>

@@ -1,0 +1,7 @@
+.dashbox {
+    background: linear-gradient(to right, var(--primaryColor) , #9e6a03);
+    padding: var(--spaceXMD);
+    border-radius: var(--roundedMD);
+    text-align: center;
+    margin-top: var(--spaceXLG);
+}
