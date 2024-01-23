@@ -4,7 +4,7 @@ import navbar from "../bars/navbar.module.css"
 export default function PageBar({curr, max, ctx}) {
     function navigate(idx, ctx){
         sessionStorage.setItem(`Table_${ctx}`, idx);
-        // location.reload();
+        window.location.reload(false)
     }
 
     return (

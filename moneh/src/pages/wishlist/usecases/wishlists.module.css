@@ -5,9 +5,13 @@
     margin-bottom: var(--spaceXLG);
     text-align: center;
     cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .wish_box:hover {
     border: 2px var(--primaryColor) solid;
+    transform: rotate(-2deg);
 }
 .wish_img {
     border-radius: var(--roundedLG);

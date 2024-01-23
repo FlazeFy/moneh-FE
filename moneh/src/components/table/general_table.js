@@ -28,7 +28,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
         } catch (err) {
             alert(err)
         }
-        // location.reload()
+        window.location.reload(false)
     };
 
     return (
@@ -59,18 +59,24 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                                     <th>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
                                                 );
                                             } else if(build['type_content'] == "tag"){
-                                                const tags = parseJSON(item[build['object_name']])
-                                                return (
-                                                    <th className='p-3'>
-                                                        {
-                                                            tags.map((tag, j, ins) => {
-                                                                return (
-                                                                    <GetButtonTag slug={tag['slug_name']} name={tag['tag_name']}/>
-                                                                );
-                                                            })
-                                                        }
-                                                    </th>
-                                                );
+                                                if(item[build['object_name']] != ""){
+                                                    const tags = parseJSON(item[build['object_name']])
+                                                    return (
+                                                        <th className='p-3'>
+                                                            {
+                                                                tags.map((tag, j, ins) => {
+                                                                    return (
+                                                                        <GetButtonTag slug={tag['slug_name']} name={tag['tag_name']}/>
+                                                                    );
+                                                                })
+                                                            }
+                                                        </th>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <th className='p-3'>-</th>
+                                                    )
+                                                }
                                             } else if(build['type_content'] == "image"){
                                                 return (
                                                     <th className='p-3'>

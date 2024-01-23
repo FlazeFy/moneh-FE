@@ -153,7 +153,7 @@ export default function PostFlow({ctx}) {
                   'Content-Type': 'multipart/form-data'
                 }
             })
-            // location.reload()
+            window.location.reload(false)
 
             if(response.data.status != 200){
                 return response.data.message
