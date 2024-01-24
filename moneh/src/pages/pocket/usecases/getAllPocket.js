@@ -6,7 +6,7 @@ import GetGeneralTable from '../../../components/table/general_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
+import { getLocal } from '../../../modules/storages/local'
 
 export default function GetAllPocket({ctx}) {
     //Initial variable
@@ -54,21 +54,36 @@ export default function GetAllPocket({ctx}) {
             column_name: "Name",
             object_name: "pockets_name",
             extra_desc: null,
+            placeholder: 'Type pocket name',
+            type: 'text',
+            is_required: true,
+            maxLength: 144,
         },
         {
             column_name: "Description",
             object_name: "pockets_desc",
-            extra_desc: null
+            extra_desc: null,
+            placeholder: 'Type pocket description',
+            type: 'textarea',
+            is_required: true,
+            line: 4,
+            maxLength: 144,
         },
         {
             column_name: "Type",
             object_name: "pockets_type",
-            extra_desc: null
+            extra_desc: null,
+            type: 'select',
+            class: "form-control",
+            placeholder: 'Select pocket type',
+            url: 'http://127.0.0.1:1323/api/v1/dct/pockets_type?page=1'
         },
         {
-            column_name: "Limit",
+            column_name: "Bottom Limit",
             object_name: "pockets_limit",
-            extra_desc: null
+            is_required: true,
+            extra_desc: null,
+            type: 'number',
         },
         {
             column_name: "Manage",
@@ -89,7 +104,7 @@ export default function GetAllPocket({ctx}) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlDel={"http://127.0.0.1:1323/api/v1/pockets/destroy/"}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlPut={"http://127.0.0.1:1323/api/v1/pockets/by/"} urlDel={"http://127.0.0.1:1323/api/v1/pockets/destroy/"}/>  
             </>
         )
     }

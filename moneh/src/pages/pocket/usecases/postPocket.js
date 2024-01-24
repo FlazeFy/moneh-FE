@@ -42,12 +42,13 @@ export default function PostPocket({ctx}) {
             errorMsg: resMsgPocketName
         },
         {
-            type: 'text',
+            type: 'textarea',
             class: 'form-control',
             label: 'Pocket Description',
             placeholder: 'Type pocket description',
             is_required: true,
             is_obsecure: false,
+            line: 4,
             maxLength: 144,
             handleChange: (event) => {
                 setPocketDesc(event.target.value)
@@ -59,19 +60,16 @@ export default function PostPocket({ctx}) {
             class: 'form-control',
             label: 'Pocket Type',
             placeholder: 'Select pocket type',
-            is_required: true,
-            is_obsecure: false,
-            maxLength: 75,
             handleChange: (event) => {
                 setPocketType(event.target.value)
             },
             errorMsg: resMsgPocketType,
-            url: 'http://127.0.0.1:1323/api/v1/dct/pocket_type?page=1'
+            url: 'http://127.0.0.1:1323/api/v1/dct/pockets_type?page=1'
         },
         {
             type: 'number',
             class: 'form-control',
-            label: 'Pocket Limit',
+            label: 'Pocket Bottom Limit',
             placeholder: 'Type pocket limit',
             is_required: true,
             maxLength: 36,

@@ -4,8 +4,8 @@ export default function GetBreakLine({length}) {
     return (
         <>
             {
-                builder.map((_) => {
-                    return <br></br>
+                builder.map((_, i) => {
+                    return <br key={i}></br>
                 })
             }
         </>

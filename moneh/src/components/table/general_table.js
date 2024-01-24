@@ -8,7 +8,7 @@ import { parseJSON } from '../../modules/helpers/decode'
 import GetButtonTag from '../buttons/tag'
 import { removeHTMLTags, ucFirstChar } from '../../modules/helpers/converter'
 
-export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlDel}) {
+export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
     function getExtraDesc(ext, val){
         if(ext != null){
             if(ext['pos'] == "start"){
@@ -96,7 +96,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                             }
                                         } else {
                                             return (
-                                                <th key={j}><GetManageModal builder={builder} items={item} id={i} funDel={(e) => deleteItem(e, urlDel+item['id'])}/></th>
+                                                <th key={j}><GetManageModal builder={builder} items={item} id={i} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])}/></th>
                                             );
                                         }
                                     })

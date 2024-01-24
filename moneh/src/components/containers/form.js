@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 // Components
 import GetLabel from '../../components/labels/label'
 import GetBreakLine from '../others/breakLine'
@@ -8,7 +6,6 @@ import GetAllTag from '../others/getAllTag'
 
 //Modules
 import { countHalf } from '../../modules/helpers/math'
-import { getLocal } from '../../modules/storages/local'
 
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,13 +13,6 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 
 export default function GetFormTemplate({type, props}) {
-    //Initial variable
-    const [error, setError] = useState(null)
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [maxPage, setMaxPage] = useState(0)
-    const [currPage, setCurrPage] = useState(0)
-    const [items, setItems] = useState([])
-    
     if (type == "single-line"){
         return (
             <div key={type}>
@@ -71,7 +61,7 @@ export default function GetFormTemplate({type, props}) {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                         <GetLabel title={elmt.label} type="input"/>
-                                        <textarea className={elmt.class + " w-100"} rows={elmt.line} type="file" onChange={elmt.handleChange}></textarea>
+                                        <textarea className={elmt.class + " w-100"} rows={elmt.line} onChange={elmt.handleChange}></textarea>
                                         <GetLabel title={elmt.errorMsg} type="error"/>
                                     </div>
                                 )

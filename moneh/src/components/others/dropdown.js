@@ -7,7 +7,7 @@ import { getCleanTitleFromCtx, ucFirstWord } from '../../modules/helpers/convert
 // Modules
 import { getLocal } from '../../modules/storages/local'
 
-export default function GetDropDownDctDynamic({elmt, url, ctx}) {
+export default function GetDropDownDctDynamic({elmt, url, ctx, act, change}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -52,12 +52,20 @@ export default function GetDropDownDctDynamic({elmt, url, ctx}) {
                 <select
                     placeholder={elmt.placeholder}
                     className={elmt.class + " w-100"} 
-                    onChange={elmt.handleChange}
+                    onChange={change}
                 >
                     {
                         items.map((val, i, index) => {
                             return (
-                                <option key={i} value={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
+                                <option key={i}
+                                selected={
+                                    act === val['dictionaries_name'] ?
+                                        true
+                                    :
+                                        false
+
+                                }
+                                value={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
                             );
                         })
                     }

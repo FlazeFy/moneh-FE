@@ -12,7 +12,7 @@ import { faEdit, faPaperPlane, faTrash, faXmark } from "@fortawesome/free-solid-
 import { getLocal } from '../../modules/storages/local'
 import GetLabel from '../labels/label'
 
-export default function GetManageDctModal({ctx, fetchUrl, postUrl, deleteUrl}) {
+export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUrl}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -89,7 +89,7 @@ export default function GetManageDctModal({ctx, fetchUrl, postUrl, deleteUrl}) {
 
     return (
         <>
-            <button className={modal.manage_btn + " ms-2"} data-bs-toggle="modal" data-bs-target={"#manageModalDct"+ctx}><FontAwesomeIcon icon={faEdit}/> {getCleanTitleFromCtx(ctx)}</button>
+            <button className={modal.manage_btn + " " + cls} data-bs-toggle="modal" data-bs-target={"#manageModalDct"+ctx}><FontAwesomeIcon icon={faEdit}/> {getCleanTitleFromCtx(ctx)}</button>
             <div className="modal fade" id={"manageModalDct"+ctx} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">

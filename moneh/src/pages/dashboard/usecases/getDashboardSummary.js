@@ -45,7 +45,7 @@ export default function GetDashboardSummary({ctx}) {
                 {
                     items.map((val, i, index) => {
                         return (
-                            <div className="row">
+                            <div className="row" key={i}>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
                                     <GetDashboardBox ctx="Last Income" value={val['last_income']} subvalue={val['last_income_value']} href="/flow"/>
                                 </div>

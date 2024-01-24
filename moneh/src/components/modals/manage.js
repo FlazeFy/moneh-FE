@@ -1,13 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from "react"
 import modal from './modals.module.css'
 import Axios from "axios"
+
+// Modules
+import GetDropDownDctDynamic from "../others/dropdown"
+import { countHalf } from "../../modules/helpers/math"
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
+import GetBreakLine from "../others/breakLine"
 
-export default function GetManageModal({builder, items, id, funDel}) {
+export default function GetManageModal({builder, items, id, funDel, funPut}) {
+    const [resMsgAll, setResMsgAll] = useState("")
+    const [objectUpdate, setObjectUpdate] = useState([])
+
+    // Services
+    const HandlePut = async (e) => {
+
+        try {
+            const data = new FormData();
+            {
+                builder.map((build, j, ins) => {
+                    if(build['object_name'] != null && build['object_name'] != "period"){
+                        return data.append(build['object_name'], objectUpdate[build['object_name']]);
+                    }
+                })
+            }
+            
+            const response = await Axios.put(funPut, data, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+            })
+            window.location.reload(false)
+
+            if(response.data.status != 200){
+                return response.data.message
+            } else {
+                return ""
+            }
+        } catch (error) {
+            setResMsgAll(error)
+        }
+    }
+
     return (
         <>
             <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
@@ -22,12 +60,59 @@ export default function GetManageModal({builder, items, id, funDel}) {
                             {
                                 builder.map((build, j, ins) => {
                                     if(build['object_name'] != null && build['object_name'] != "period"){
-                                        return (
-                                            <div key={j}>
-                                                <label className='form-lable'>{build['column_name']}</label>
-                                                <input className='form-control mb-2' defaultValue={items[build['object_name']]}></input>
-                                            </div>
-                                        );
+                                        if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range') {
+                                            return (
+                                                <div key={j}>
+                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    {
+                                                        build['type'] === 'range' ?
+                                                        <input placeholder={build['placeholder']}
+                                                            className='form-control mb-2' onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} 
+                                                            defaultValue={countHalf(build['max'])}
+                                                            type={build['type']}
+                                                            max={build['max']}
+                                                            min={build['min']}
+                                                        />
+                                                    :
+                                                        <input className='form-control mb-2' onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} 
+                                                            defaultValue={items[build['object_name']]}
+                                                            type={build['type']} placeholder={build['placeholder']}
+                                                        ></input>
+                                                    }
+                                                </div>
+                                            )
+                                        } else if (build['type'] === 'textarea') {
+                                            return (
+                                                <>
+                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    <textarea className="form-control w-100" rows={build['line']} onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} >{items[build['object_name']]}</textarea>
+                                                </>
+                                            )
+                                        } else if (build['type'] === 'upload') {
+                                            return (
+                                                <>
+                                                    <GetBreakLine length={2}/>
+
+                                                </>
+                                            )
+                                        } else if (build['type'] === 'select') {
+                                            return (
+                                                <>
+                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    <GetDropDownDctDynamic url={build['url']} elmt={build} ctx="dropdown" act={items[build['object_name']]} 
+                                                        change={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}/>
+                                                </>
+                                            )
+                                        } else if (build['type'] === 'checkbox') {
+                                            return (
+                                                <>
+                                                    <input className='form-control mb-2' type={build['type']} 
+                                                        onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
+                                                </>
+                                            )
+                                        } else if (build['type'] === 'tag') {
+
+                                        }
                                     }
                                 })
                             }
@@ -52,7 +137,7 @@ export default function GetManageModal({builder, items, id, funDel}) {
                                 </div>
                             </div> */}
                             <button onClick={funDel} className="btn btn-danger">Delete</button>
-                            <button type="button" className="btn btn-success">Save Changes</button>
+                            <button onClick={HandlePut} type="button" className="btn btn-success">Save Changes</button>
                         </div>
                     </div>
                 </div>
