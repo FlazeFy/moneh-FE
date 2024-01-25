@@ -65,7 +65,7 @@ export default function GetDropDownDctDynamic({elmt, url, ctx, act, change}) {
                                         false
 
                                 }
-                                value={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
+                                defaultValue={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
                             );
                         })
                     }

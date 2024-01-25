@@ -119,7 +119,7 @@ export default function GetColumnChart({items, builder, maxPage, currentPage, ct
                     height="550"
                 />
             </div>
-            <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
+            <PageBar key={1} curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }

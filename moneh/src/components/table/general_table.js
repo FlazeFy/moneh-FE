@@ -66,7 +66,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                                             {
                                                                 tags.map((tag, j, ins) => {
                                                                     return (
-                                                                        <GetButtonTag slug={tag['slug_name']} name={tag['tag_name']}/>
+                                                                        <GetButtonTag key={j} slug={tag['slug_name']} name={tag['tag_name']}/>
                                                                     );
                                                                 })
                                                             }

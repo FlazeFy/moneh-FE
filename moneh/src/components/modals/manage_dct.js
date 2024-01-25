@@ -11,8 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPaperPlane, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { getLocal } from '../../modules/storages/local'
 import GetLabel from '../labels/label'
+import GetTotalDctUsed from './manage_dct_chart'
+import GetBreakLine from '../others/breakLine'
 
-export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUrl}) {
+export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUrl, table, column}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -106,6 +108,8 @@ export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUr
                                         onClick={handleSubmit}>
                                         <FontAwesomeIcon icon={faPaperPlane} color="var(--secondaryBG)" onClick={handleSubmit}/> Submit
                                     </button>
+                                    <GetBreakLine length={4}/>
+                                    <GetTotalDctUsed ctx="Total dictionary used" filter_name="1" table={table} column={column}/>
                                 </div>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
                                     <label className='form-lable'>List Dictionary</label>
