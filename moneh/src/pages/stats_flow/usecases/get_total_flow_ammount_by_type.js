@@ -8,7 +8,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
-export default function GetTotalFlowByType({ctx}) {
+export default function GetTotalFlowAmountByType({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -22,7 +22,7 @@ export default function GetTotalFlowByType({ctx}) {
             sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/stats/flowtype/desc`)
+        fetch(`http://127.0.0.1:1323/api/v1/stats/ammountflowtype/desc`)
         .then(res => res.json())
             .then(
             (result) => {

@@ -5,7 +5,7 @@ import GetTotalPocketByType from "./usecases/get_total_pocket_by_type";
 const StatsPocket_Index = () => {
     return (
         <>
-            <GetNavbar active="stats" subactive="stats_flow"/>
+            <GetNavbar active="stats" subactive="stats_pocket"/>
             <div className='content-grid'>
                 <div style={{minHeight:"100vh"}}>
                     <div className="row mt-5">

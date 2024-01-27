@@ -1,6 +1,7 @@
 // Components
 import GetFooter from "../../components/bars/footer";
 import GetNavbar from "../../components/bars/navbar";
+import GetBreakLine from "../../components/others/breakLine";
 
 // Usecases
 import GetDashboardSummary from "./usecases/getDashboardSummary";
@@ -15,6 +16,7 @@ const Dashboard_Index = () => {
                     <GetDashboardSummary ctx="get_dashboard_summary"/>
                     <div className="row mt-4">
                         <div className="col-lg-6 col-md-6 col-sm-12">
+                            <GetBreakLine length={2}/>
                             <GetTotalAmmountPerDateByType ctx="Total Ammount Per Date By Type"/>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
