@@ -54,32 +54,70 @@ export default function GetAllFlow({ctx}) {
             column_name: "Type",
             object_name: "flows_type",
             extra_desc: null,
+            type: 'select',
+            class: 'form-control',
+            label: 'Flow Type',
+            placeholder: 'Type flow type',
+            url: [
+                {
+                    "dictionaries_name": "spending"
+                },
+                {
+                    "dictionaries_name": "income"
+                }
+            ],
         },
         {
             column_name: "Category",
             object_name: "flows_category",
-            extra_desc: null
+            extra_desc: null,
+            type: 'select',
+            class: 'form-control',
+            label: 'Flow Category',
+            placeholder: 'Select flow category',
+            url: 'http://127.0.0.1:1323/api/v1/dct/flows_category?page=1'
         },
         {
             column_name: "Name",
             object_name: "flows_name",
-            extra_desc: null
+            extra_desc: null,
+            type: 'text',
+            class: 'form-control',
+            label: 'Flow Name',
+            placeholder: 'Type flow name',
+            is_required: true,
+            is_obsecure: false,
+            maxLength: 75,
         },
         {
             column_name: "Description",
             object_name: "flows_desc",
-            extra_desc: null
+            extra_desc: null,
+            type: 'textarea',
+            class: 'form-control',
+            label: 'Flow Description',
+            is_required: true,
+            maxLength: 500,
         },
         {
             column_name: "Ammount",
             object_name: "flows_ammount",
-            extra_desc: null
+            extra_desc: null,
+            type: 'number',
+            class: 'form-control',
+            label: 'Flow Ammount',
+            placeholder: 'Type flow ammount',
+            is_required: true,
+            maxLength: 36,
         },
         {
-            column_name: "tag",
+            column_name: "Tags",
             object_name: "flows_tag",
             extra_desc: null,
-            type_content: "tag"
+            type: 'tag',
+            class: 'btn btn-tag',
+            label: 'Flow Tag',
+            url: 'http://127.0.0.1:1323/api/v1/tag/desc?page=1'
         },
         {
             column_name: "Manage",

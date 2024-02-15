@@ -54,11 +54,11 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                 {
                                     builder.map((build, j, ins) => {
                                         if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
-                                            if(build['type_content'] == "html"){
+                                            if(build['type'] == "html"){
                                                 return (
                                                     <th>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
                                                 );
-                                            } else if(build['type_content'] == "tag"){
+                                            } else if(build['type'] == "tag"){
                                                 if(item[build['object_name']] != ""){
                                                     const tags = parseJSON(item[build['object_name']])
                                                     return (
@@ -77,7 +77,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                                         <th className='p-3'>-</th>
                                                     )
                                                 }
-                                            } else if(build['type_content'] == "image"){
+                                            } else if(build['type'] == "image"){
                                                 return (
                                                     <th className='p-3'>
                                                         <img className='img img-fluid img-profile' style={{width:"75px", height:"75px", borderWidth:"2.5px"}} src={item[build['object_name']]}/>

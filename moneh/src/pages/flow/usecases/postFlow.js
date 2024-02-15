@@ -38,7 +38,6 @@ export default function PostFlow({ctx}) {
             class: 'form-control',
             label: 'Flow Type',
             placeholder: 'Type flow type',
-            maxLength: 75,
             handleChange: (event) => {
                 setFlowType(event.target.value)
             },
@@ -57,7 +56,6 @@ export default function PostFlow({ctx}) {
             class: 'form-control',
             label: 'Flow Category',
             placeholder: 'Select flow category',
-            maxLength: 75,
             handleChange: (event) => {
                 setFlowCat(event.target.value)
             },

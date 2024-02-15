@@ -26,6 +26,7 @@ import StatsWishlist_Index from "./pages/stats_wishlist";
 import Wishlist_Index from "./pages/wishlist";
 import Home_Index from "./pages/home";
 import Dashboard_Index from "./pages/dashboard";
+import Calendar_Index from "./pages/calendar";
 
 export default function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home_Index />}></Route>
+          <Route path="/calendar" element={<Calendar_Index />}></Route>
           <Route path="/dashboard" element={<Dashboard_Index />}></Route>
           <Route path="/flow" element={<Flow_Index />}></Route>
           <Route path="/pocket" element={<Pocket_Index />}></Route>

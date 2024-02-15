@@ -87,6 +87,12 @@ body {
   border-radius: var(--roundedSM) !important;
 }
 
+a {
+  text-decoration: none !important;
+}
+.fc-scrollgrid-sync-inner a {
+  color: var(--whiteColor);
+}
 h1, h2, h3, h4, h5, h6 {
   color: var(--primaryColor) !important;
 }
