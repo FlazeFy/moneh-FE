@@ -1,7 +1,6 @@
 import React from 'react'
 import controls from './controls.module.css'
 import { ucFirst } from '../../modules/helpers/typography'
-import { getLocal, storeLocal } from '../../modules/storages/local'
 
 // Toast
 import CustomToast from "../modals/toast"
