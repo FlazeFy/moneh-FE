@@ -5,9 +5,9 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 
 // Modules
-import { getCleanTitleFromCtx, ucFirstWord } from '../../../modules/helpers/converter'
 import { getTodayDate } from '../../../modules/helpers/generator'
-import { getLocal } from '../../../modules/storages/local'
+import { getLocal, storeLocal } from '../../../modules/storages/local'
+import FilterFlowType from './filter_flow_type'
 
 export default function GetDailyCalendar({ctx}) {
     //Initial variable
@@ -17,9 +17,26 @@ export default function GetDailyCalendar({ctx}) {
     const [month, setCurrentMonth] = useState(getTodayDate('month'))
     const [year, setCurrentYear] = useState(getTodayDate('year'))
     const event = []
+    let url = ''
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:1323/api/v1/stats/ammountflowtype/desc`)
+        const keyType = getLocal("calendar_filter_flow_type_"+ctx)
+
+        if(keyType === null){
+            storeLocal("calendar_filter_flow_type_"+ctx, "all")
+        }
+
+        if(keyType == 'all' || keyType == 'spending' || keyType == 'income'){
+            url = `http://127.0.0.1:1323/api/v1/flows/month_item/${month}/${year}/${keyType}`
+        } else {
+            let fixType = keyType
+            if(fixType != 'final_total'){
+                fixType = fixType.replace('total_','')
+            } 
+            url = `http://127.0.0.1:1323/api/v1/flows/month_total/${month}/${year}/${fixType}`
+        }
+
+        fetch(url)
         .then(res => res.json())
             .then(
             (result) => {
@@ -52,8 +69,22 @@ export default function GetDailyCalendar({ctx}) {
             </div>
         )
     } else {
+        if(items != null){
+            items.forEach((el)=> {
+                event.push(
+                    { 
+                        title: el['type'] == 'spending' ? '+ '+el['title'] : '- '+el['title'], 
+                        date: el['context'] 
+                    }
+                )
+            })
+        }
+
         return (
             <div>
+                <div className="d-flex justify-content-start">
+                    <FilterFlowType/>
+                </div>
                 <FullCalendar
                     plugins={[ dayGridPlugin ]}
                     initialView="dayGridMonth"

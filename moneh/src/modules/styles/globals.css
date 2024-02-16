@@ -109,6 +109,28 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--primaryColor);
 }
 
+/* Fullcalendar */
+.fc-event-title-container, .fc-event.fc-event-start.fc-event-end.fc-event-past.fc-daygrid-event.fc-daygrid-block-event.fc-h-event {
+  background: var(--primaryColor);
+  border: 0 !important;
+  border-radius: var(--roundedSM);
+  padding: calc(var(--spaceMini) / 2) var(--spaceMini);
+  text-transform:capitalize;
+  font-weight: 500;
+}
+.fc-event.fc-event-start.fc-event-end.fc-event-past.fc-daygrid-event.fc-daygrid-block-event.fc-h-event{
+  margin-inline: var(--spaceXSM);
+  margin-bottom: var(--spaceXXSM);
+}
+
+.form-select, .form-floating > .form-select ~ label::after {
+  background: var(--blackColor) !important;
+  color: var(--whiteColor) !important;
+}
+.form-floating label {
+  color: var(--whiteColor) !important;
+}
+
 /* Apexchart */
 .apexcharts-legend-text  {
   color: var(--whiteColor) !important;
