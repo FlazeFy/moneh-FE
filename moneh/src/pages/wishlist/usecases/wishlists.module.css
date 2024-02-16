@@ -8,6 +8,7 @@
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+    background: var(--blackColor);
 }
 .wish_box:hover {
     border: 2px var(--primaryColor) solid;
@@ -22,4 +23,10 @@
 }
 .wish_box p {
     color: var(--whiteColor);
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
 }

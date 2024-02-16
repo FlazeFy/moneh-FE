@@ -96,7 +96,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                             }
                                         } else {
                                             return (
-                                                <th key={j}><GetManageModal builder={builder} items={item} id={i} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])}/></th>
+                                                <th key={j}><GetManageModal builder={builder} items={item} id={i} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
                                             );
                                         }
                                     })

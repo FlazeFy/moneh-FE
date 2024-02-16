@@ -11,8 +11,9 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 import GetBreakLine from "../others/breakLine"
+import GetLabel from "../labels/label"
 
-export default function GetManageModal({builder, items, id, funDel, funPut}) {
+export default function GetManageModal({builder, items, id, funDel, funPut, is_with_btn}) {
     const [resMsgAll, setResMsgAll] = useState("")
     const [objectUpdate, setObjectUpdate] = useState([])
 
@@ -48,7 +49,12 @@ export default function GetManageModal({builder, items, id, funDel, funPut}) {
 
     return (
         <>
-            <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
+            {
+                is_with_btn ?
+                    <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
+                :
+                    <></>
+            }
             <div className="modal fade" id={"manageModal"+id} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -105,10 +111,12 @@ export default function GetManageModal({builder, items, id, funDel, funPut}) {
                                             )
                                         } else if (build['type'] === 'checkbox') {
                                             return (
-                                                <>
-                                                    <input className='form-control mb-2' type={build['type']} 
+                                                <div class="form-check ms-3">
+                                                    <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] == 1 ? true : false}
                                                         onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
-                                                </>
+                                                    {/* <label className='form-lable'>{build['column_name']}</label> */}
+                                                    <GetLabel title={build['column_name']} type="input"/>
+                                                </div>
                                             )
                                         } else if (build['type'] === 'tag') {
 

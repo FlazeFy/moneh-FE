@@ -1,0 +1,39 @@
+.login-box {
+    display: block;
+    margin-inline: auto;
+    margin-top: calc(var(--spaceJumbo) * 2);
+    border: var(--spaceXSM) solid var(--primaryColor);
+    padding: var(--spaceJumbo);
+    border-radius: 100% 100% var(--roundedLG) var(--roundedLG);
+    text-align: center;
+    background: var(--blackColor);
+    position: relative;
+}
+
+.grid-border:before{
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #3f2b03, #986808, #F9AA0C, #f4b16a, #f5b48f, #fddbd4);
+    background-size: 400%;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    z-index: -1;
+    border-radius: 100% 100% var(--roundedLG) var(--roundedLG);
+    animation: glower 20s linear infinite;
+  }
+  
+@keyframes glower {
+    0% {
+      background-position: 0 0;
+    }
+    
+    50% {
+      background-position: 400% 0;
+    }
+    
+    100% {
+      background-position: 0 0;
+    }
+}

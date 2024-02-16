@@ -51,7 +51,8 @@ export default function GetFormTemplate({type, props}) {
                                                 <input placeholder={elmt.placeholder}
                                                     className={elmt.class + " w-100"} 
                                                     onChange={elmt.handleChange}
-                                                    type={elmt.type}
+                                                    type={elmt.is_obsecure == true ? 'password' : elmt.type}
+                                                    
                                                 />
                                         }
                                         <GetLabel title={elmt.errorMsg} type="error"/>
