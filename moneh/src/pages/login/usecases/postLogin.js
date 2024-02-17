@@ -70,8 +70,9 @@ export default function PostLogin() {
                 window.location.reload(false)
                 return response.data.message
             } else {
+                const data = response.data.data
                 storeLocal('username_key', username)
-                storeLocal('token_key', response.data.token)
+                storeLocal('token_key', data.token)
                 window.location.href = '/'
             }
         } catch (error) {
