@@ -7,6 +7,7 @@ import { getCleanTitleFromCtx, numberToPrice } from '../../../modules/helpers/co
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetSummary({ctx}) {
     //Initial variable
@@ -35,7 +36,7 @@ export default function GetSummary({ctx}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -47,9 +48,9 @@ export default function GetSummary({ctx}) {
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 {
-                    items.map((val, i, index) => {
+                    items.map((val, idx) => {
                         return (
-                            <div className='row text-center'>
+                            <div className='row text-center' key={idx}>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
                                     <h4> Average</h4>
                                     <h5 className='text-white'>{numberToPrice(val['average'])}</h5>

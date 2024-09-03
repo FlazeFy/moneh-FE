@@ -69,7 +69,7 @@ export default function PostFlow({ctx}) {
             placeholder: 'Type flow name',
             is_required: true,
             is_obsecure: false,
-            maxLength: 144,
+            max: 144,
             handleChange: (event) => {
                 setFlowName(event.target.value)
             },
@@ -80,7 +80,7 @@ export default function PostFlow({ctx}) {
             class: 'form-control',
             label: 'Flow Description',
             is_required: true,
-            maxLength: 144,
+            max: 144,
             handleChange: (event) => {
                 setFlowDesc(event.target.value)
             },
@@ -92,7 +92,7 @@ export default function PostFlow({ctx}) {
             label: 'Flow Ammount',
             placeholder: 'Type flow ammount',
             is_required: true,
-            maxLength: 36,
+            max: 36,
             handleChange: (event) => {
                 setFlowAmmount(event.target.value)
             },

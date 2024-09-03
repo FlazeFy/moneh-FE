@@ -29,13 +29,13 @@ export default function GetFormTemplate({type, props}) {
                                                     <GetBreakLine length={1}/>
                                                     <div className='d-flex justify-content-between my-1'>
                                                         <div>
-                                                            <lable className='text-white'>{elmt.min}</lable>
+                                                            <label className='text-white'>{elmt.min}</label>
                                                         </div>
                                                         <div>
-                                                            <lable className='text-white'>{countHalf(elmt.max)}</lable>
+                                                            <label className='text-white'>{countHalf(elmt.max)}</label>
                                                         </div>
                                                         <div>
-                                                            <lable className='text-white'>{elmt.max}</lable>
+                                                            <label className='text-white'>{elmt.max}</label>
                                                         </div>
                                                     </div>
                                                     <input placeholder={elmt.placeholder}
@@ -52,7 +52,7 @@ export default function GetFormTemplate({type, props}) {
                                                     className={elmt.class + " w-100"} 
                                                     onChange={elmt.handleChange}
                                                     type={elmt.is_obsecure == true ? 'password' : elmt.type}
-                                                    
+                                                    maxLength={elmt.max}
                                                 />
                                         }
                                         <GetLabel title={elmt.errorMsg} type="error"/>
@@ -85,14 +85,14 @@ export default function GetFormTemplate({type, props}) {
                                 )
                             } else if (elmt.type === 'checkbox') {
                                 return (
-                                    <div class="form-check ms-3">
+                                    <div className="form-check ms-3" key={idx}>
                                         <input className={elmt.class} type={elmt.type} id="disabledFieldsetCheck" onChange={elmt.handleChange}></input>
                                         <GetLabel title={elmt.label} type="input"/>
                                     </div>
                                 )
                             } else if (elmt.type === 'tag') {
                                 return (
-                                    <div class="form-check" style={{marginLeft:"-10px"}}>
+                                    <div className="form-check" style={{marginLeft:"-10px"}} key={idx}>
                                         <GetLabel title={elmt.label} type="input"/>
                                         <GetBreakLine length={1}/>
                                         <div className='mt-2'/>

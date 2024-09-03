@@ -12,6 +12,8 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faFacebook, faGithub, faInstagram, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import AtomsText from '../../../atoms/atoms_text'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetCreator({ctx}) {
     //Initial variable
@@ -62,7 +64,7 @@ export default function GetCreator({ctx}) {
     },[])
 
     if (error) {
-        return <div>Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -79,7 +81,7 @@ export default function GetCreator({ctx}) {
                                 <>
                                     <img className='img-profile' src='https://media.licdn.com/dms/image/D5603AQHbKizHEv_9fQ/profile-displayphoto-shrink_400_400/0/1693052510059?e=1709164800&v=beta&t=6To_YQYtD_3BKZqS6UWzAfgFNGqXNaaRFu3AMe2QdSQ'/>
                                     <GetBreakLine length={3} />
-                                    <h2>Hello there 👋, {val['greeting_bio']}</h2>
+                                    <AtomsText text_type="main_heading" body={<>Hello there 👋, {val['greeting_bio']}</>}/>
                                     <h4 className='text-white'>{val['mini_bio']}</h4>
                                     <GetBreakLine length={1} />
                                     <p className='text-white'>{val['long_bio']}</p>
@@ -96,7 +98,7 @@ export default function GetCreator({ctx}) {
                         if(i == 0){
                             return (
                                 <>
-                                    <h2>Contact Me</h2>
+                                    <AtomsText text_type="main_heading" body="Contact Me"/>
                                     <GetBreakLine length={1} />
                                     <a className='btn btn-success p-3 me-3' href={val['facebook']} style={{borderRadius:"var(--roundedCircle)"}}><FontAwesomeIcon icon={faFacebook} size="xl"/></a>
                                     <a className='btn btn-success p-3 me-3' href={val['whatsapp']} style={{borderRadius:"var(--roundedCircle)"}}><FontAwesomeIcon icon={faWhatsapp} size="xl"/></a>

@@ -99,7 +99,7 @@ export const getUTCHourOffset = (val, type) => {
 export const removeHTMLTags = (val) => {
     try {
         if ((val === null) || (val ==='')){
-            return "<span class='fst-italic'>No description provided</span>"
+            return "<span className='fst-italic'>No description provided</span>"
         } else {
             val = val.toString()
         }

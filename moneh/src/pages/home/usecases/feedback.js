@@ -36,7 +36,7 @@ export default function GetFeedback({ctx}) {
             is_required: true,
             is_obsecure: false,
             line: 4,
-            maxLength: 500,
+            max: 500,
             handleChange: (event) => {
                 setFeedbackDesc(event.target.value)
             },

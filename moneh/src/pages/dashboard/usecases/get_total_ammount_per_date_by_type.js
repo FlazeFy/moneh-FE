@@ -12,6 +12,8 @@ import GetBreakLine from '../../../components/others/breakLine'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import AtomsText from '../../../atoms/atoms_text'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetTotalAmmountPerDateByType({ctx}) {
     //Initial variable
@@ -30,6 +32,10 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
         if(keyType == null){
             sessionStorage.setItem("flow_type", "income");
         }
+        if(keyView == null){
+            sessionStorage.setItem("flow_total_ammount_view", "date");
+        }
+
         fetch(`http://127.0.0.1:1323/api/v1/flows/dateammount/${keyType}/${keyView}`)
         .then(res => res.json())
             .then(
@@ -57,7 +63,7 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
             class: 'form-control',
             label: 'Flow Type',
             placeholder: 'Type flow type',
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 sessionStorage.setItem("flow_type", event.target.value)
                 window.location.reload(false)
@@ -80,7 +86,7 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
             class: 'form-control',
             label: 'Flow View',
             placeholder: 'Type flow view',
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 sessionStorage.setItem("flow_total_ammount_view", event.target.value)
                 window.location.reload(false)
@@ -101,7 +107,7 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
         }
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -111,7 +117,7 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
     } else {
         return (
             <> 
-                <h2>{getCleanTitleFromCtx(ctx)}</h2>
+                <AtomsText text_type="main_heading" body={getCleanTitleFromCtx(ctx)}/>
                 <div className='row'>
                     <div className='col'>
                         <GetLabel type="input" title="Flow Type"/>

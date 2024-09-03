@@ -8,6 +8,7 @@ import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modul
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import GetManageModal from '../../../components/modals/manage'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllWishlist({ctx}) {
     //Initial variable
@@ -71,7 +72,7 @@ export default function GetAllWishlist({ctx}) {
             placeholder: 'Type wishlist name',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
         },
         {
             column_name: "Description",
@@ -81,7 +82,7 @@ export default function GetAllWishlist({ctx}) {
             class: 'form-control',
             label: 'Wishlist Description',
             is_required: true,
-            maxLength: 500,
+            max: 500,
         },
         {
             column_name: "Price",
@@ -92,7 +93,7 @@ export default function GetAllWishlist({ctx}) {
             label: 'Wishlist Price',
             placeholder: 'Type wishlist price',
             is_required: true,
-            maxLength: 36,
+            max: 36,
         },
         {
             column_name: "Priority",
@@ -139,7 +140,7 @@ export default function GetAllWishlist({ctx}) {
     }
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -152,12 +153,12 @@ export default function GetAllWishlist({ctx}) {
                 <h2 className='my-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 <div className='row'>
                     {
-                        items.map((val, i, index) => {
+                        items.map((val, idx) => {
                             return (
-                                <>
-                                    <GetManageModal builder={builder} items={val} id={i} is_with_btn={false}/>
+                                <div className='col-lg-4 col-md-6 col-sm-12 col-12' key={idx}>
+                                    <GetManageModal builder={builder} items={val} id={idx} is_with_btn={false}/>
                                     <div className='col-4'>
-                                        <button className={style.wish_box} data-bs-toggle="modal" data-bs-target={"#manageModal"+i}>
+                                        <button className={style.wish_box} data-bs-toggle="modal" data-bs-target={"#manageModal"+idx}>
                                             <img className={style.wish_img} src={val['wishlists_img_url']}/>
                                             <h4 className='mt-3'>{val['wishlists_name']}</h4>
                                             <p>{val['wishlists_desc']}</p>
@@ -177,7 +178,7 @@ export default function GetAllWishlist({ctx}) {
                                             </div>
                                         </button>
                                     </div>
-                                </>
+                                </div>
                             );
                         })
                     }

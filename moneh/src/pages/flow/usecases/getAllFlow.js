@@ -7,6 +7,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllFlow({ctx}) {
     //Initial variable
@@ -87,7 +88,7 @@ export default function GetAllFlow({ctx}) {
             placeholder: 'Type flow name',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
         },
         {
             column_name: "Description",
@@ -97,7 +98,7 @@ export default function GetAllFlow({ctx}) {
             class: 'form-control',
             label: 'Flow Description',
             is_required: true,
-            maxLength: 500,
+            max: 500,
         },
         {
             column_name: "Ammount",
@@ -108,7 +109,7 @@ export default function GetAllFlow({ctx}) {
             label: 'Flow Ammount',
             placeholder: 'Type flow ammount',
             is_required: true,
-            maxLength: 36,
+            max: 36,
         },
         {
             column_name: "Tags",
@@ -127,7 +128,7 @@ export default function GetAllFlow({ctx}) {
     ]
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

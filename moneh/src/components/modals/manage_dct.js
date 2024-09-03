@@ -115,9 +115,9 @@ export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUr
                                     <label className='form-lable'>List Dictionary</label>
                                     <ul>
                                     {
-                                        items.map((val, i, index) => {
+                                        items.map((val, idx) => {
                                             return (
-                                                <div className='d-flex justify-content-between text-white mb-3'>
+                                                <div className='d-flex justify-content-between text-white mb-3' key={idx}>
                                                     <div className='pt-2'>
                                                         {ucFirstWord(val['dictionaries_name'])}
                                                     </div>

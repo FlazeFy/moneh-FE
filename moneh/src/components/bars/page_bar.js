@@ -17,7 +17,7 @@ export default function PageBar({curr, max, ctx}) {
                     : curr === index && index != 0 && isNumInRange(curr, index, 20) ?
                         <button className={navbar.page_bar_active} onClick={(e) => navigate(index, ctx)} key={index}>{ index }</button>
                     :
-                    <></>
+                    <div key={index}></div>
                 ))
             }
         </>

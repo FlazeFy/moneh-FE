@@ -64,11 +64,11 @@ export default function GetManageModal({builder, items, id, funDel, funPut, is_w
                         </div>
                         <div className="modal-body">
                             {
-                                builder.map((build, j, ins) => {
+                                builder.map((build, idx) => {
                                     if(build['object_name'] != null && build['object_name'] != "period"){
                                         if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range') {
                                             return (
-                                                <div key={j}>
+                                                <div key={idx}>
                                                     <label className='form-lable'>{build['column_name']}</label>
                                                     {
                                                         build['type'] === 'range' ?
@@ -89,29 +89,28 @@ export default function GetManageModal({builder, items, id, funDel, funPut, is_w
                                             )
                                         } else if (build['type'] === 'textarea') {
                                             return (
-                                                <>
+                                                <div key={idx}>
                                                     <label className='form-lable'>{build['column_name']}</label>
-                                                    <textarea className="form-control w-100" rows={build['line']} onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} >{items[build['object_name']]}</textarea>
-                                                </>
+                                                    <textarea className="form-control w-100" rows={build['line']} onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} defaultValue={items[build['object_name']]}></textarea>
+                                                </div>
                                             )
                                         } else if (build['type'] === 'upload') {
                                             return (
-                                                <>
+                                                <div key={idx}>
                                                     <GetBreakLine length={2}/>
-
-                                                </>
+                                                </div>
                                             )
                                         } else if (build['type'] === 'select') {
                                             return (
-                                                <>
+                                                <div key={idx}>
                                                     <label className='form-lable'>{build['column_name']}</label>
                                                     <GetDropDownDctDynamic url={build['url']} elmt={build} ctx="dropdown" act={items[build['object_name']]} 
                                                         change={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}/>
-                                                </>
+                                                </div>
                                             )
                                         } else if (build['type'] === 'checkbox') {
                                             return (
-                                                <div class="form-check ms-3">
+                                                <div className="form-check ms-3" key={idx}>
                                                     <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] == 1 ? true : false}
                                                         onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
                                                     {/* <label className='form-lable'>{build['column_name']}</label> */}

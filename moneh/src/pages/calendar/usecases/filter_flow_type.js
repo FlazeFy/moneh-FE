@@ -20,7 +20,7 @@ export default function FilterFlowType() {
                 <option value="total_income" selected={selectedConsumeType === 'total_income' ? true : false}>Total Income</option>
                 <option value="final_total" selected={selectedConsumeType === 'final_total' ? true : false}>Final Total</option>
             </select>
-            <label for="floatingSelect">Filter By Type</label>
+            <label htmlFor="floatingSelect">Filter By Type</label>
         </div>
     )
 }

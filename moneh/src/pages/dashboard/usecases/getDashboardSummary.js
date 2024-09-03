@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import GetDashboardBox from "../../../components/containers/dashboard_box";
 import { getCleanTitleFromCtx } from "../../../modules/helpers/converter";
 import { getLocal } from "../../../modules/storages/local";
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 
 export default function GetDashboardSummary({ctx}) {
     //Initial variable
@@ -32,7 +33,7 @@ export default function GetDashboardSummary({ctx}) {
     },[])
     
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

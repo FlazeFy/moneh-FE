@@ -1,11 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-
-// Component
-import { getCleanTitleFromCtx } from '../../modules/helpers/converter'
-
 // Modules
-import { getLocal, storeLocal } from '../../modules/storages/local'
+import { getLocal } from '../../modules/storages/local'
+import MoleculesAlertBox from '../../molecules/molecules_alert_box'
 import GetLabel from '../labels/label'
 import GetBreakLine from './breakLine'
 
@@ -60,7 +57,7 @@ export default function GetAllTag({url, cls, func}) {
     }
 
     if (error) {
-        return <div><h2>Failed to fetch</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={'All Tag'}/>
     } else if (!isLoaded) {
         return (
             <div>

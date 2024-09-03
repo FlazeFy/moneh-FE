@@ -22,7 +22,7 @@ export default function PostLogin() {
             placeholder: 'Type username',
             is_required: true,
             is_obsecure: false,
-            maxLength: 36,
+            max: 36,
             handleChange: (event) => {
                 setUsername(event.target.value)
             },
@@ -35,7 +35,7 @@ export default function PostLogin() {
             placeholder: 'Type password',
             is_required: true,
             is_obsecure: true,
-            maxLength: 36,
+            max: 36,
             handleChange: (event) => {
                 setPassword(event.target.value)
             },

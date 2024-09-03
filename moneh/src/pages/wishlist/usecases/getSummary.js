@@ -7,6 +7,7 @@ import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modul
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetSummaryWishlist({ctx}) {
     //Initial variable
@@ -35,7 +36,7 @@ export default function GetSummaryWishlist({ctx}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -48,9 +49,9 @@ export default function GetSummaryWishlist({ctx}) {
                 <h2 className='my-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 <div className='row'>
                     {
-                        items.map((val, i, index) => {
+                        items.map((val, idx) => {
                             return (
-                                <>
+                                <div key={idx}>
                                     <h4> Average Price</h4>
                                     <h5 className='text-white'>{numberToPrice(val['average'])}</h5>
                                     <hr className='text-white'></hr>
@@ -74,7 +75,7 @@ export default function GetSummaryWishlist({ctx}) {
                                     <h4> Total Amount</h4>
                                     <h5 className='text-white'>{numberToPrice(val['total_ammount'])}</h5>
                                     <hr className='text-white'></hr>
-                                </>
+                                </div>
                             );
                         })
                     }

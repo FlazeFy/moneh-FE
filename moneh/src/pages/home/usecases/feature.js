@@ -9,7 +9,7 @@ export default function GetFeature({ctx}) {
                     <GetBreakLine length={3}/>
                     <div id="carouselExampleSlidesOnly" className="carousel slide mt-4" data-bs-ride="carousel">
                         <div className="carousel-inner">
-                            <div class="carousel-item active">
+                            <div className="carousel-item active">
                                 <img src="/assets/stats.png" style={{maxWidth:"50%", minWidth:"300px"}} className="img img-fluid mb-3"/>
                                 <h4 className="text-white">View statistic of your income and outcome</h4>
                             </div>

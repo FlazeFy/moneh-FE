@@ -7,6 +7,7 @@ import { convertDatetime, getCleanTitleFromCtx } from '../../../modules/helpers/
 // Components
 import GetBreakLine from '../../../components/others/breakLine'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 
 export default function GetProfileCard({ctx}) {
@@ -55,7 +56,7 @@ export default function GetProfileCard({ctx}) {
 
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

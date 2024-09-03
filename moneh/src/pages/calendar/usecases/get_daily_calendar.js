@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import { getTodayDate } from '../../../modules/helpers/generator'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import FilterFlowType from './filter_flow_type'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetDailyCalendar({ctx}) {
     //Initial variable
@@ -61,7 +62,7 @@ export default function GetDailyCalendar({ctx}) {
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

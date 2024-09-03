@@ -7,6 +7,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllPocket({ctx}) {
     //Initial variable
@@ -57,7 +58,7 @@ export default function GetAllPocket({ctx}) {
             placeholder: 'Type pocket name',
             type: 'text',
             is_required: true,
-            maxLength: 144,
+            max: 144,
         },
         {
             column_name: "Description",
@@ -67,7 +68,7 @@ export default function GetAllPocket({ctx}) {
             type: 'textarea',
             is_required: true,
             line: 4,
-            maxLength: 144,
+            max: 144,
         },
         {
             column_name: "Type",
@@ -93,7 +94,7 @@ export default function GetAllPocket({ctx}) {
     ]
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

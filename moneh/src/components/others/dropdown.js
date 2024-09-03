@@ -6,6 +6,7 @@ import { getCleanTitleFromCtx, ucFirstWord } from '../../modules/helpers/convert
 
 // Modules
 import { getLocal } from '../../modules/storages/local'
+import MoleculesAlertBox from '../../molecules/molecules_alert_box'
 
 export default function GetDropDownDctDynamic({elmt, url, ctx, act, change}) {
     //Initial variable
@@ -39,7 +40,7 @@ export default function GetDropDownDctDynamic({elmt, url, ctx, act, change}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -48,29 +49,27 @@ export default function GetDropDownDctDynamic({elmt, url, ctx, act, change}) {
         )
     } else {
         return (
-            <> 
-                <select
-                    placeholder={elmt.placeholder}
-                    className={elmt.class + " w-100"} 
-                    onChange={change}
-                >
-                    {
-                        items.map((val, i, index) => {
-                            return (
-                                <option key={i}
-                                selected={
-                                    act === val['dictionaries_name'] ?
-                                        true
-                                    :
-                                        false
+            <select
+                placeholder={elmt.placeholder}
+                className={elmt.class + " w-100"} 
+                onChange={change}
+            >
+                {
+                    items.map((val, i, index) => {
+                        return (
+                            <option key={i}
+                            selected={
+                                act === val['dictionaries_name'] ?
+                                    true
+                                :
+                                    false
 
-                                }
-                                defaultValue={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
-                            );
-                        })
-                    }
-                </select>
-            </>
+                            }
+                            defaultValue={val['dictionaries_name']}>{ucFirstWord(val['dictionaries_name'])}</option>
+                        );
+                    })
+                }
+            </select>
         )
     }
 }

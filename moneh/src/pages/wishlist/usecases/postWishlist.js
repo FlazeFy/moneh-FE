@@ -41,7 +41,7 @@ export default function PostWishlist({ctx}) {
             placeholder: 'Type wishlist image',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 event = event.target.files[0]
 
@@ -64,7 +64,7 @@ export default function PostWishlist({ctx}) {
             placeholder: 'Type wishlist name',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 setWishlistName(event.target.value)
             },
@@ -75,7 +75,7 @@ export default function PostWishlist({ctx}) {
             class: 'form-control',
             label: 'Wishlist Description',
             is_required: true,
-            maxLength: 144,
+            max: 144,
             handleChange: (event) => {
                 setWishlistDesc(event.target.value)
             },
@@ -87,7 +87,7 @@ export default function PostWishlist({ctx}) {
             label: 'Wishlist Price',
             placeholder: 'Type wishlist price',
             is_required: true,
-            maxLength: 12,
+            max: 12,
             handleChange: (event) => {
                 setWishlistPrice(event.target.value)
             },
@@ -100,7 +100,7 @@ export default function PostWishlist({ctx}) {
             placeholder: 'Type wishlist type',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 setWishlistType(event.target.value)
             },
@@ -114,7 +114,7 @@ export default function PostWishlist({ctx}) {
             placeholder: 'Type wishlist priority',
             is_required: true,
             is_obsecure: false,
-            maxLength: 75,
+            max: 75,
             handleChange: (event) => {
                 setWishlistPriority(event.target.value)
             },

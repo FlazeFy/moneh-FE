@@ -35,7 +35,7 @@ export default function PostPocket({ctx}) {
             placeholder: 'Type pocket name',
             is_required: true,
             is_obsecure: false,
-            maxLength: 144,
+            max: 144,
             handleChange: (event) => {
                 setPocketName(event.target.value)
             },
@@ -49,7 +49,7 @@ export default function PostPocket({ctx}) {
             is_required: true,
             is_obsecure: false,
             line: 4,
-            maxLength: 144,
+            max: 144,
             handleChange: (event) => {
                 setPocketDesc(event.target.value)
             },
@@ -72,7 +72,7 @@ export default function PostPocket({ctx}) {
             label: 'Pocket Bottom Limit',
             placeholder: 'Type pocket limit',
             is_required: true,
-            maxLength: 36,
+            max: 36,
             handleChange: (event) => {
                 setPocketLimit(event.target.value)
             },
