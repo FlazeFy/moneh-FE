@@ -1,4 +1,5 @@
 import React from 'react'
+import AtomsText from '../../../atoms/atoms_text'
 import { storeLocal, getLocal } from '../../../modules/storages/local'
 
 export default function FilterFlowType() {
@@ -20,7 +21,7 @@ export default function FilterFlowType() {
                 <option value="total_income" selected={selectedConsumeType === 'total_income' ? true : false}>Total Income</option>
                 <option value="final_total" selected={selectedConsumeType === 'final_total' ? true : false}>Final Total</option>
             </select>
-            <label htmlFor="floatingSelect">Filter By Type</label>
+            <AtomsText text_type="main_content" body="Filter By Type"/>
         </div>
     )
 }

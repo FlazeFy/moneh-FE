@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Axios from 'axios'
+import Swal from 'sweetalert2'
 
 // Component
 import modal from '../../../organisms/organisms.module.css'
@@ -11,8 +12,9 @@ import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 // Modules
 import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import OrganismsForm from "../../../organisms/organisms_form"
+import AtomsText from "../../../atoms/atoms_text"
 
-export default function PostFlow({ctx}) {
+export default function PostFlow({ ctx, onPostSuccess }) {
     const optionFlowType = [
         { "dictionaries_name": "spending" },
         { "dictionaries_name": "income" }
@@ -129,30 +131,45 @@ export default function PostFlow({ctx}) {
 
     // Services
     const handleSubmit = async (e) => {
-        try {
-            const data = new FormData();
-            data.append('flows_type', flowType);
-            data.append('flows_category', flowCat);
-            data.append('flows_name', flowName);
-            data.append('flows_desc', flowDesc);
-            data.append('flows_ammount', flowAmmount);
-            data.append('flows_tag', flowTag);
-            data.append('is_shared', isShared);
-            
-            const response = await Axios.post("http://127.0.0.1:1323/api/v1/flows", data, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-            })
-            window.location.reload(false)
+        e.preventDefault()
+        Swal.showLoading()
 
-            if(response.data.status != 200){
-                return response.data.message
+        try {
+            const data = new FormData()
+            data.append('flows_type', flowType)
+            data.append('flows_category', flowCat)
+            data.append('flows_name', flowName)
+            data.append('flows_desc', flowDesc)
+            data.append('flows_ammount', flowAmmount)
+            data.append('flows_tag', flowTag)
+            data.append('is_shared', isShared)
+
+            const response = await Axios.post("http://127.0.0.1:1323/api/v1/flows", data, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
+
+            Swal.close()
+            if (response.data.status === 200) {
+                Swal.fire({ 
+                    icon: "success", 
+                    title: "Success", 
+                    text: response.data.message 
+                })
+                if (onPostSuccess) onPostSuccess()
             } else {
-                return ""
+                Swal.fire({ 
+                    icon: "error", 
+                    title: "Oops...", 
+                    text: response.data.message 
+                })
             }
         } catch (error) {
-            setResMsgAll(error)
+            Swal.close()
+            Swal.fire({ 
+                icon: "error", 
+                title: "Oops...", 
+                text: "Something went wrong!" 
+            })
         }
     }
 
@@ -163,7 +180,7 @@ export default function PostFlow({ctx}) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{getCleanTitleFromCtx(ctx)}</h5>
+                            <AtomsText text_type="sub_heading" body={getCleanTitleFromCtx(ctx)}/>
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">

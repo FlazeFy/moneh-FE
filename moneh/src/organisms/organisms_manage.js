@@ -58,7 +58,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Manage</h5>
+                            <AtomsText text_type="sub_heading" body="Manage"/>
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
@@ -68,7 +68,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                         if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range') {
                                             return (
                                                 <div key={idx}>
-                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    <AtomsText text_type="main_content" body={build['column_name']}/>
                                                     {
                                                         build['type'] === 'range' ?
                                                         <input placeholder={build['placeholder']}
@@ -89,7 +89,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                         } else if (build['type'] === 'textarea') {
                                             return (
                                                 <div key={idx}>
-                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    <AtomsText text_type="main_content" body={build['column_name']}/>
                                                     <textarea className="form-control w-100" rows={build['line']} onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} defaultValue={items[build['object_name']]}></textarea>
                                                 </div>
                                             )
@@ -102,7 +102,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                         } else if (build['type'] === 'select') {
                                             return (
                                                 <div key={idx}>
-                                                    <label className='form-lable'>{build['column_name']}</label>
+                                                    <AtomsText text_type="main_content" body={build['column_name']}/>
                                                     <MoleculesDropDownDctDynamic url={build['url']} elmt={build} ctx="dropdown" act={items[build['object_name']]} 
                                                         change={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}/>
                                                 </div>

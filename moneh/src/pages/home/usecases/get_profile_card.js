@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsText from '../../../atoms/atoms_text'
 
 // Component
 import { convertDatetime } from '../../../modules/helpers/converter'
@@ -67,17 +68,17 @@ export default function GetProfileCard({ctx}) {
             <div className="profile-card"> 
                 <div className='row'>
                     <div className='col'>
-                        <label className='text-white'>Username</label>
+                        <AtomsText text_type="main_content" body="Username"/>
                         <h3>{item['username']}</h3>
-                        <label className='text-white'>Lastname / Firstname</label>
+                        <AtomsText text_type="main_content" body="Lastname / Firstname"/>
                         <h3>{ item['last_name'] == "" ? "-" : item['last_name']} / {item['first_name']}</h3>
-                        <label className='text-white'>Gmail</label>
+                        <AtomsText text_type="main_content" body="Email"/>
                         <h3>{item['email']}</h3>
-                        <label className='text-white'>Average Spend / mon</label>
+                        <AtomsText text_type="main_content" body="Average Spend / mon"/>
                         <h3>-</h3>
-                        <label className='text-white'>Average Income / mon</label>
+                        <AtomsText text_type="main_content" body="Average Income / mon"/>
                         <h3>-</h3>
-                        <label className='text-white'>Achievements</label>
+                        <AtomsText text_type="main_content" body="Achievements"/>
                     </div>
                     <div className='col text-end'>
                         {
@@ -86,7 +87,7 @@ export default function GetProfileCard({ctx}) {
                             :
                                 <img src={item['image_url']} className="img img-fluid mb-3"/>
                         }
-                        <label className='fst-italic text-white'>Joined since {convertDatetime(item['accepted_at'],"datetime")}</label>
+                        <div className='fst-italic'><AtomsText text_type="main_content" body={<>Joined since {convertDatetime(item['accepted_at'],"datetime")}</>}/></div>
                     </div>
                 </div>            
             </div>

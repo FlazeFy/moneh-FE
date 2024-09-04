@@ -6,10 +6,10 @@ import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import Swal from 'sweetalert2'
 
-export default function GetAllFlow({ctx}) {
+export default function GetAllFlow({ ctx, shouldFetch }) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -18,6 +18,10 @@ export default function GetAllFlow({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
+        fetchFlow()
+    }, [shouldFetch])
+
+    const fetchFlow = () => {
         //Default config
         const keyPage = sessionStorage.getItem("Table_Flow")
         const keyOrder = sessionStorage.getItem("Table_order_Flow")
@@ -39,16 +43,15 @@ export default function GetAllFlow({ctx}) {
                 setItems(result.data.data)        
             },
             (error) => {
-                if(getLocal(ctx + "_sess") !== undefined){
-                    setIsLoaded(true)
-                    setItems(JSON.parse(getLocal(ctx + "_sess")))
-                } else {
-                    setIsLoaded(true)
-                    setError(error)
-                }
+                setIsLoaded(true)
+                Swal.fire({ 
+                    icon: "error", 
+                    title: "Oops...", 
+                    text: "Something went wrong!" 
+                })
             }
         )
-    },[])
+    }
 
     const builder = [
         {

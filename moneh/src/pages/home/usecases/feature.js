@@ -1,4 +1,5 @@
 import AtomsBreakLine from "../../../atoms/atoms_breakline";
+import AtomsText from "../../../atoms/atoms_text";
 
 export default function GetFeature({ctx}) {
     return (
@@ -30,7 +31,8 @@ export default function GetFeature({ctx}) {
                 </div> 
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
                     <AtomsBreakLine length={5}/>
-                    <h1 style={{fontSize:"var(--textXJumbo)"}}>OUR FEATURE</h1>
+                    <AtomsText text_type="main_heading" body="OUR FEATURE" style={{fontSize:"var(--textXJumbo)"}}/>
+
                     <AtomsBreakLine length={1}/>
                     <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>We have many feature to make sure you can manage your money and saving correctly and easy as you want</h6>
                 </div> 

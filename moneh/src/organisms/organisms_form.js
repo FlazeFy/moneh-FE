@@ -28,13 +28,13 @@ export default function OrganismsForm({type, props}) {
                                                     <AtomsBreakLine length={1}/>
                                                     <div className='d-flex justify-content-between my-1'>
                                                         <div>
-                                                            <label className='text-white'>{elmt.min}</label>
+                                                            <AtomsText text_type="main_content" body={elmt.min}/>
                                                         </div>
                                                         <div>
-                                                            <label className='text-white'>{countHalf(elmt.max)}</label>
+                                                            <AtomsText text_type="main_content" body={countHalf(elmt.max)}/>
                                                         </div>
                                                         <div>
-                                                            <label className='text-white'>{elmt.max}</label>
+                                                            <AtomsText text_type="main_content" body={elmt.max}/>
                                                         </div>
                                                     </div>
                                                     <input placeholder={elmt.placeholder}

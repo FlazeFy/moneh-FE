@@ -10,13 +10,17 @@ import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import MoleculesCurrency from '../../../molecules/molecules_currency'
 
-export default function GetSummary({ctx}) {
+export default function GetSummary({ctx,shouldFetch}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
 
     useEffect(() => {
+        fetchSummary()
+    }, [shouldFetch])
+
+    const fetchSummary = () => {
         fetch(`http://127.0.0.1:1323/api/v1/flows/summary/spending`)
         .then(res => res.json())
             .then(
@@ -34,7 +38,7 @@ export default function GetSummary({ctx}) {
                 }
             }
         )
-    },[])
+    }
 
     if (error) {
         return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>

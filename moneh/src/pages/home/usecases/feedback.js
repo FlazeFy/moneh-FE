@@ -4,6 +4,7 @@ import Axios from 'axios'
 // Components
 import AtomsBreakLine from "../../../atoms/atoms_breakline"
 import OrganismsForm from "../../../organisms/organisms_form"
+import AtomsText from "../../../atoms/atoms_text"
 
 export default function GetFeedback({ctx}) {
     //Initial variable
@@ -85,7 +86,7 @@ export default function GetFeedback({ctx}) {
             <div className='mt-4 text-center row' id={ctx}>
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
                     <AtomsBreakLine length={5}/>
-                    <h1 style={{fontSize:"var(--textXJumbo)"}}>SEND FEEDBACK</h1>
+                    <AtomsText text_type="main_heading" body="SEND FEEDBACK" style={{fontSize:"var(--textXJumbo)"}}/>
                     <AtomsBreakLine length={1}/>
                     <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>This app is still at development, so your feedback will be very helpfull</h6>
                 </div> 

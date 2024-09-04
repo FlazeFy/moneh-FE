@@ -9,8 +9,10 @@ import modal from '../../../organisms/organisms.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 import OrganismsForm from "../../../organisms/organisms_form"
+import Swal from "sweetalert2"
+import AtomsText from "../../../atoms/atoms_text"
 
-export default function PostPocket({ctx}) {
+export default function PostPocket({ctx,onPostSuccess}) {
     //Initial variable
     const [pocketName, setPocketName] = useState("")
     const [pocketDesc, setPocketDesc] = useState("")
@@ -101,15 +103,29 @@ export default function PostPocket({ctx}) {
                   'Content-Type': 'multipart/form-data'
                 }
             })
-            window.location.reload(false)
 
-            if(response.data.status != 200){
-                return response.data.message
+            Swal.close()
+            if (response.data.status === 200) {
+                Swal.fire({ 
+                    icon: "success", 
+                    title: "Success", 
+                    text: response.data.message 
+                })
+                if (onPostSuccess) onPostSuccess()
             } else {
-                return ""
+                Swal.fire({ 
+                    icon: "error", 
+                    title: "Oops...", 
+                    text: response.data.message 
+                })
             }
         } catch (error) {
-            setResMsgAll(error)
+            Swal.close()
+            Swal.fire({ 
+                icon: "error", 
+                title: "Oops...", 
+                text: "Something went wrong!" 
+            })
         }
     }
 
@@ -120,7 +136,7 @@ export default function PostPocket({ctx}) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{getCleanTitleFromCtx(ctx)}</h5>
+                            <AtomsText text_type="sub_heading" body={getCleanTitleFromCtx(ctx)}/>
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">

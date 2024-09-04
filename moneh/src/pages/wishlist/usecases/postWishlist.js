@@ -12,6 +12,7 @@ import { storage } from "../../../modules/configs/firebase"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 import OrganismsForm from '../../../organisms/organisms_form'
+import AtomsText from '../../../atoms/atoms_text'
 
 export default function PostWishlist({ctx}) {
     //Initial variable
@@ -188,7 +189,7 @@ export default function PostWishlist({ctx}) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{getCleanTitleFromCtx(ctx)}</h5>
+                            <AtomsText text_type="sub_heading" body={getCleanTitleFromCtx(ctx)}/>
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">

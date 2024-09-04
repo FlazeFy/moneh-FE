@@ -95,13 +95,13 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Manage {getCleanTitleFromCtx(ctx)}</h5>
+                            <AtomsText text_type="sub_heading" body={<>Manage {getCleanTitleFromCtx(ctx)}</>}/>
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
                             <div className='row'>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <label className='form-lable'>Dictionary Name</label>
+                                    <AtomsText text_type="main_content" body="Dictionary Name"/>
                                     <input className='form-control my-2' onChange={(e) => setDctName(e.target.value)} type="text"></input>
                                     <button className={"btn btn-success rounded-pill mt-2 py-2 px-3"} 
                                         onClick={handleSubmit}>
@@ -111,7 +111,7 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
                                     <OrganismsTotalDctUsed ctx="Total dictionary used" filter_name="1" table={table} column={column}/>
                                 </div>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <label className='form-lable'>List Dictionary</label>
+                                    <AtomsText text_type="main_content" body="List Dictionary"/>
                                     <ul>
                                     {
                                         items.map((val, idx) => {
