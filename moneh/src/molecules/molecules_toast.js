@@ -1,6 +1,5 @@
 // components/MoleculesToast.js
 import React from 'react';
-import { toast } from 'react-toastify';
 
 const MoleculesToast = ({ msg }) => {
   return (

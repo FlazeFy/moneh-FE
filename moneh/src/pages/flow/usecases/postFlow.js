@@ -13,8 +13,13 @@ import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/con
 import OrganismsForm from "../../../organisms/organisms_form"
 
 export default function PostFlow({ctx}) {
+    const optionFlowType = [
+        { "dictionaries_name": "spending" },
+        { "dictionaries_name": "income" }
+    ]
+
     //Initial variable
-    const [flowType, setFlowType] = useState("")
+    const [flowType, setFlowType] = useState(optionFlowType[0].dictionaries_name)
     const [flowCat, setFlowCat] = useState("")
     const [flowName, setFlowName] = useState("")
     const [flowDesc, setFlowDesc] = useState("")
@@ -41,14 +46,7 @@ export default function PostFlow({ctx}) {
                 setFlowType(event.target.value)
             },
             errorMsg: resMsgFlowType,
-            url: [
-                {
-                    "dictionaries_name": "spending"
-                },
-                {
-                    "dictionaries_name": "income"
-                }
-            ],
+            url: optionFlowType,
         },
         {
             type: 'select',

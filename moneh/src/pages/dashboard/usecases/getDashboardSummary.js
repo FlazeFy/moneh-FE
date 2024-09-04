@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import { commaThousandFormat } from '../../../modules/helpers/math';
 
 import { getLocal } from "../../../modules/storages/local";
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
+import MoleculesCurrency from '../../../molecules/molecules_currency';
 import OrganismsDashboardBox from '../../../organisms/organisms_dashboard_box';
 
 export default function GetDashboardSummary({ctx}) {
@@ -47,22 +49,22 @@ export default function GetDashboardSummary({ctx}) {
                         return (
                             <div className="row" key={i}>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <OrganismsDashboardBox ctx="Last Income" value={val['last_income']} subvalue={val['last_income_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Last Income" value={val['last_income']} subvalue={<MoleculesCurrency val={val['last_income_value']}/>} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <OrganismsDashboardBox ctx="Last Spending" value={val['last_spending']} subvalue={val['last_spending_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Last Spending" value={val['last_spending']} subvalue={<MoleculesCurrency val={val['last_spending_value']}/>} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <OrganismsDashboardBox ctx="Most Expensive Spending" value={val['most_expensive_spending']} subvalue={val['most_expensive_spending_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Most Expensive Spending" value={val['most_expensive_spending']} subvalue={<MoleculesCurrency val={val['most_expensive_spending_value']}/>} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <OrganismsDashboardBox ctx="Most Highest Income" value={val['most_highest_income']} subvalue={val['most_highest_income_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Most Highest Income" value={val['most_highest_income']} subvalue={<MoleculesCurrency val={val['most_highest_income_value']}/>} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
                                     <OrganismsDashboardBox ctx="Total Item (Income / Spending)" value={val['total_item_income'] + " / " + val['total_item_spending']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <OrganismsDashboardBox ctx="My Balance" value={val['my_balance']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="My Balance" value={<MoleculesCurrency val={val['my_balance']}/>} href="/flow"/>
                                 </div>
                             </div>
                         )

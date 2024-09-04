@@ -58,7 +58,6 @@ export default function GetAllFlow({ctx}) {
             type: 'select',
             class: 'form-control',
             label: 'Flow Type',
-            placeholder: 'Type flow type',
             url: [
                 {
                     "dictionaries_name": "spending"
@@ -75,7 +74,6 @@ export default function GetAllFlow({ctx}) {
             type: 'select',
             class: 'form-control',
             label: 'Flow Category',
-            placeholder: 'Select flow category',
             url: 'http://127.0.0.1:1323/api/v1/dct/flows_category?page=1'
         },
         {
@@ -107,9 +105,9 @@ export default function GetAllFlow({ctx}) {
             type: 'number',
             class: 'form-control',
             label: 'Flow Ammount',
-            placeholder: 'Type flow ammount',
+            formatter: 'currency',
             is_required: true,
-            max: 36,
+            max: 10,
         },
         {
             column_name: "Tags",

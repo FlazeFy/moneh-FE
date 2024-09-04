@@ -19,3 +19,12 @@ export const countHalf = (val) => {
         return 0
     }
 }
+
+export const commaThousandFormat = (val) => {
+    if (val != 0) {
+        let res = Math.round(val)
+        return res.toLocaleString()
+    } else {
+        return "0"
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsText from '../../../atoms/atoms_text'
 
 // Component
 import { getCleanTitleFromCtx, numberToPrice } from '../../../modules/helpers/converter'
@@ -7,6 +8,7 @@ import { getCleanTitleFromCtx, numberToPrice } from '../../../modules/helpers/co
 // Modules
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesCurrency from '../../../molecules/molecules_currency'
 
 export default function GetSummary({ctx}) {
     //Initial variable
@@ -51,18 +53,18 @@ export default function GetSummary({ctx}) {
                         return (
                             <div className='row text-center' key={idx}>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
-                                    <h4> Average</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['average'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Average"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['average']}/>}</h5>
                                     <hr className='text-white'></hr>
                                 </div>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
-                                    <h4>Total Item</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['total_item'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Total Item"/>
+                                    <h5 className='text-white'>{val['total_item']}</h5>
                                     <hr className='text-white'></hr>
                                 </div>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
-                                    <h4>Total Ammount</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['total_ammount'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Total Ammount"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['total_ammount']}/>}</h5>
                                     <hr className='text-white'></hr>
                                 </div>
                             </div>

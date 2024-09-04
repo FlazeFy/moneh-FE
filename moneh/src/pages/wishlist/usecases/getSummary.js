@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsText from '../../../atoms/atoms_text'
 
 // Component
 import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modules/helpers/converter'
@@ -7,6 +8,7 @@ import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modul
 // Modules
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesCurrency from '../../../molecules/molecules_currency'
 
 export default function GetSummaryWishlist({ctx}) {
     //Initial variable
@@ -51,28 +53,28 @@ export default function GetSummaryWishlist({ctx}) {
                         items.map((val, idx) => {
                             return (
                                 <div key={idx}>
-                                    <h4> Average Price</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['average'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Average Price"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['average']}/>}</h5>
                                     <hr className='text-white'></hr>
 
-                                    <h4> Most Expensive</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['most_expensive'])} - {ucFirstWord(val['most_expensive_name'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Most Expensive"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['most_expensive']}/>} - {ucFirstWord(val['most_expensive_name'])}</h5>
                                     <hr className='text-white'></hr>
 
-                                    <h4> The Cheapest</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['cheapest'])} - {ucFirstWord(val['cheapest_name'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="The Cheapest"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['cheapest']}/>} - {ucFirstWord(val['cheapest_name'])}</h5>
                                     <hr className='text-white'></hr>
 
-                                    <h4> Achieved / Total Item</h4>
+                                    <AtomsText text_type="sub_heading" body="Achieved / Total Item"/>
                                     <h5 className='text-white'>{val['achieved']} / {val['total_item']}</h5>
                                     <hr className='text-white'></hr>
 
-                                    <h4> Most Type</h4>
+                                    <AtomsText text_type="sub_heading" body="Most Type"/>
                                     <h5 className='text-white'>{ucFirstWord(val['most_type'])}</h5>
                                     <hr className='text-white'></hr>
 
-                                    <h4> Total Amount</h4>
-                                    <h5 className='text-white'>{numberToPrice(val['total_ammount'])}</h5>
+                                    <AtomsText text_type="sub_heading" body="Total Ammount"/>
+                                    <h5 className='text-white'>{<MoleculesCurrency val={val['total_ammount']}/>}</h5>
                                     <hr className='text-white'></hr>
                                 </div>
                             );

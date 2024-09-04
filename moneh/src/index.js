@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './design_tokens/navbar.css';
 import './design_tokens/table.css';
 import './design_tokens/button.css';
+import './design_tokens/typography.css';
 
 // Pages
 import Flow_Index from './pages/flow/index';

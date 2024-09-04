@@ -9,6 +9,8 @@ import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modul
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import OrganismsManageModal from '../../../organisms/organisms_manage'
+import MoleculesCurrency from '../../../molecules/molecules_currency'
+import AtomsText from '../../../atoms/atoms_text'
 
 export default function GetAllWishlist({ctx}) {
     //Initial variable
@@ -164,15 +166,15 @@ export default function GetAllWishlist({ctx}) {
                                             <p>{val['wishlists_desc']}</p>
                                             <div className='row'>
                                                 <div className='col-4 text-start'>
-                                                    <p className='my-0' style={{fontSize:"var(--textMD)"}}>Price</p>
-                                                    <h5>{numberToPrice(val['wishlists_price'])}</h5>
+                                                    <AtomsText text_type="main_content" body="Price"/>
+                                                    <AtomsText text_type="mini_sub_heading" body={<MoleculesCurrency val={val['wishlists_price']}/>}/>
                                                 </div>
                                                 <div className='col-4'>
-                                                    <p className='my-0' style={{fontSize:"var(--textMD)"}}>Type</p>
-                                                    <h5>{ucFirstWord(val['wishlists_type'])}</h5>
+                                                    <AtomsText text_type="main_content" body="Type"/>
+                                                    <AtomsText text_type="mini_sub_heading" body={ucFirstWord(val['wishlists_type'])}/>
                                                 </div>
                                                 <div className='col-4'>
-                                                    <p className='my-0' style={{fontSize:"var(--textMD)"}}>Priority</p>
+                                                    <AtomsText text_type="main_content" body="Priority"/>
                                                     <h5 className={getPriorityColor(val['wishlists_priority'])}>{ucFirstWord(val['wishlists_priority'])}</h5>
                                                 </div>
                                             </div>

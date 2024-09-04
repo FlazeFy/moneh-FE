@@ -85,6 +85,9 @@ export default function GetAllPocket({ctx}) {
             is_required: true,
             extra_desc: null,
             type: 'number',
+            extra_desc: null,
+            formatter: 'currency',
+            max: 10,
         },
         {
             column_name: "Manage",

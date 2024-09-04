@@ -16,17 +16,11 @@ export default function OrganismsDashboardBox({ctx, value, subvalue, ref}) {
             <AtomsBreakLine length={1}/>
             <h2 className="text-dark fw-bold mb-1">
             {
-                typeof value === 'number' ?
-                    numberToPrice(value.toString())
-                :
-                    ucFirstWord(value)
+                typeof value == 'object' ? value : ucFirstWord(value)
             }
             </h2>
             {
-                subvalue != null ?
-                    <b style={{fontSize:"var(--textXLG)"}}>{numberToPrice(subvalue)}</b>
-                :
-                    <AtomsBreakLine length={1}/>
+                subvalue != null ? <b style={{fontSize:"var(--textXLG)"}}>{subvalue}</b> : <AtomsBreakLine length={1}/>
             }
             <div className='text-end'>
                 <a style={{cursor:"pointer"}} href={ref}><FontAwesomeIcon icon={faCompress} size="xl"/></a>

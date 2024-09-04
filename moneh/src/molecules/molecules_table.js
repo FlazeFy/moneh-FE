@@ -3,26 +3,40 @@ import Axios from "axios"
 
 import MoleculesFilterOrder from './molecules_filter_order'
 import { parseJSON } from '../modules/helpers/decode'
-import { removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
+import { numberToPrice, removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
 import AtomsButton from '../atoms/atoms_button'
 import OrganismsPageBar from '../organisms/organisms_page_bar'
 import OrganismsManageModal from '../organisms/organisms_manage'
+import { commaThousandFormat } from '../modules/helpers/math'
+import MoleculesCurrency from './molecules_currency'
 
 export default function MoleculesTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
-    function getExtraDesc(ext, val){
-        if(ext != null){
-            if(ext['pos'] == "start"){
-                return `${ext['desc']} ${val}`
-            } else if(ext['pos'] == "end") {
-                return `${val} ${ext['desc']}`
-            } 
+    const getExtraDesc = (ext, val) => {
+        if(Array.isArray(ext)){
+            let start, end
+            ext.forEach(el => {
+                if(el.pos == 'start'){
+                    start = el.desc
+                } else if(el.pos == 'end'){
+                    end = el.desc
+                }
+            });
+            return `${start}${val}${end}`
         } else {
-            return val
+            if(ext != null){
+                if(ext['pos'] == "start"){
+                    return `${ext['desc']}${val}`
+                } else if(ext['pos'] == "end") {
+                    return `${val}${ext['desc']}`
+                } 
+            } else {
+                return val
+            }
         }
     }
 
     const deleteItem = async (e, url) => {
-        e.preventDefault();
+        e.preventDefault()
         try {
             await Axios.delete(url)
         } catch (err) {
@@ -75,9 +89,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                             </th>
                                                         );
                                                     } else {
-                                                        return (
-                                                            <th className='p-3' key={`tbody_${idx}_${jdx}`}>-</th>
-                                                        )
+                                                        return <th className='p-3' key={`tbody_${idx}_${jdx}`}>-</th>
                                                     }
                                                 } else if(build['type'] == "image"){
                                                     return (
@@ -86,20 +98,23 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                         </th>
                                                     );
                                                 } else {
+                                                    let val = item[build['object_name']]
+                                                    if(build['formatter'] == 'currency'){
+                                                        val = <MoleculesCurrency val={val}/>
+                                                    }
+
                                                     if(idx == 0){
                                                         return (
-                                                            <th scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                            <th scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</th>
                                                         );
                                                     } else {
                                                         return (
-                                                            <th key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                            <th key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</th>
                                                         );
                                                     }
                                                 }
                                             } else {
-                                                return (
-                                                    <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
-                                                );
+                                                return <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
                                             }
                                         })
                                     }
