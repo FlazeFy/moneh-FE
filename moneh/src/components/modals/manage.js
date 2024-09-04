@@ -10,8 +10,8 @@ import { countHalf } from "../../modules/helpers/math"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
-import GetBreakLine from "../others/breakLine"
-import GetLabel from "../labels/label"
+import AtomsBreakLine from "../../atoms/atoms_breakline"
+import AtomsText from "../../atoms/atoms_text"
 
 export default function GetManageModal({builder, items, id, funDel, funPut, is_with_btn}) {
     const [resMsgAll, setResMsgAll] = useState("")
@@ -97,7 +97,7 @@ export default function GetManageModal({builder, items, id, funDel, funPut, is_w
                                         } else if (build['type'] === 'upload') {
                                             return (
                                                 <div key={idx}>
-                                                    <GetBreakLine length={2}/>
+                                                    <AtomsBreakLine length={2}/>
                                                 </div>
                                             )
                                         } else if (build['type'] === 'select') {
@@ -114,7 +114,7 @@ export default function GetManageModal({builder, items, id, funDel, funPut, is_w
                                                     <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] == 1 ? true : false}
                                                         onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
                                                     {/* <label className='form-lable'>{build['column_name']}</label> */}
-                                                    <GetLabel title={build['column_name']} type="input"/>
+                                                    <AtomsText text_type="form_label" body={build['column_name']}/>
                                                 </div>
                                             )
                                         } else if (build['type'] === 'tag') {

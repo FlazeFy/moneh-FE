@@ -1,4 +1,4 @@
-export default function GetFooter() {
+export default function OrganismsFooter() {
     return  (
         <footer className="footer mt-auto py-3 bg-light">
             <div className="container-fluid pb-2 py-4 px-4">

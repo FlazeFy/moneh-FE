@@ -1,10 +1,10 @@
 import React from 'react'
-import GetBarChart from '../bar_chart'
+import MoleculesChartPie from '../molecules_chart_pie'
 import '../../../modules/templates/apexchart.js'
 
-describe('Bar Chart Component Testing', () => {
-  it('TCC-C3 Get Bar Chart Without Filter', () => {
-    const type = 'bar'
+describe('Pie Chart Component Testing', () => {
+  it('TCC-C1 Get Pie Chart Without Filter', () => {
+    const type = 'pie'
     const items = [
       {
         context:"Quartal 1",
@@ -24,9 +24,9 @@ describe('Bar Chart Component Testing', () => {
       }
     ]
 
-    cy.mount(<GetBarChart items={items} filter_name={null} />)
+    cy.mount(<MoleculesChartPie items={items} filter_name={null} />)
 
     // Template Apexchart test
-    cy.templateApexChart(type, items)
+    cy.templateApexChart(type, null)
   })
 })

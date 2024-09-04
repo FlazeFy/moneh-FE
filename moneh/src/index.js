@@ -1,19 +1,18 @@
 "use client"
 import { useEffect } from "react";
-import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './App.css';
-import './modules/styles/globals.css';
+import './design_tokens/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // CSS Modules
-import './modules/styles/navbar.css';
-import './modules/styles/table.css';
-import './modules/styles/button.css';
+import './design_tokens/navbar.css';
+import './design_tokens/table.css';
+import './design_tokens/button.css';
 
 // Pages
 import Flow_Index from './pages/flow/index';

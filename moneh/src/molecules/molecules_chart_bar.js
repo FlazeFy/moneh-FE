@@ -1,8 +1,8 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import GetLimit from '../controls/limit'
+import GetLimit from '../components/controls/limit'
 
-export default function GetLineChart({items, filter_name}) {
+export default function MoleculesChartBar({items, filter_name}) {
     //Initial variable
     var chart = [];
 
@@ -14,41 +14,24 @@ export default function GetLineChart({items, filter_name}) {
         val.forEach(e => { 
             catSeries.push({
                 x: e.context,
-                y: parseInt(e.total_ammount)
+                y: parseInt(e.total)
             });
         });
         return catSeries;
     }
 
-    const keyType = sessionStorage.getItem("flow_type")
-
     chart = {
         //series: getSeries(data),
         series: [{
-            data: getSeries(data),
-            name: keyType
-        }],
+            data: getSeries(data)}],
         options: {
-            chart: {
-                height: 350,
-                type: 'line',
-                zoom: {
-                enabled: false
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth'
-            },
-            grid: {
-                row: {
-                colors: ['#f9aa0c', 'transparent'], 
-                opacity: 0.5
+            plotOptions: {
+                bar: {
+                  horizontal: true,
+                  borderRadius: 8,
                 },
             },
-        },
+        }
     };
 
     return (
@@ -65,7 +48,7 @@ export default function GetLineChart({items, filter_name}) {
                 <Chart
                     options={chart.options}
                     series={chart.series}
-                    type="line"
+                    type="bar"
                     // height="800"
                 />
             </div>

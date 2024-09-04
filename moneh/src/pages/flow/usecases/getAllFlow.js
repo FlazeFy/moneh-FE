@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -139,7 +139,7 @@ export default function GetAllFlow({ctx}) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={"http://127.0.0.1:1323/api/v1/flows/destroy/"}/>  
+                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={"http://127.0.0.1:1323/api/v1/flows/destroy/"}/>  
             </>
         )
     }

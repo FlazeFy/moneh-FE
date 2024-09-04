@@ -1,5 +1,5 @@
-import GetFooter from "../../components/bars/footer";
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsFooter from "../../organisms/organisms_footer";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetTotalWishlistByIsAchieved from "./usecases/get_total_wishlist_by_is_achieved";
 import GetTotalWishlistByPriority from "./usecases/get_total_wishlist_by_priority";
 import GetTotalWishlistByType from "./usecases/get_total_wishlist_by_type";
@@ -7,7 +7,7 @@ import GetTotalWishlistByType from "./usecases/get_total_wishlist_by_type";
 const StatsWishlist_Index = () => {
     return (
         <>
-            <GetNavbar active="stats" subactive="stats_wishlist"/>
+            <OrganismsNavbar active="stats" subactive="stats_wishlist"/>
             <div className='content-grid'>
                 <div style={{minHeight:"100vh"}}>
                     <div className="row mt-5">
@@ -22,7 +22,7 @@ const StatsWishlist_Index = () => {
                         </div>
                     </div>
                 </div>
-                <GetFooter/>
+                <OrganismsFooter/>
             </div>
         </>
     );

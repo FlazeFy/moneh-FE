@@ -1,9 +1,9 @@
 "use client"
 
-import GetFooter from "../../components/bars/footer";
+import AtomsBreakLine from "../../atoms/atoms_breakline";
+import OrganismsFooter from "../../organisms/organisms_footer";
 // Components
-import GetNavbar from "../../components/bars/navbar";
-import GetBreakLine from "../../components/others/breakLine";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import { isLogged } from "../../modules/helpers/auth";
 
 // Usecases
@@ -14,21 +14,21 @@ import GetWelcoming from "./usecases/welcoming";
 
 const Home_Index = () => {
     return <>
-        <GetNavbar active="home"/>
+        <OrganismsNavbar active="home"/>
         <div className="content-grid">
             <div style={{minHeight:"100vh"}}>
                 {
-                    isLogged(<><GetBreakLine length={2}/><GetProfileCard/></>,<></>)
+                    isLogged(<><AtomsBreakLine length={2}/><GetProfileCard/></>,<></>)
                 }
-                <GetBreakLine length={2}/>
+                <AtomsBreakLine length={2}/>
                 <GetWelcoming ctx="welcoming"/>
-                <GetBreakLine length={2}/>
+                <AtomsBreakLine length={2}/>
                 <GetFeature ctx="feature"/>
-                <GetBreakLine length={2}/>
+                <AtomsBreakLine length={2}/>
                 <GetFeedback ctx="feedback"/>
-                <GetBreakLine length={2}/>
+                <AtomsBreakLine length={2}/>
             </div>
-            <GetFooter/>
+            <OrganismsFooter/>
         </div>
     </>
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import GetLineChart from '../line_chart'
-import '../../../modules/templates/apexchart.js'
+import MoleculesChartLine from '../molecules_chart_line'
+import '../../modules/templates/apexchart.js'
 
 describe('Line Chart Component Testing', () => {
   it('TCC-C2 Get Line Chart Without Filter', () => {
@@ -25,7 +25,7 @@ describe('Line Chart Component Testing', () => {
     ]
 
     sessionStorage.setItem("flow_type",'TCC-C2')
-    cy.mount(<GetLineChart items={items} filter_name={null} />)
+    cy.mount(<MoleculesChartLine items={items} filter_name={null} />)
 
     // Template Apexchart test
     cy.templateApexChart(type, items)

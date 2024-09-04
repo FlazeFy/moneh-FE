@@ -1,5 +1,5 @@
 "use client"
-import '../../modules/styles/loginregis.css'
+import '../../design_tokens/loginregis.css'
 
 import PostLogin from "./usecases/postLogin";
 

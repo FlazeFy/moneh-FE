@@ -1,6 +1,5 @@
 // Components
-import GetLabel from '../../components/labels/label'
-import GetBreakLine from '../others/breakLine'
+import AtomsBreakLine from '../../atoms/atoms_breakline'
 import GetDropDownDctDynamic from '../others/dropdown'
 import GetAllTag from '../others/getAllTag'
 
@@ -9,8 +8,8 @@ import { countHalf } from '../../modules/helpers/math'
 
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import AtomsText from '../../atoms/atoms_text'
 
 export default function GetFormTemplate({type, props}) {
     if (type == "single-line"){
@@ -22,11 +21,11 @@ export default function GetFormTemplate({type, props}) {
                             if (elmt.type === 'text' || elmt.type === 'number' || elmt.type === 'range') {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
-                                        <GetLabel title={elmt.label} type="input"/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
                                         {
                                             elmt.type === 'range' ? 
                                                 <>
-                                                    <GetBreakLine length={1}/>
+                                                    <AtomsBreakLine length={1}/>
                                                     <div className='d-flex justify-content-between my-1'>
                                                         <div>
                                                             <label className='text-white'>{elmt.min}</label>
@@ -55,49 +54,49 @@ export default function GetFormTemplate({type, props}) {
                                                     maxLength={elmt.max}
                                                 />
                                         }
-                                        <GetLabel title={elmt.errorMsg} type="error"/>
+                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'textarea') {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
-                                        <GetLabel title={elmt.label} type="input"/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
                                         <textarea className={elmt.class + " w-100"} rows={elmt.line} onChange={elmt.handleChange}></textarea>
-                                        <GetLabel title={elmt.errorMsg} type="error"/>
+                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'upload') {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
-                                        <GetLabel title={elmt.label} type="input"/>
-                                        <GetBreakLine length={2}/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
+                                        <AtomsBreakLine length={2}/>
                                         <input className="form-control" type="file" onChange={elmt.handleChange} /> 
-                                        <GetLabel title={elmt.errorMsg} type="error"/>
+                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'select') {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
-                                        <GetLabel title={elmt.label} type="input"/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
                                         <GetDropDownDctDynamic url={elmt.url} elmt={elmt} ctx="dropdown"/>
-                                        <GetLabel title={elmt.errorMsg} type="error"/>
+                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'checkbox') {
                                 return (
                                     <div className="form-check ms-3" key={idx}>
                                         <input className={elmt.class} type={elmt.type} id="disabledFieldsetCheck" onChange={elmt.handleChange}></input>
-                                        <GetLabel title={elmt.label} type="input"/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'tag') {
                                 return (
                                     <div className="form-check" style={{marginLeft:"-10px"}} key={idx}>
-                                        <GetLabel title={elmt.label} type="input"/>
-                                        <GetBreakLine length={1}/>
+                                        <AtomsText text_type="form_label" body={elmt.label}/>
+                                        <AtomsBreakLine length={1}/>
                                         <div className='mt-2'/>
                                         <GetAllTag url={elmt.url} cls={elmt.class} func={elmt.handleChange}/>
-                                        <GetBreakLine length={2}/>
+                                        <AtomsBreakLine length={2}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'submit') {

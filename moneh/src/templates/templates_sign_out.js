@@ -3,22 +3,21 @@ import { useState } from 'react'
 
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket, faXmark} from "@fortawesome/free-solid-svg-icons"
 
 // Module
-import { getLocal } from "../../../modules/storages/local";
-import { isLogged } from "../../../modules/helpers/auth";
+import { getLocal } from "../modules/storages/local";
+import { isLogged } from "../modules/helpers/auth";
 
 // Component
-import modal from '../../../components/modals/modals.module.css'
+import modal from '../components/modals/modals.module.css'
 
-export default function GetSignOut({active}) {
+export default function TemplateSignOut({active}) {
     const keyToken = getLocal("token_key")
     const [resMsgAll, setResMsgAll] = useState("")
 
-    function getActive(val, curr){
+    const getActive = (val, curr) => {
         if(val == curr){
             return "active";
         } else {

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { convertDatetime, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Components
-import GetBreakLine from '../../../components/others/breakLine'
+import AtomsBreakLine from '../../../atoms/atoms_breakline'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 

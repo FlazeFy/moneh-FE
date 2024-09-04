@@ -1,11 +1,11 @@
-import GetFooter from "../../components/bars/footer";
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsFooter from "../../organisms/organisms_footer";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetTotalDctByType from "./usecases/get_total_dct_by_type";
 
 const StatsOther_Index = () => {
     return (
         <>
-            <GetNavbar active="stats" subactive="stats_others"/>
+            <OrganismsNavbar active="stats" subactive="stats_others"/>
             <div className='content-grid'>
                 <div style={{minHeight:"100vh"}}>
                     <div className="row mt-5">
@@ -14,7 +14,7 @@ const StatsOther_Index = () => {
                         </div>
                     </div>
                 </div>
-                <GetFooter/>
+                <OrganismsFooter/>
             </div>
         </>
     );

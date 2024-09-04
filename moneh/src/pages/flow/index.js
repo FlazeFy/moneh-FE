@@ -1,5 +1,5 @@
-import GetFooter from "../../components/bars/footer";
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsFooter from "../../organisms/organisms_footer";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetManageDctModal from "../../components/modals/manage_dct";
 import GetAllFlow from "./usecases/getAllFlow";
 import GetSummary from "./usecases/getSummary";
@@ -8,7 +8,7 @@ import PostFlow from "./usecases/postFlow";
 const Flow_Index = () => {
     return (
         <>
-            <GetNavbar active="flow"/>
+            <OrganismsNavbar active="flow"/>
             <div className='content-grid'>
                 <div style={{minHeight:"100vh"}}>
                     <PostFlow ctx="post_flow"/>
@@ -16,7 +16,7 @@ const Flow_Index = () => {
                     <GetSummary ctx="summary"/>
                     <GetAllFlow ctx="get_all_flow"/>
                 </div>
-                <GetFooter/>
+                <OrganismsFooter/>
             </div>
         </>
     );

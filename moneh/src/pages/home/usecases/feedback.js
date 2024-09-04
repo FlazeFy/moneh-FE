@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import Axios from 'axios'
 
 // Components
-import GetBreakLine from '../../../components/others/breakLine'
 import GetFormTemplate from '../../../components/containers/form'
+import AtomsBreakLine from "../../../atoms/atoms_breakline"
 
 export default function GetFeedback({ctx}) {
     //Initial variable
@@ -81,22 +81,22 @@ export default function GetFeedback({ctx}) {
 
     return (
         <>
-            <GetBreakLine length={3}/>
+            <AtomsBreakLine length={3}/>
             <div className='mt-4 text-center row' id={ctx}>
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
-                    <GetBreakLine length={5}/>
+                    <AtomsBreakLine length={5}/>
                     <h1 style={{fontSize:"var(--textXJumbo)"}}>SEND FEEDBACK</h1>
-                    <GetBreakLine length={1}/>
+                    <AtomsBreakLine length={1}/>
                     <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>This app is still at development, so your feedback will be very helpfull</h6>
                 </div> 
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
-                    <GetBreakLine length={3}/>
+                    <AtomsBreakLine length={3}/>
                     <div className='container-form'>
                         <GetFormTemplate type={"single-line"} props={builder} />
                     </div>
                 </div> 
             </div>
-            <GetBreakLine length={5}/>
+            <AtomsBreakLine length={5}/>
         </>
     )
 }

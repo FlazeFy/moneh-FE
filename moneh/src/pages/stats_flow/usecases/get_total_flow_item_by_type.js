@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import AtomsText from '../../../atoms/atoms_text'
 
 // Component
-import GetPieChart from '../../../components/charts/pie_chart'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -57,7 +57,7 @@ export default function GetTotalFlowItemByType({ctx}) {
         return (
             <> 
                 <AtomsText text_type="main_heading" body={getCleanTitleFromCtx(ctx)}/>
-                <GetPieChart items={items} filter_name={null}/>  
+                <MoleculesChartPie items={items} filter_name={null}/>  
             </>
         )
     }

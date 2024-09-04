@@ -3,8 +3,8 @@ import { useState, useEffect } from "react"
 // Modules
 import { getLocal } from '../../modules/storages/local'
 import MoleculesAlertBox from '../../molecules/molecules_alert_box'
-import GetLabel from '../labels/label'
-import GetBreakLine from './breakLine'
+import AtomsBreakLine from '../../atoms/atoms_breakline'
+import AtomsText from '../../atoms/atoms_text'
 
 export default function GetAllTag({url, cls, func}) {
     //Initial variable
@@ -90,9 +90,9 @@ export default function GetAllTag({url, cls, func}) {
                         );
                     })
                 }
-                <GetBreakLine length={2}/>
-                <GetLabel title="Selected Tag" type="input"/>
-                <GetBreakLine length={1}/>
+                <AtomsBreakLine length={2}/>
+                <AtomsText text_type="form_label" body="Selected Tag"/>
+                <AtomsBreakLine length={1}/>
                 <div className="mt-2"/>
                 {selectedTag}
             </>

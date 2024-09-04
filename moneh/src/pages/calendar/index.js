@@ -1,20 +1,20 @@
 "use client"
 
-import GetFooter from "../../components/bars/footer";
+import OrganismsFooter from "../../organisms/organisms_footer";
 // Components
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetDailyCalendar from "./usecases/get_daily_calendar";
 
 // Usecases
 
 const Calendar_Index = () => {
     return <>
-        <GetNavbar active="calendar"/>
+        <OrganismsNavbar active="calendar"/>
         <div className="content-grid">
             <div style={{minHeight:"100vh"}}>
                 <GetDailyCalendar ctx="all_flow"/>
             </div>
-            <GetFooter/>
+            <OrganismsFooter/>
         </div>
     </>
 }

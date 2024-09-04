@@ -1,14 +1,14 @@
 import React from 'react'
 import Axios from "axios"
 
-import PageBar from '../bars/page_bar'
-import GetOrdering from '../controls/ordering'
-import GetManageModal from '../modals/manage'
-import { parseJSON } from '../../modules/helpers/decode'
-import GetButtonTag from '../buttons/tag'
-import { removeHTMLTags, ucFirstChar } from '../../modules/helpers/converter'
+import OrganismsPageBar from '../organisms/page_bar'
+import GetOrdering from '../components/controls/ordering'
+import GetManageModal from '../components/modals/manage'
+import { parseJSON } from '../modules/helpers/decode'
+import GetButtonTag from '../components/buttons/tag'
+import { removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
 
-export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
+export default function MoleculesTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
     function getExtraDesc(ext, val){
         if(ext != null){
             if(ext['pos'] == "start"){
@@ -115,7 +115,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                     }
                 </tbody>
             </table>
-            <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
+            <OrganismsPageBar curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }

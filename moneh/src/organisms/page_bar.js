@@ -1,7 +1,7 @@
-import { isNumInRange } from "../../modules/helpers/math";
-import navbar from "../bars/navbar.module.css"
+import { isNumInRange } from "../modules/helpers/math";
+import style from "./organisms.module.css"
 
-export default function PageBar({curr, max, ctx}) {
+export default function OrganismsPageBar({curr, max, ctx}) {
     function navigate(idx, ctx){
         sessionStorage.setItem(`Table_${ctx}`, idx);
         window.location.reload(false)
@@ -13,9 +13,9 @@ export default function PageBar({curr, max, ctx}) {
             {
                 Array.from({ length: max }).map((_, index) => (
                     curr !== index && index != 0 && isNumInRange(curr, index, 20) ?
-                        <button className={navbar.page_bar} onClick={(e) => navigate(index, ctx)} key={index}>{ index }</button>
+                        <button className={style.page_bar} onClick={(e) => navigate(index, ctx)} key={index}>{ index }</button>
                     : curr === index && index != 0 && isNumInRange(curr, index, 20) ?
-                        <button className={navbar.page_bar_active} onClick={(e) => navigate(index, ctx)} key={index}>{ index }</button>
+                        <button className={style.page_bar_active} onClick={(e) => navigate(index, ctx)} key={index}>{ index }</button>
                     :
                     <div key={index}></div>
                 ))

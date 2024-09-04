@@ -2,7 +2,7 @@
 import style from './containers.module.css'
 
 // Components
-import GetBreakLine from '../others/breakLine'
+import AtomsBreakLine from '../../atoms/atoms_breakline'
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -14,7 +14,7 @@ export default function GetDashboardBox({ctx, value, subvalue, ref}) {
     return (
         <div className={style.dashbox}>
             <h4 className="text-dark mb-0">{ctx}</h4>
-            <GetBreakLine length={1}/>
+            <AtomsBreakLine length={1}/>
             <h2 className="text-dark fw-bold mb-1">
             {
                 typeof value === 'number' ?
@@ -27,7 +27,7 @@ export default function GetDashboardBox({ctx, value, subvalue, ref}) {
                 subvalue != null ?
                     <b style={{fontSize:"var(--textXLG)"}}>{numberToPrice(subvalue)}</b>
                 :
-                    <GetBreakLine length={1}/>
+                    <AtomsBreakLine length={1}/>
             }
             <div className='text-end'>
                 <a style={{cursor:"pointer"}} href={ref}><FontAwesomeIcon icon={faCompress} size="xl"/></a>

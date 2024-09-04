@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
 // Components
-import GetBreakLine from '../../../components/others/breakLine'
+import AtomsBreakLine from '../../../atoms/atoms_breakline'
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -80,12 +80,12 @@ export default function GetCreator({ctx}) {
                             return (
                                 <>
                                     <img className='img-profile' src='https://media.licdn.com/dms/image/D5603AQHbKizHEv_9fQ/profile-displayphoto-shrink_400_400/0/1693052510059?e=1709164800&v=beta&t=6To_YQYtD_3BKZqS6UWzAfgFNGqXNaaRFu3AMe2QdSQ'/>
-                                    <GetBreakLine length={3} />
+                                    <AtomsBreakLine length={3} />
                                     <AtomsText text_type="main_heading" body={<>Hello there 👋, {val['greeting_bio']}</>}/>
                                     <h4 className='text-white'>{val['mini_bio']}</h4>
-                                    <GetBreakLine length={1} />
+                                    <AtomsBreakLine length={1} />
                                     <p className='text-white'>{val['long_bio']}</p>
-                                    <GetBreakLine length={1} />
+                                    <AtomsBreakLine length={1} />
                                 </>
                             )
                         } else {
@@ -99,7 +99,7 @@ export default function GetCreator({ctx}) {
                             return (
                                 <>
                                     <AtomsText text_type="main_heading" body="Contact Me"/>
-                                    <GetBreakLine length={1} />
+                                    <AtomsBreakLine length={1} />
                                     <a className='btn btn-success p-3 me-3' href={val['facebook']} style={{borderRadius:"var(--roundedCircle)"}}><FontAwesomeIcon icon={faFacebook} size="xl"/></a>
                                     <a className='btn btn-success p-3 me-3' href={val['whatsapp']} style={{borderRadius:"var(--roundedCircle)"}}><FontAwesomeIcon icon={faWhatsapp} size="xl"/></a>
                                     <a className='btn btn-success p-3 me-3' href={val['github']} style={{borderRadius:"var(--roundedCircle)"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a>

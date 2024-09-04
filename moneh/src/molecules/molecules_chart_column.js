@@ -1,10 +1,10 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import PageBar from '../navbar/page_bar'
-import GetOrdering from '../controls/ordering'
-import GetLimit from '../controls/limit'
+import OrganismsPageBar from '../organisms_navbar/page_bar'
+import GetOrdering from '../components/controls/ordering'
+import GetLimit from '../components/controls/limit'
 
-export default function GetColumnChart({items, builder, maxPage, currentPage, ctx}) {
+export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx}) {
     //Initial variable
     var chart = [];
 
@@ -119,7 +119,7 @@ export default function GetColumnChart({items, builder, maxPage, currentPage, ct
                     height="550"
                 />
             </div>
-            <PageBar key={1} curr={currentPage} max={maxPage} ctx={ctx}/>
+            <OrganismsPageBar key={1} curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }

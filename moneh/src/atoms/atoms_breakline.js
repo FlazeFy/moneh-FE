@@ -1,4 +1,4 @@
-export default function GetBreakLine({length}) {
+export default function AtomsBreakLine({length}) {
     const builder = Array(length).fill(1)
 
     return (

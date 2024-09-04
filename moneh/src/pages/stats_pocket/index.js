@@ -1,11 +1,11 @@
-import GetFooter from "../../components/bars/footer";
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsFooter from "../../organisms/organisms_footer";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetTotalPocketByType from "./usecases/get_total_pocket_by_type";
 
 const StatsPocket_Index = () => {
     return (
         <>
-            <GetNavbar active="stats" subactive="stats_pocket"/>
+            <OrganismsNavbar active="stats" subactive="stats_pocket"/>
             <div className='content-grid'>
                 <div style={{minHeight:"100vh"}}>
                     <div className="row mt-5">
@@ -14,7 +14,7 @@ const StatsPocket_Index = () => {
                         </div>
                     </div>
                 </div>
-                <GetFooter/>
+                <OrganismsFooter/>
             </div>
         </>
     );

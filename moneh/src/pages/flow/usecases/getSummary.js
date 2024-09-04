@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx, numberToPrice } from '../../../modules/helpers/converter'
 
 // Modules

@@ -1,12 +1,12 @@
-import GetBreakLine from "../../../components/others/breakLine";
+import AtomsBreakLine from "../../../atoms/atoms_breakline";
 
 export default function GetFeature({ctx}) {
     return (
         <>
-            <GetBreakLine length={3}/>
+            <AtomsBreakLine length={3}/>
             <div className='mt-4 text-center row' id={ctx}>
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
-                    <GetBreakLine length={3}/>
+                    <AtomsBreakLine length={3}/>
                     <div id="carouselExampleSlidesOnly" className="carousel slide mt-4" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
@@ -29,13 +29,13 @@ export default function GetFeature({ctx}) {
                     </div>
                 </div> 
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
-                    <GetBreakLine length={5}/>
+                    <AtomsBreakLine length={5}/>
                     <h1 style={{fontSize:"var(--textXJumbo)"}}>OUR FEATURE</h1>
-                    <GetBreakLine length={1}/>
+                    <AtomsBreakLine length={1}/>
                     <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>We have many feature to make sure you can manage your money and saving correctly and easy as you want</h6>
                 </div> 
             </div>
-            <GetBreakLine length={5}/>
+            <AtomsBreakLine length={5}/>
         </>
     )
 }

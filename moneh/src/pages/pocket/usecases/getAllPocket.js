@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -105,7 +105,7 @@ export default function GetAllPocket({ctx}) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlPut={"http://127.0.0.1:1323/api/v1/pockets/by/"} urlDel={"http://127.0.0.1:1323/api/v1/pockets/destroy/"}/>  
+                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlPut={"http://127.0.0.1:1323/api/v1/pockets/by/"} urlDel={"http://127.0.0.1:1323/api/v1/pockets/destroy/"}/>  
             </>
         )
     }

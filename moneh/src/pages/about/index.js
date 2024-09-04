@@ -1,20 +1,20 @@
 "use client"
 
-import GetFooter from "../../components/bars/footer";
+import OrganismsFooter from "../../organisms/organisms_footer";
 // Components
-import GetNavbar from "../../components/bars/navbar";
+import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetCreator from "./usecases/get_creator"
 
 // Usecases
 
 const About_Index = () => {
     return <>
-        <GetNavbar active="about"/>
+        <OrganismsNavbar active="about"/>
         <div className="content-grid">
             <div style={{minHeight:"100vh"}}>
                 <GetCreator/>
             </div>
-            <GetFooter/>
+            <OrganismsFooter/>
         </div>
     </>
 }

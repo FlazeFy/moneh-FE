@@ -2,13 +2,12 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetLineChart from '../../../components/charts/line_chart'
-import GetLabel from '../../../components/labels/label'
+import MoleculesChartLine from '../../../molecules/molecules_chart_line'
 import GetDropDownDctDynamic from '../../../components/others/dropdown'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Components
-import GetBreakLine from '../../../components/others/breakLine'
+import AtomsBreakLine from '../../../atoms/atoms_breakline'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
@@ -120,17 +119,17 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
                 <AtomsText text_type="main_heading" body={getCleanTitleFromCtx(ctx)}/>
                 <div className='row'>
                     <div className='col'>
-                        <GetLabel type="input" title="Flow Type"/>
-                        <GetBreakLine length={1}/>
+                        <AtomsText text_type="form_label" body="Flow Type"/>
+                        <AtomsBreakLine length={1}/>
                         <GetDropDownDctDynamic url={builder_flow_type['url']} elmt={builder_flow_type} change={builder_flow_type['handleChange']} act={keyType} ctx="dropdown"/>
                     </div>
                     <div className='col'>
-                        <GetLabel type="input" title="View"/>
-                        <GetBreakLine length={1}/>
+                        <AtomsText text_type="form_label" body="View"/>
+                        <AtomsBreakLine length={1}/>
                         <GetDropDownDctDynamic url={builder_flow_view['url']} elmt={builder_flow_view} change={builder_flow_view['handleChange']} act={keyView} ctx="dropdown"/>
                     </div>
                 </div>
-                <GetLineChart items={items} filter_name={null}/>  
+                <MoleculesChartLine items={items} filter_name={null}/>  
             </>
         )
     }
