@@ -1,8 +1,8 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import OrganismsPageBar from '../organisms_navbar/page_bar'
-import GetOrdering from '../components/controls/ordering'
-import GetLimit from '../components/controls/limit'
+import MoleculesFilterLimit from './molecules_filter_limit';
+import MoleculesFilterOrder from './molecules_filter_order';
 
 export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx}) {
     //Initial variable
@@ -109,8 +109,8 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
 
     return (
         <div className='custom-tbody' style={{overflowY:"hidden"}}>
-            <GetOrdering ctx={ctx}/>
-            <GetLimit ctx={ctx} type={"table"}/>
+            <MoleculesFilterOrder ctx={ctx}/>
+            <MoleculesFilterLimit ctx={ctx} type={"table"}/>
             <div className="mt-4">
                 <Chart
                     options={chart.options}

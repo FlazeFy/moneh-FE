@@ -1,16 +1,15 @@
 // Modules CSS
-import style from './containers.module.css'
+import style from './organisms.module.css'
 
 // Components
-import AtomsBreakLine from '../../atoms/atoms_breakline'
+import AtomsBreakLine from '../atoms/atoms_breakline'
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCompress } from "@fortawesome/free-solid-svg-icons"
-import { numberToPrice, ucFirstWord } from '../../modules/helpers/converter'
+import { numberToPrice, ucFirstWord } from '../modules/helpers/converter'
 
-export default function GetDashboardBox({ctx, value, subvalue, ref}) {
+export default function OrganismsDashboardBox({ctx, value, subvalue, ref}) {
     return (
         <div className={style.dashbox}>
             <h4 className="text-dark mb-0">{ctx}</h4>

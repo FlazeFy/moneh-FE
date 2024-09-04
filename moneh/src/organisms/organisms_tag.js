@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 // Modules
-import { getLocal } from '../../modules/storages/local'
-import MoleculesAlertBox from '../../molecules/molecules_alert_box'
-import AtomsBreakLine from '../../atoms/atoms_breakline'
-import AtomsText from '../../atoms/atoms_text'
+import { getLocal } from '../modules/storages/local'
+import MoleculesAlertBox from '../molecules/molecules_alert_box'
+import AtomsBreakLine from '../atoms/atoms_breakline'
+import AtomsText from '../atoms/atoms_text'
 
-export default function GetAllTag({url, cls, func}) {
+export default function OrganismsAllTag({url, cls, func}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)

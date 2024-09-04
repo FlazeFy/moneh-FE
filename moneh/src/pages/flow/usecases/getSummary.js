@@ -2,11 +2,10 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx, numberToPrice } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
+import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetSummary({ctx}) {

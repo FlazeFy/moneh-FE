@@ -1,12 +1,12 @@
 import React from 'react'
 import Axios from "axios"
 
-import OrganismsPageBar from '../organisms/page_bar'
-import GetOrdering from '../components/controls/ordering'
-import GetManageModal from '../components/modals/manage'
+import MoleculesFilterOrder from './molecules_filter_order'
 import { parseJSON } from '../modules/helpers/decode'
-import GetButtonTag from '../components/buttons/tag'
 import { removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
+import AtomsButton from '../atoms/atoms_button'
+import OrganismsPageBar from '../organisms/organisms_page_bar'
+import OrganismsManageModal from '../organisms/organisms_manage'
 
 export default function MoleculesTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
     function getExtraDesc(ext, val){
@@ -33,7 +33,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
 
     return (
         <div>
-            <GetOrdering ctx={ctx}/>
+            <MoleculesFilterOrder ctx={ctx}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
@@ -67,9 +67,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                                 {
                                                                     tags && tags.length > 0 ?
                                                                         tags.map((tag, jdx) => {
-                                                                            return (
-                                                                                <GetButtonTag key={jdx} slug={tag['slug_name']} name={tag['tag_name']}/>
-                                                                            );
+                                                                            return <AtomsButton button_type="tag" key={jdx} slug={tag['slug_name']} title={tag['tag_name']}/>
                                                                         })
                                                                     : 
                                                                         <span className='fst-italic'>- No Tag Found -</span>
@@ -100,7 +98,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                 }
                                             } else {
                                                 return (
-                                                    <th key={`tbody_${idx}_${jdx}`}><GetManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
+                                                    <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
                                                 );
                                             }
                                         })

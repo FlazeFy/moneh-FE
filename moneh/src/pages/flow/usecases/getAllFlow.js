@@ -6,7 +6,7 @@ import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
+import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllFlow({ctx}) {

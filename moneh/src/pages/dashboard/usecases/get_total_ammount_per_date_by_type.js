@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 
 // Component
 import MoleculesChartLine from '../../../molecules/molecules_chart_line'
-import GetDropDownDctDynamic from '../../../components/others/dropdown'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Components
@@ -13,6 +12,7 @@ import AtomsBreakLine from '../../../atoms/atoms_breakline'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import AtomsText from '../../../atoms/atoms_text'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesDropDownDctDynamic from '../../../molecules/molecules_dropdown_dct_dynamic'
 
 export default function GetTotalAmmountPerDateByType({ctx}) {
     //Initial variable
@@ -121,12 +121,12 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
                     <div className='col'>
                         <AtomsText text_type="form_label" body="Flow Type"/>
                         <AtomsBreakLine length={1}/>
-                        <GetDropDownDctDynamic url={builder_flow_type['url']} elmt={builder_flow_type} change={builder_flow_type['handleChange']} act={keyType} ctx="dropdown"/>
+                        <MoleculesDropDownDctDynamic url={builder_flow_type['url']} elmt={builder_flow_type} change={builder_flow_type['handleChange']} act={keyType} ctx="dropdown"/>
                     </div>
                     <div className='col'>
                         <AtomsText text_type="form_label" body="View"/>
                         <AtomsBreakLine length={1}/>
-                        <GetDropDownDctDynamic url={builder_flow_view['url']} elmt={builder_flow_view} change={builder_flow_view['handleChange']} act={keyView} ctx="dropdown"/>
+                        <MoleculesDropDownDctDynamic url={builder_flow_view['url']} elmt={builder_flow_view} change={builder_flow_view['handleChange']} act={keyView} ctx="dropdown"/>
                     </div>
                 </div>
                 <MoleculesChartLine items={items} filter_name={null}/>  

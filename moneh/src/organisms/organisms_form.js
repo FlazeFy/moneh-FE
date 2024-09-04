@@ -1,17 +1,17 @@
 // Components
-import AtomsBreakLine from '../../atoms/atoms_breakline'
-import GetDropDownDctDynamic from '../others/dropdown'
-import GetAllTag from '../others/getAllTag'
+import AtomsBreakLine from '../atoms/atoms_breakline'
 
 //Modules
-import { countHalf } from '../../modules/helpers/math'
+import { countHalf } from '../modules/helpers/math'
 
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
-import AtomsText from '../../atoms/atoms_text'
+import AtomsText from '../atoms/atoms_text'
+import MoleculesDropDownDctDynamic from '../molecules/molecules_dropdown_dct_dynamic'
+import OrganismsAllTag from './organisms_tag'
 
-export default function GetFormTemplate({type, props}) {
+export default function OrganismsForm({type, props}) {
     if (type == "single-line"){
         return (
             <div key={type}>
@@ -78,7 +78,7 @@ export default function GetFormTemplate({type, props}) {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                         <AtomsText text_type="form_label" body={elmt.label}/>
-                                        <GetDropDownDctDynamic url={elmt.url} elmt={elmt} ctx="dropdown"/>
+                                        <MoleculesDropDownDctDynamic url={elmt.url} elmt={elmt} ctx="dropdown"/>
                                         <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
@@ -95,7 +95,7 @@ export default function GetFormTemplate({type, props}) {
                                         <AtomsText text_type="form_label" body={elmt.label}/>
                                         <AtomsBreakLine length={1}/>
                                         <div className='mt-2'/>
-                                        <GetAllTag url={elmt.url} cls={elmt.class} func={elmt.handleChange}/>
+                                        <OrganismsAllTag url={elmt.url} cls={elmt.class} func={elmt.handleChange}/>
                                         <AtomsBreakLine length={2}/>
                                     </div>
                                 )

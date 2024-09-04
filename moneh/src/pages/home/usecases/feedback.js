@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import Axios from 'axios'
 
 // Components
-import GetFormTemplate from '../../../components/containers/form'
 import AtomsBreakLine from "../../../atoms/atoms_breakline"
+import OrganismsForm from "../../../organisms/organisms_form"
 
 export default function GetFeedback({ctx}) {
     //Initial variable
@@ -92,7 +92,7 @@ export default function GetFeedback({ctx}) {
                 <div className='col-lgl-6 col-md-6 col-sm-12'>
                     <AtomsBreakLine length={3}/>
                     <div className='container-form'>
-                        <GetFormTemplate type={"single-line"} props={builder} />
+                        <OrganismsForm type={"single-line"} props={builder} />
                     </div>
                 </div> 
             </div>

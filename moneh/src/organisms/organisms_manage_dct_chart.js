@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import AtomsText from '../../atoms/atoms_text'
+import AtomsText from '../atoms/atoms_text'
 
 // Component
-import MoleculesChartPie from '../../molecules/molecules_chart_pie'
-import { getCleanTitleFromCtx } from '../../modules/helpers/converter'
+import MoleculesChartPie from '../molecules/molecules_chart_pie'
+import { getCleanTitleFromCtx } from '../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../modules/storages/local'
-import MoleculesAlertBox from '../../molecules/molecules_alert_box'
+import { getLocal, storeLocal } from '../modules/storages/local'
+import MoleculesAlertBox from '../molecules/molecules_alert_box'
 
-export default function GetTotalDctUsed({ctx, filter_name, table, column}) {
+export default function OrganismsTotalDctUsed({ctx, filter_name, table, column}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)

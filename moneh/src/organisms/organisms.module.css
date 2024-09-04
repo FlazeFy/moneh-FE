@@ -12,3 +12,26 @@
 .page_bar_active, .page_bar:hover {
     background: var(--successBG);
 }
+
+.dashbox {
+    background: linear-gradient(to right, var(--primaryColor) , #9e6a03);
+    padding: var(--spaceXMD);
+    border-radius: var(--roundedMD);
+    text-align: center;
+    margin-top: var(--spaceXLG);
+}
+
+.manage_btn {
+    background: var(--primaryColor);
+    color: var(--whiteColor);
+    padding: var(--spaceMD) var(--spaceLG);
+    border: none;
+    border-radius: var(--roundedSM);
+}
+.btn_close_modal {
+    background: var(--warningBG) !important;
+    border-radius: var(--roundedLG);
+    border: none;
+    padding: var(--spaceSM) var(--spaceXMD);
+    color: var(--whiteColor) !important;
+}

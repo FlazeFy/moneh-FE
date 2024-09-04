@@ -3,8 +3,8 @@ import OrganismsNavbar from "../../organisms/organisms_navbar";
 import AtomsBreakLine from "../../atoms/atoms_breakline";
 import GetAllWishlist from "./usecases/getAllWishlist";
 import GetSummaryWishlist from "./usecases/getSummary";
-import GetManageDctModal from "../../components/modals/manage_dct";
 import PostWishlist from "./usecases/postWishlist";
+import OrganismsManageDctModal from "../../organisms/organisms_manage_dct";
 
 const Wishlist_Index = () => {
     return (
@@ -19,7 +19,7 @@ const Wishlist_Index = () => {
                         <div className="col-lg-3 col-md-8 col-sm-12">
                             <AtomsBreakLine length={1}/>
                             <PostWishlist ctx="post_wishlist"/>
-                            <GetManageDctModal cls="w-100 mt-2" ctx="wishlists_type" fetchUrl="http://127.0.0.1:1323/api/v1/dct/wishlists_type?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/"/>
+                            <OrganismsManageDctModal cls="w-100 mt-2" ctx="wishlists_type" fetchUrl="http://127.0.0.1:1323/api/v1/dct/wishlists_type?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/"/>
                             <GetSummaryWishlist ctx="summary"/>
                         </div>
                     </div>

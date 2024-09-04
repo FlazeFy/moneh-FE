@@ -10,3 +10,13 @@ label.error{
     color: #D5534C;
     margin: 0;
 }
+
+/* Get button tag */
+.btn_tag {
+    background: var(--infoBG);
+    color: var(--whiteColor);
+    text-decoration: none;
+    padding: var(--spaceXSM) var(--spaceSM);
+    margin-right: var(--spaceXXSM);
+    border-radius: var(--roundedSM);
+}

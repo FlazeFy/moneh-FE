@@ -1,10 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 
-import GetDashboardBox from "../../../components/containers/dashboard_box";
-import { getCleanTitleFromCtx } from "../../../modules/helpers/converter";
 import { getLocal } from "../../../modules/storages/local";
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
+import OrganismsDashboardBox from '../../../organisms/organisms_dashboard_box';
 
 export default function GetDashboardSummary({ctx}) {
     //Initial variable
@@ -48,22 +47,22 @@ export default function GetDashboardSummary({ctx}) {
                         return (
                             <div className="row" key={i}>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="Last Income" value={val['last_income']} subvalue={val['last_income_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Last Income" value={val['last_income']} subvalue={val['last_income_value']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="Last Spending" value={val['last_spending']} subvalue={val['last_spending_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Last Spending" value={val['last_spending']} subvalue={val['last_spending_value']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="Most Expensive Spending" value={val['most_expensive_spending']} subvalue={val['most_expensive_spending_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Most Expensive Spending" value={val['most_expensive_spending']} subvalue={val['most_expensive_spending_value']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="Most Highest Income" value={val['most_highest_income']} subvalue={val['most_highest_income_value']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Most Highest Income" value={val['most_highest_income']} subvalue={val['most_highest_income_value']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="Total Item (Income / Spending)" value={val['total_item_income'] + " / " + val['total_item_spending']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="Total Item (Income / Spending)" value={val['total_item_income'] + " / " + val['total_item_spending']} href="/flow"/>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <GetDashboardBox ctx="My Balance" value={val['my_balance']} href="/flow"/>
+                                    <OrganismsDashboardBox ctx="My Balance" value={val['my_balance']} href="/flow"/>
                                 </div>
                             </div>
                         )

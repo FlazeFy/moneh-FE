@@ -1,8 +1,8 @@
-// components/CustomToast.js
+// components/MoleculesToast.js
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const CustomToast = ({ msg }) => {
+const MoleculesToast = ({ msg }) => {
   return (
     <div>
       <p className='text-success'>{msg}</p>
@@ -10,4 +10,4 @@ const CustomToast = ({ msg }) => {
   );
 };
 
-export default CustomToast;
+export default MoleculesToast;

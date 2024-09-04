@@ -11,7 +11,7 @@ import { getLocal } from "../modules/storages/local";
 import { isLogged } from "../modules/helpers/auth";
 
 // Component
-import modal from '../components/modals/modals.module.css'
+import modal from '../organisms/organisms.module.css'
 
 export default function TemplateSignOut({active}) {
     const keyToken = getLocal("token_key")

@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react"
-import modal from './modals.module.css'
+import React, {  useState } from "react"
+import modal from './organisms.module.css'
 import Axios from "axios"
 
 // Modules
-import GetDropDownDctDynamic from "../others/dropdown"
-import { countHalf } from "../../modules/helpers/math"
+import MoleculesDropDownDctDynamic from "../molecules/molecules_dropdown_dct_dynamic"
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
-import AtomsBreakLine from "../../atoms/atoms_breakline"
-import AtomsText from "../../atoms/atoms_text"
+import AtomsBreakLine from "../atoms/atoms_breakline"
+import AtomsText from "../atoms/atoms_text"
+import { countHalf } from "../modules/helpers/math"
 
-export default function GetManageModal({builder, items, id, funDel, funPut, is_with_btn}) {
+export default function OrganismsManageModal({builder, items, id, funDel, funPut, is_with_btn}) {
     const [resMsgAll, setResMsgAll] = useState("")
     const [objectUpdate, setObjectUpdate] = useState([])
 
@@ -104,7 +103,7 @@ export default function GetManageModal({builder, items, id, funDel, funPut, is_w
                                             return (
                                                 <div key={idx}>
                                                     <label className='form-lable'>{build['column_name']}</label>
-                                                    <GetDropDownDctDynamic url={build['url']} elmt={build} ctx="dropdown" act={items[build['object_name']]} 
+                                                    <MoleculesDropDownDctDynamic url={build['url']} elmt={build} ctx="dropdown" act={items[build['object_name']]} 
                                                         change={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}/>
                                                 </div>
                                             )

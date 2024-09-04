@@ -1,20 +1,19 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import modal from './modals.module.css'
+import modal from './organisms.module.css'
 import Axios from "axios"
 
-import { getCleanTitleFromCtx, ucFirstWord } from '../../modules/helpers/converter'
+import { getCleanTitleFromCtx, ucFirstWord } from '../modules/helpers/converter'
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPaperPlane, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { getLocal } from '../../modules/storages/local'
-import GetTotalDctUsed from './manage_dct_chart'
-import AtomsBreakLine from '../../atoms/atoms_breakline'
-import AtomsText from '../../atoms/atoms_text'
+import { getLocal } from '../modules/storages/local'
+import OrganismsTotalDctUsed from './organisms_manage_dct_chart'
+import AtomsText from '../atoms/atoms_text'
+import AtomsBreakLine from '../atoms/atoms_breakline'
 
-export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUrl, table, column}) {
+export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUrl, table, column}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -109,7 +108,7 @@ export default function GetManageDctModal({cls, ctx, fetchUrl, postUrl, deleteUr
                                         <FontAwesomeIcon icon={faPaperPlane} color="var(--secondaryBG)" onClick={handleSubmit}/> Submit
                                     </button>
                                     <AtomsBreakLine length={4}/>
-                                    <GetTotalDctUsed ctx="Total dictionary used" filter_name="1" table={table} column={column}/>
+                                    <OrganismsTotalDctUsed ctx="Total dictionary used" filter_name="1" table={table} column={column}/>
                                 </div>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
                                     <label className='form-lable'>List Dictionary</label>

@@ -6,9 +6,9 @@ import style from './wishlists.module.css'
 import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
-import GetManageModal from '../../../components/modals/manage'
+import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import OrganismsManageModal from '../../../organisms/organisms_manage'
 
 export default function GetAllWishlist({ctx}) {
     //Initial variable
@@ -156,7 +156,7 @@ export default function GetAllWishlist({ctx}) {
                         items.map((val, idx) => {
                             return (
                                 <div className='col-lg-4 col-md-6 col-sm-12 col-12' key={idx}>
-                                    <GetManageModal builder={builder} items={val} id={idx} is_with_btn={false}/>
+                                    <OrganismsManageModal builder={builder} items={val} id={idx} is_with_btn={false}/>
                                     <div className='col-4'>
                                         <button className={style.wish_box} data-bs-toggle="modal" data-bs-target={"#manageModal"+idx}>
                                             <img className={style.wish_img} src={val['wishlists_img_url']}/>

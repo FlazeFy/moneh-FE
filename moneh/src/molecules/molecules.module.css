@@ -7,7 +7,7 @@
     margin-bottom: var(--spaceMD);
 }
 
-/* GetSearch */
+/* MoleculesFilterSearch */
 .search_bar {
     color: var(--whiteColor) !important;
     padding: var(--spaceSM) calc(var(--spaceLG) * 2.5) var(--spaceSM) var(--spaceMD) !important;

@@ -2,10 +2,9 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import { convertDatetime, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
+import { convertDatetime } from '../../../modules/helpers/converter'
 
 // Components
-import AtomsBreakLine from '../../../atoms/atoms_breakline'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 

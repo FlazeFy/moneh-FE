@@ -1,8 +1,6 @@
 import React from 'react'
 import AtomsBreakLine from '../../../atoms/atoms_breakline'
 
-// Components
-
 export default function GetWelcoming({ctx}) {
     return (
         <div className='mt-4 text-center row' id={ctx}>

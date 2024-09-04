@@ -2,8 +2,8 @@ import Axios from 'axios'
 import { useState } from 'react'
 
 // Component
-import GetFormTemplate from '../../../components/containers/form'
 import { storeLocal } from '../../../modules/storages/local'
+import OrganismsForm from '../../../organisms/organisms_form'
 
 export default function PostLogin() {
     //Initial variable
@@ -84,7 +84,7 @@ export default function PostLogin() {
         <div className='login-box grid-border' style={{width:"720px"}}> 
             <img src="/assets/pocket.png" style={{maxWidth:"50%", minWidth:"300px"}} className="img img-fluid mb-3"/>
             <h3 className='text-white'>Start Saving Money, Join <b style={{color:"var(--primaryColor)"}}>MONEH</b></h3>
-            <GetFormTemplate type={"single-line"} props={builder} />
+            <OrganismsForm type={"single-line"} props={builder} />
         </div>
     )
 }

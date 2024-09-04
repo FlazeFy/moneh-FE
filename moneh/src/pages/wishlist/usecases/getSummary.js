@@ -1,12 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import style from './wishlists.module.css'
 
 // Component
 import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modules/helpers/converter'
 
 // Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
+import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetSummaryWishlist({ctx}) {

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Axios from 'axios'
 
 // Component
-import modal from '../../../components/modals/modals.module.css'
-import GetFormTemplate from '../../../components/containers/form'
+import modal from '../../../organisms/organisms.module.css'
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 
 // Modules
 import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
+import OrganismsForm from "../../../organisms/organisms_form"
 
 export default function PostFlow({ctx}) {
     //Initial variable
@@ -170,7 +169,7 @@ export default function PostFlow({ctx}) {
                             <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
-                            <GetFormTemplate type={"single-line"} props={builder} />
+                            <OrganismsForm type={"single-line"} props={builder} />
                         </div>
                     </div>
                 </div>

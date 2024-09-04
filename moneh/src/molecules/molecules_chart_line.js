@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import GetLimit from '../components/controls/limit'
+import MoleculesFilterLimit from './molecules_filter_limit'
 
 export default function MoleculesChartLine({items, filter_name}) {
     //Initial variable
@@ -57,7 +57,7 @@ export default function MoleculesChartLine({items, filter_name}) {
                 {
                     filter_name ? 
                         <>
-                            <GetLimit ctx={filter_name} type={"bar"}/><br></br><br></br>
+                            <MoleculesFilterLimit ctx={filter_name} type={"bar"}/><br></br><br></br>
                         </>
                     :
                         <></>

@@ -1,12 +1,12 @@
 // Toast
-import CustomToast from "../modals/toast"
+import MoleculesToast from "./molecules_toast"
 import { toast } from 'react-toastify'
-import { ucFirstWord } from "../../modules/helpers/converter"
+import { ucFirstWord } from "../modules/helpers/converter"
 
-export default function GetLimit({ctx, type}) {
+export default function MoleculesFilterLimit({ctx, type}) {
     function navigate(ctx, ord){
         sessionStorage.setItem(`${ucFirstWord(type)}_limit_${ctx}`, ord)
-        toast.success(<CustomToast msg={ctx + " filtered"} />)
+        toast.success(<MoleculesToast msg={ctx + " filtered"} />)
     }
 
     function getCollection(type){ 
