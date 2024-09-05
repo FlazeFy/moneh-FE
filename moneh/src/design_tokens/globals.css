@@ -74,18 +74,6 @@ body {
 .bg-secondary {
   background: var(--darkColor) !important;
 }
-.form-lable {
-  font-weight: 500;
-  margin-top: var(--spaceSM);
-  margin-bottom: var(--spaceMini);
-  color: var(--whiteColor);
-}
-.form-control {
-  background: transparent !important;
-  color: var(--whiteColor) !important;
-  border: 1px solid var(--whiteColor);
-  border-radius: var(--roundedSM) !important;
-}
 
 a {
   text-decoration: none !important;
@@ -100,13 +88,6 @@ h1, h2, h3, h4, h5, h6 {
 .modal-content {
   border-radius: var(--roundedLG) !important;
   background: var(--blackColor) !important;
-}
-
-.container-form {
-  background: var(--blackColor);
-  border-radius: var(--roundedLG);
-  padding: var(--spaceLG);
-  border: 2px solid var(--primaryColor);
 }
 
 /* Profile */
@@ -161,14 +142,6 @@ h1, h2, h3, h4, h5, h6 {
 .fc-event.fc-event-start.fc-event-end.fc-event-past.fc-daygrid-event.fc-daygrid-block-event.fc-h-event{
   margin-inline: var(--spaceXSM);
   margin-bottom: var(--spaceXXSM);
-}
-
-.form-select, .form-floating > .form-select ~ label::after {
-  background: var(--blackColor) !important;
-  color: var(--whiteColor) !important;
-}
-.form-floating label {
-  color: var(--whiteColor) !important;
 }
 
 /* Apexchart */

@@ -1,0 +1,25 @@
+.form-lable {
+    font-weight: 500;
+    margin-top: var(--spaceSM);
+    margin-bottom: var(--spaceMini);
+    color: var(--whiteColor);
+}
+.form-control {
+    background: transparent !important;
+    color: var(--whiteColor) !important;
+    border: 1px solid var(--whiteColor);
+    border-radius: var(--roundedSM) !important;
+}
+.container-form {
+    background: var(--blackColor);
+    border-radius: var(--roundedLG);
+    padding: var(--spaceLG);
+    border: 2px solid var(--primaryColor);
+}
+.form-select, .form-floating > .form-select ~ label::after {
+    background: var(--blackColor) !important;
+    color: var(--whiteColor) !important;
+}
+.form-floating label {
+    color: var(--whiteColor) !important;
+}

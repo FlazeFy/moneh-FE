@@ -26,3 +26,22 @@
     height: 20vh;
     border-width: 12px;
 } */
+
+.custom-toast {
+    background-color: var(--blackColor);
+    color: var(--whiteColor);
+    border-radius: var(--roundedMD);
+    border: calc(var(--spaceMini)/2) solid var(--primaryColor);
+}
+.custom-toast-body {
+    color: var(--whiteColor);
+}
+.Toastify__toast-icon {
+    color: var(--primaryColor); 
+}
+.Toastify__toast-body svg {
+    fill: var(--primaryColor);
+}
+.Toastify__progress-bar {
+    background: var(--primaryColor) !important;
+}

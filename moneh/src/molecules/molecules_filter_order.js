@@ -1,11 +1,11 @@
+import { getToast } from '../modules/helpers/generator'
 import style from './molecules.module.css'
-import { toast } from 'react-toastify'
-import MoleculesToast from './molecules_toast'
 
-export default function MoleculesFilterOrder({ctx}) {
+export default function MoleculesFilterOrder({ctx, onPostSuccess}) {
     function navigate(ctx, ord){
         sessionStorage.setItem(`Table_order_${ctx}`, ord)
-        toast.success(<MoleculesToast msg={ctx + " filtered"} />)
+        if (onPostSuccess) onPostSuccess()
+        getToast(ctx)
     }
 
     return (

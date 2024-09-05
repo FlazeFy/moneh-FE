@@ -1,3 +1,6 @@
+import { toast } from "react-toastify"
+import MoleculesToast from "../../molecules/molecules_toast"
+
 export const getTodayDate = (type) => {
     try {
         const today = new Date()
@@ -35,4 +38,13 @@ export const getTodayDate = (type) => {
     } catch (err) {
         throw err
     }
+}
+
+export const getToast = (ctx) => {
+    toast.success(<MoleculesToast msg={ctx + " filtered"}  />, {
+        className: 'custom-toast', 
+        bodyClassName: 'style.custom-toast-body', 
+        position: "bottom-right",  
+        autoClose: 4000,
+    })
 }

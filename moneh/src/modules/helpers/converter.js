@@ -20,6 +20,16 @@ export const ucFirstWord = (val) => {
     }
 }
 
+export const cleanSlugToText = (val) => {
+    try {
+        const res = ucFirstWord(val.replace('_',' '))
+
+        return res
+    } catch (error) {
+        throw error
+    }
+}
+
 export const getBoolCheck = (val) => {
     try {
         if(val == "on"){

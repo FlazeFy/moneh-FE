@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client';
 import './App.css';
 import './design_tokens/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 // CSS Modules
 import './design_tokens/navbar.css';
@@ -15,6 +16,7 @@ import './design_tokens/table.css';
 import './design_tokens/button.css';
 import './design_tokens/typography.css';
 import './design_tokens/modal.css';
+import './design_tokens/form.css';
 
 // Pages
 import Flow_Index from './pages/flow/index';
@@ -29,6 +31,7 @@ import Home_Index from "./pages/home";
 import Dashboard_Index from "./pages/dashboard";
 import Calendar_Index from "./pages/calendar";
 import Login_Index from "./pages/login";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   useEffect(() => {
@@ -37,6 +40,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home_Index />}></Route>

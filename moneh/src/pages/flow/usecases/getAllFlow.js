@@ -9,7 +9,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import Swal from 'sweetalert2'
 
-export default function GetAllFlow({ ctx, shouldFetch }) {
+export default function GetAllFlow({ ctx, shouldFetch, onPostSuccess }) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -140,7 +140,7 @@ export default function GetAllFlow({ ctx, shouldFetch }) {
         return (
             <> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
-                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={"http://127.0.0.1:1323/api/v1/flows/destroy/"}/>  
+                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Flow"} urlDel={"http://127.0.0.1:1323/api/v1/flows/destroy/"} onPostSuccess={onPostSuccess}/>  
             </>
         )
     }

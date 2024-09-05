@@ -20,7 +20,7 @@ const Flow_Index = () => {
                     <PostFlow ctx="post_flow" onPostSuccess={handlePostSuccess}/>
                     <OrganismsManageDctModal cls="ms-2" ctx="flows_category" fetchUrl="http://127.0.0.1:1323/api/v1/dct/flows_category?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/" table="flows" column={"flows_category"}/>
                     <GetSummary ctx="summary" shouldFetch={shouldFetch}/>
-                    <GetAllFlow ctx="get_all_flow" shouldFetch={shouldFetch}/>
+                    <GetAllFlow ctx="get_all_flow" shouldFetch={shouldFetch} onPostSuccess={handlePostSuccess}/>
                 </div>
                 <OrganismsFooter/>
             </div>

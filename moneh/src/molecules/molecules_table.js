@@ -1,16 +1,17 @@
 import React from 'react'
 import Axios from "axios"
+import $ from 'jquery';
 
 import MoleculesFilterOrder from './molecules_filter_order'
 import { parseJSON } from '../modules/helpers/decode'
-import { numberToPrice, removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
+import { getCleanTitleFromCtx, removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
 import AtomsButton from '../atoms/atoms_button'
 import OrganismsPageBar from '../organisms/organisms_page_bar'
 import OrganismsManageModal from '../organisms/organisms_manage'
-import { commaThousandFormat } from '../modules/helpers/math'
 import MoleculesCurrency from './molecules_currency'
+import Swal from 'sweetalert2'
 
-export default function MoleculesTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel}) {
+export default function MoleculesTable({builder, items, maxPage, currentPage, ctx, urlPut, urlDel, onPostSuccess}) {
     const getExtraDesc = (ext, val) => {
         if(Array.isArray(ext)){
             let start, end
@@ -35,19 +36,59 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
         }
     }
 
-    const deleteItem = async (e, url) => {
-        e.preventDefault()
-        try {
-            await Axios.delete(url)
-        } catch (err) {
-            alert(err)
-        }
-        window.location.reload(false)
+    const deleteItem = async (e, id, url) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: `want to delete this ${getCleanTitleFromCtx(ctx)}`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Delete it!",
+            cancelButtonText: "No, Cancel!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                e.preventDefault()
+                Swal.showLoading()
+
+                try {
+                    const response = await Axios.delete(url)
+
+                    Swal.close()
+                    if (response.data.status == 200) {
+                        // $(`#manageModal${id}`).modal({ backdrop: 'static' }).modal('hide')
+                        Swal.fire({ 
+                            icon: "success", 
+                            title: "Success", 
+                            text: response.data.message 
+                        })
+                        if (onPostSuccess) onPostSuccess()
+                    } else {
+                        Swal.fire({ 
+                            icon: "error", 
+                            title: "Oops...", 
+                            text: response.data.message 
+                        })
+                    }
+                } catch (err) {
+                    Swal.close()
+                    Swal.fire({ 
+                        icon: "error", 
+                        title: "Oops...", 
+                        text: "Something went wrong!" 
+                    })
+                }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    title: "Cancelled",
+                    text: `Delete ${getCleanTitleFromCtx(ctx)} dismissed`,
+                    icon: "error"
+                })
+            }
+        })
     };
 
     return (
         <div>
-            <MoleculesFilterOrder ctx={ctx}/>
+            <MoleculesFilterOrder ctx={ctx} onPostSuccess={onPostSuccess}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
@@ -114,7 +155,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                     }
                                                 }
                                             } else {
-                                                return <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, urlDel+item['id'])} is_with_btn={true}/></th>
+                                                return <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, idx, urlDel+item['id'])} is_with_btn={true} onPostSuccess={onPostSuccess}/></th>
                                             }
                                         })
                                     }

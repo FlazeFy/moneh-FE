@@ -18,7 +18,7 @@ const Pocket_Index = () => {
                 <div style={{minHeight:"100vh"}}>
                     <PostPocket ctx="post_pocket" onPostSuccess={handlePostSuccess}/>
                     <OrganismsManageDctModal cls="ms-2" ctx="pockets_type" fetchUrl="http://127.0.0.1:1323/api/v1/dct/pockets_type?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/"/>
-                    <GetAllPocket ctx="get_all_pocket" shouldFetch={shouldFetch}/>
+                    <GetAllPocket ctx="get_all_pocket" shouldFetch={shouldFetch} onPostSuccess={handlePostSuccess}/>
                 </div>
                 <OrganismsFooter/>
             </div>

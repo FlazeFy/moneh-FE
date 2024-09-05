@@ -1,12 +1,19 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
+import { cleanSlugToText } from '../../../modules/helpers/converter'
 import { storeLocal, getLocal } from '../../../modules/storages/local'
 
 export default function FilterFlowType() {
     function toogle(val) {
         storeLocal("calendar_filter_flow_type_all_flow",val) 
-
-        window.location.reload(false)
+        Swal.fire({ 
+            icon: "success", 
+            title: "Success", 
+            html: `Calendar item has filtered to show <span class='text-primary'>${val == 'all' ? 'all':`${cleanSlugToText(val)}'s category`}</span> item`
+        }).then(() => {
+            window.location.reload(false)
+        })
     }
 
     const selectedConsumeType = getLocal("calendar_filter_flow_type_all_flow")
@@ -21,7 +28,7 @@ export default function FilterFlowType() {
                 <option value="total_income" selected={selectedConsumeType === 'total_income' ? true : false}>Total Income</option>
                 <option value="final_total" selected={selectedConsumeType === 'final_total' ? true : false}>Final Total</option>
             </select>
-            <AtomsText text_type="main_content" body="Filter By Type"/>
+            <AtomsText text_type="form_label" body="Filter By Type"/>
         </div>
     )
 }

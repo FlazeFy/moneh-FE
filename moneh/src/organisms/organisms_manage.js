@@ -11,14 +11,16 @@ import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 import AtomsBreakLine from "../atoms/atoms_breakline"
 import AtomsText from "../atoms/atoms_text"
 import { countHalf } from "../modules/helpers/math"
+import Swal from "sweetalert2"
 
-export default function OrganismsManageModal({builder, items, id, funDel, funPut, is_with_btn}) {
+export default function OrganismsManageModal({builder, items, id, funDel, funPut, is_with_btn, onPostSuccess}) {
     const [resMsgAll, setResMsgAll] = useState("")
     const [objectUpdate, setObjectUpdate] = useState([])
 
     // Services
     const HandlePut = async (e) => {
-
+        e.preventDefault()
+        Swal.showLoading()
         try {
             const data = new FormData();
             {
@@ -28,20 +30,34 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                     }
                 })
             }
-            
             const response = await Axios.put(funPut, data, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }
             })
-            window.location.reload(false)
 
-            if(response.data.status != 200){
-                return response.data.message
+            Swal.close()
+            if(response.data.status == 200){
+                Swal.fire({ 
+                    icon: "success", 
+                    title: "Success", 
+                    text: response.data.message 
+                })
+                if(onPostSuccess) onPostSuccess()
             } else {
-                return ""
+                Swal.fire({ 
+                    icon: "error", 
+                    title: "Oops...", 
+                    text: response.data.message 
+                })
             }
         } catch (error) {
+            Swal.close()
+            Swal.fire({ 
+                icon: "error", 
+                title: "Oops...", 
+                text: "Something went wrong!" 
+            })
             setResMsgAll(error)
         }
     }
@@ -112,7 +128,6 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                                 <div className="form-check ms-3" key={idx}>
                                                     <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] == 1 ? true : false}
                                                         onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
-                                                    {/* <label className='form-lable'>{build['column_name']}</label> */}
                                                     <AtomsText text_type="form_label" body={build['column_name']}/>
                                                 </div>
                                             )
@@ -124,24 +139,6 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                             }
                         </div>
                         <div className="modal-footer">
-                            {/* <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target={"#deleteModal"+id}>Delete</button>
-                            <div className="modal fade" id={"deleteModal"+id}  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div className="modal-dialog">
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <h5 className="modal-title" id="exampleModalLabel">Delete data</h5>
-                                            <button type="button" className="btn-close-modal" data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <p>Are you sure want to delete this data?</p>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button onClick={deleteAnimal} className="btn btn-danger">Delete</button>
-                                            <button type="button" className="btn btn-primary">Save Changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                             <button onClick={funDel} className="btn btn-danger">Delete</button>
                             <button onClick={HandlePut} type="button" className="btn btn-success">Save Changes</button>
                         </div>
