@@ -10,7 +10,7 @@ export default function MoleculesAlertBox(props) {
             {
                 props.type == 'error' && <AtomsText body={getCleanTitleFromCtx(props.context)} text_type="sub_heading"/>
             }
-            <div className={`alert alert-${props.type}`} role='alert'>
+            <div className={`alert my-3 alert-${props.type}`} role='alert'>
                 <h4><FontAwesomeIcon icon={props.type == 'warning' || props.type == 'danger' ? faWarning : faIcons}/> {ucFirstChar(props.type == 'danger' ? 'error':props.type)}</h4>
                 {props.message}
             </div>

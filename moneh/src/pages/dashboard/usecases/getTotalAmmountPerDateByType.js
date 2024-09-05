@@ -13,21 +13,24 @@ import { getLocal, storeLocal } from '../../../modules/storages/local'
 import AtomsText from '../../../atoms/atoms_text'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import MoleculesDropDownDctDynamic from '../../../molecules/molecules_dropdown_dct_dynamic'
+import MoleculesEmptyMsg from '../../../molecules/molecules_empty_msg'
+import Swal from 'sweetalert2'
 
 export default function GetTotalAmmountPerDateByType({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
-
+    const [dataStatus, setDataStatus] = useState(null)
     const [resMsgFlowType, setResMsgFlowType] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
-
-    //Default config
     const keyType = sessionStorage.getItem("flow_type")
     const keyView = sessionStorage.getItem("flow_total_ammount_view")
 
     useEffect(() => {
+        fetchTotalAmmountPerDateByType()
+    },[])
+
+    const fetchTotalAmmountPerDateByType = () => {
         if(keyType == null){
             sessionStorage.setItem("flow_type", "income");
         }
@@ -36,25 +39,40 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
         }
 
         fetch(`http://127.0.0.1:1323/api/v1/flows/dateammount/${keyType}/${keyView}`)
-        .then(res => res.json())
-            .then(
-            (result) => {
-                setIsLoaded(true)
-                setItems(result.data)
-                const item = result.data
-                storeLocal(ctx + "_sess",JSON.stringify(item))             
-            },
-            (error) => {
-                if(getLocal(ctx + "_sess") !== undefined){
-                    setIsLoaded(true)
-                    setItems(JSON.parse(getLocal(ctx + "_sess")))
-                } else {
-                    setIsLoaded(true)
-                    setError(error)
-                }
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Something went wrong!`)
             }
-        )
-    },[])
+            return res.json()
+        })
+        .then(result => {
+            setIsLoaded(true)
+            setItems(result.data)
+            setDataStatus(null)
+
+            storeLocal(ctx + "_sess", JSON.stringify(result.data))
+        })
+        .catch(error => {
+            setIsLoaded(true)
+            if (getLocal(ctx + "_sess")) {
+                setError(null)
+                setDataStatus(<>This is a <b>local data</b> of <b>{getCleanTitleFromCtx(ctx)}</b>. We will fetch a new data when we succeed in contacting the server</>)
+                Swal.fire({
+                    icon: "warning",
+                    title: "Oops...",
+                    text: "Something went wrong! But we still have recovered data to show you",
+                });
+                setItems(JSON.parse(getLocal(ctx + "_sess")))
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
+                setError(error)
+            }
+        });
+    }
 
     const builder_flow_type = 
         {
@@ -116,7 +134,6 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
     } else {
         return (
             <> 
-                <AtomsText text_type="main_heading" body={getCleanTitleFromCtx(ctx)}/>
                 <div className='row'>
                     <div className='col'>
                         <AtomsText text_type="form_label" body="Flow Type"/>
@@ -129,7 +146,16 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
                         <MoleculesDropDownDctDynamic url={builder_flow_view['url']} elmt={builder_flow_view} change={builder_flow_view['handleChange']} act={keyView} ctx="dropdown"/>
                     </div>
                 </div>
-                <MoleculesChartLine items={items} filter_name={null}/>  
+                {
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
+                }
+                {
+                    items ? 
+                        <MoleculesChartLine items={items} filter_name={null}/>  
+                    :
+                        <MoleculesEmptyMsg is_with_image={true} body="Not have data to present"/>
+                        
+                }
             </>
         )
     }
