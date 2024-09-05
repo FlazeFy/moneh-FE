@@ -81,7 +81,7 @@ export default function GetTotalFlowItemByType({ctx}) {
                 }
                 {
                     items ? 
-                        <MoleculesChartPie items={items} filter_name={null} is_currency={true}/>  
+                        <MoleculesChartPie items={items} filter_name={null}/>  
                     :
                         <MoleculesEmptyMsg is_with_image={true} body="Not have data to present"/>                        
                 }

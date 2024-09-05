@@ -2,8 +2,9 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { formatCurrency } from '../modules/helpers/converter';
 import MoleculesFilterLimit from './molecules_filter_limit';
+import { cleanSlugToText } from '../modules/helpers/converter';
 
-export default function MoleculesChartPie({items, filter_name, is_currency}){
+export default function MoleculesChartPie({items, filter_name, is_currency, is_slug}){
     //Initial variable
     var chart = [];
 
@@ -21,7 +22,7 @@ export default function MoleculesChartPie({items, filter_name, is_currency}){
     function getCategory(val){
         let catData = [];
         val.forEach(e => { 
-            catData.push(e.context);
+            catData.push(is_slug ? cleanSlugToText(e.context) : e.context);
         });
         return catData;
     }
