@@ -12,6 +12,7 @@ import AtomsBreakLine from "../atoms/atoms_breakline"
 import AtomsText from "../atoms/atoms_text"
 import { countHalf } from "../modules/helpers/math"
 import Swal from "sweetalert2"
+import { datetimeLocal } from "../modules/helpers/converter"
 
 export default function OrganismsManageModal({builder, items, id, funDel, funPut, is_with_btn, onPostSuccess}) {
     const [resMsgAll, setResMsgAll] = useState("")
@@ -81,7 +82,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                             {
                                 builder.map((build, idx) => {
                                     if(build['object_name'] != null && build['object_name'] != "period"){
-                                        if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range') {
+                                        if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range' || build['type'] === 'datetime') {
                                             return (
                                                 <div key={idx}>
                                                     <AtomsText text_type="main_content" body={build['column_name']}/>
@@ -96,8 +97,8 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                                         />
                                                     :
                                                         <input className='form-control mb-2' onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} 
-                                                            defaultValue={items[build['object_name']]}
-                                                            type={build['type']} placeholder={build['placeholder']}
+                                                            defaultValue={build['type'] == 'datetime' ? datetimeLocal(items[build['object_name']])  : items[build['object_name']]}
+                                                            type={build['type'] == 'datetime' ? 'datetime-local' :build['type']} placeholder={build['placeholder']}
                                                         ></input>
                                                     }
                                                 </div>

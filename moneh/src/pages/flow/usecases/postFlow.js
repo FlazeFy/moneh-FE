@@ -27,9 +27,11 @@ export default function PostFlow({ ctx, onPostSuccess }) {
     const [flowDesc, setFlowDesc] = useState("")
     const [flowAmmount, setFlowAmmount] = useState(0)
     const [flowTag, setFlowTag] = useState(null)
+    const [createdAt, setCreatedAt] = useState(null)
     const [isShared, setIsShared] = useState(false)
 
     const [resMsgFlowType, setResMsgFlowType] = useState("")
+    const [resMsgCreatedAt, setResMsgCreatedAt] = useState("")
     const [resMsgFlowCat, setResMsgFlowCat] = useState("")
     const [resMsgFlowName, setResMsgFlowName] = useState("")
     const [resMsgFlowDesc, setResMsgFlowDesc] = useState("")
@@ -98,6 +100,16 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             errorMsg: resMsgFlowAmmount,
         },
         {
+            type: 'datetime-local',
+            class: 'form-control',
+            label: 'Created At',
+            is_required: false,
+            handleChange: (event) => {
+                setCreatedAt(event.target.value)
+            },
+            errorMsg: resMsgCreatedAt,
+        },
+        {
             type: 'tag',
             class: 'btn btn-tag',
             label: 'Flow Tag',
@@ -142,6 +154,7 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             data.append('flows_desc', flowDesc)
             data.append('flows_ammount', flowAmmount)
             data.append('flows_tag', flowTag)
+            data.append('created_at', createdAt ?? "")
             data.append('is_shared', isShared)
 
             const response = await Axios.post("http://127.0.0.1:1323/api/v1/flows", data, {

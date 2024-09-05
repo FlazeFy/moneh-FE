@@ -1,8 +1,9 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import { formatCurrency } from '../modules/helpers/converter';
 import MoleculesFilterLimit from './molecules_filter_limit';
 
-export default function MoleculesChartPie({items, filter_name}){
+export default function MoleculesChartPie({items, filter_name, is_currency}){
     //Initial variable
     var chart = [];
 
@@ -28,7 +29,14 @@ export default function MoleculesChartPie({items, filter_name}){
     chart = {
         series: getSeries(data),
         options: {
-            labels: getCategory(data)
+            labels: getCategory(data),
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return is_currency ? formatCurrency(val) : val
+                    }
+                }
+            }
         }
     };
 

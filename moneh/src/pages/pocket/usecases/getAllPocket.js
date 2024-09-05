@@ -93,6 +93,15 @@ export default function GetAllPocket({ctx, shouldFetch, onPostSuccess}) {
             max: 10,
         },
         {
+            column_name: "Created At",
+            object_name: "created_at",
+            extra_desc: null,
+            type: 'datetime',
+            class: 'form-control',
+            label: 'Created At',
+            is_required: true,
+        },
+        {
             column_name: "Manage",
             object_name: null,
             extra_desc: null

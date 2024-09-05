@@ -1,3 +1,5 @@
+import { commaThousandFormat } from "./math"
+
 export const ucFirstChar = (val) => {
     try {
         return val.charAt(0).toUpperCase() + val.slice(1)
@@ -25,6 +27,17 @@ export const cleanSlugToText = (val) => {
         const res = ucFirstWord(val.replace('_',' '))
 
         return res
+    } catch (error) {
+        throw error
+    }
+}
+
+export const datetimeLocal = (val) => {
+    try {
+        let [date, time] = val.split(' ')
+        time = time.substring(0, 5)
+
+        return `${date}T${time}`
     } catch (error) {
         throw error
     }
@@ -148,5 +161,17 @@ export const numberToPrice = (val) => {
         }
     } catch (error) {
         throw error
+    }
+}
+
+export const formatCurrency = (val) => {
+    const currency_type = sessionStorage.getItem("currency_type") ?? 'Abbreviated Numeral'
+
+    if(currency_type == 'Abbreviated Numeral'){
+        return `Rp. ${numberToPrice(val)}`
+    } else if(currency_type == 'Rupiah' || currency_type == 'Rupiah With Zero Sen'){
+        return `Rp. ${commaThousandFormat(val)}${currency_type == 'Rupiah With Zero Sen' && '.00'}`
+    } else if(currency_type == 'Rupiah Without Format'){
+        return `Rp. ${val}`
     }
 }

@@ -122,6 +122,15 @@ export default function GetAllFlow({ ctx, shouldFetch, onPostSuccess }) {
             url: 'http://127.0.0.1:1323/api/v1/tag/desc?page=1'
         },
         {
+            column_name: "Created At",
+            object_name: "created_at",
+            extra_desc: null,
+            type: 'datetime',
+            class: 'form-control',
+            label: 'Created At',
+            is_required: true,
+        },
+        {
             column_name: "Manage",
             object_name: null,
             extra_desc: null

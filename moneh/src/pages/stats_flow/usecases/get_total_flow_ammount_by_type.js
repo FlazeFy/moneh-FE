@@ -57,7 +57,7 @@ export default function GetTotalFlowAmountByType({ctx}) {
         return (
             <> 
                 <AtomsText text_type="main_heading" body={getCleanTitleFromCtx(ctx)}/>
-                <MoleculesChartPie items={items} filter_name={null}/>  
+                <MoleculesChartPie items={items} filter_name={null} is_currency={true}/>  
             </>
         )
     }

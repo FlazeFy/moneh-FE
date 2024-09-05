@@ -18,7 +18,7 @@ export default function OrganismsForm({type, props}) {
                 <div className='row'>
                     {
                         props.map((elmt, idx) => {
-                            if (elmt.type === 'text' || elmt.type === 'number' || elmt.type === 'range') {
+                            if (elmt.type === 'text' || elmt.type === 'number' || elmt.type === 'range' || elmt.type === 'datetime-local') {
                                 return (
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                         <AtomsText text_type="form_label" body={elmt.label}/>
