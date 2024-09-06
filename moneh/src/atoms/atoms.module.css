@@ -7,16 +7,23 @@ label.input{
 }
 label.error{
     font-size: var(--textXSM);
-    color: #D5534C;
+    color: var(--warningBG);
     margin: 0;
 }
 
-/* Get button tag */
-.btn_tag {
-    background: var(--infoBG);
-    color: var(--whiteColor);
+.btn_tag, .btn_info, .btn_primary {
     text-decoration: none;
+    color: var(--whiteColor);
     padding: var(--spaceXSM) var(--spaceSM);
     margin-right: var(--spaceXXSM);
-    border-radius: var(--roundedSM);
+    border-radius: var(--roundedMD);
+}
+.btn_tag {
+    background: var(--infoBG);
+}
+.btn_info {
+    background: var(--infoBG);
+}
+.btn_primary {
+    background: var(--primaryColor);
 }

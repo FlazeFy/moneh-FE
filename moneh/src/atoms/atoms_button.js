@@ -15,5 +15,9 @@ export default function AtomsButton(props){
         return <a className={"nav-link sub mb-2 " + getActive(props.active,props.state)} href={`/${props.url}`}>{ucFirstChar(props.title)}</a>
     } else if(props.button_type == 'tag'){
         return <a className={style.btn_tag} href={"/news/tag/"+props.slug} title={"Browse item with tag : " + props.title}>{props.title}</a>
+    } else if(props.button_type == 'btn_info'){
+        return <a className={style.btn_info} onClick={props.onclick} title={props.title}>{props.title}</a>
+    } else if(props.button_type == 'btn_primary'){
+        return <a className={style.btn_primary} onClick={props.onclick} title={props.title}>{props.title}</a>
     }
 }

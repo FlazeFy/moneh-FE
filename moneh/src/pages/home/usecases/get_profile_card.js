@@ -1,6 +1,11 @@
+import { faEnvelope, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsButton from '../../../atoms/atoms_button'
 import AtomsText from '../../../atoms/atoms_text'
+import ReactDOM from 'react-dom';
 
 // Component
 import { convertDatetime } from '../../../modules/helpers/converter'
@@ -8,6 +13,8 @@ import { convertDatetime } from '../../../modules/helpers/converter'
 // Components
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import Swal from 'sweetalert2'
+import MoleculesQrCode from '../../../molecules/molecules_qrcode'
 
 
 export default function GetProfileCard({ctx}) {
@@ -65,32 +72,54 @@ export default function GetProfileCard({ctx}) {
         )
     } else {
         return (
-            <div className="profile-card"> 
-                <div className='row'>
-                    <div className='col'>
-                        <AtomsText text_type="main_content" body="Username"/>
-                        <h3>{item['username']}</h3>
-                        <AtomsText text_type="main_content" body="Lastname / Firstname"/>
-                        <h3>{ item['last_name'] == "" ? "-" : item['last_name']} / {item['first_name']}</h3>
-                        <AtomsText text_type="main_content" body="Email"/>
-                        <h3>{item['email']}</h3>
-                        <AtomsText text_type="main_content" body="Average Spend / mon"/>
-                        <h3>-</h3>
-                        <AtomsText text_type="main_content" body="Average Income / mon"/>
-                        <h3>-</h3>
-                        <AtomsText text_type="main_content" body="Achievements"/>
-                    </div>
-                    <div className='col text-end'>
+            <>
+                <div className='profile-card'>
+                    <AtomsText text_type="main_content" body="Sync to"/>
+                    <div className='d-flex justify-content-start mt-2'>
+                        <AtomsButton button_type="btn_info" title={<><FontAwesomeIcon icon={faEnvelope}/> {item['email']}</>}/>
                         {
-                            item['image_url'] == "" ? 
-                                <img src="/assets/profile.png" className="img img-fluid mb-3"/>
+                            item['telegram_is_valid'] == 1 ?
+                                <AtomsButton button_type="btn_info" title={<><FontAwesomeIcon icon={faTelegram}/> {item['telegram_user_id']}</>}/>
                             :
-                                <img src={item['image_url']} className="img img-fluid mb-3"/>
+                                <AtomsButton button_type="btn_primary" title={<><FontAwesomeIcon icon={faPlusCircle}/> Add Telegram</>} onclick={() => {
+                                    Swal.fire({
+                                        title: "Telegram Sign In",
+                                        html: '<div id="qr-code-container"></div>', 
+                                        didOpen: () => {
+                                            ReactDOM.render(<MoleculesQrCode val={item['id']} />, document.getElementById('qr-code-container'));
+                                        }
+                                    });
+                                }}/>
                         }
-                        <div className='fst-italic'><AtomsText text_type="main_content" body={<>Joined since {convertDatetime(item['accepted_at'],"datetime")}</>}/></div>
                     </div>
-                </div>            
-            </div>
+                </div>
+                <div className="profile-card"> 
+                    <div className='row'>
+                        <div className='col'>
+                            <AtomsText text_type="main_content" body="Username"/>
+                            <h3>{item['username']}</h3>
+                            <AtomsText text_type="main_content" body="Lastname / Firstname"/>
+                            <h3>{ item['last_name'] == "" ? "-" : item['last_name']} / {item['first_name']}</h3>
+                            <AtomsText text_type="main_content" body="Email"/>
+                            <h3>{item['email']}</h3>
+                            <AtomsText text_type="main_content" body="Average Spend / mon"/>
+                            <h3>-</h3>
+                            <AtomsText text_type="main_content" body="Average Income / mon"/>
+                            <h3>-</h3>
+                            <AtomsText text_type="main_content" body="Achievements"/>
+                        </div>
+                        <div className='col text-end'>
+                            {
+                                item['image_url'] == "" ? 
+                                    <img src="/assets/profile.png" className="img img-fluid mb-3"/>
+                                :
+                                    <img src={item['image_url']} className="img img-fluid mb-3"/>
+                            }
+                            <div className='fst-italic'><AtomsText text_type="main_content" body={<>Joined since {convertDatetime(item['accepted_at'],"datetime")}</>}/></div>
+                        </div>
+                    </div>            
+                </div>
+            </>
         )
     }
 }
