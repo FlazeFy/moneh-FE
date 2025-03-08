@@ -8,6 +8,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import Swal from 'sweetalert2'
+import { getLocal } from '../../../modules/storages/local'
 
 export default function GetAllFlow({ ctx, shouldFetch, onPostSuccess }) {
     //Initial variable
@@ -16,6 +17,7 @@ export default function GetAllFlow({ ctx, shouldFetch, onPostSuccess }) {
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
+    const keyToken = getLocal("token_key")
 
     useEffect(() => {
         fetchFlow()
@@ -33,7 +35,11 @@ export default function GetAllFlow({ ctx, shouldFetch, onPostSuccess }) {
             sessionStorage.setItem("Table_order_Flow", "asc");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/flows/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:1323/api/v1/flows/${keyOrder}?page=${keyPage}`, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {

@@ -6,7 +6,7 @@ import GetAllFlow from "./usecases/getAllFlow";
 import GetSummary from "./usecases/getSummary";
 import PostFlow from "./usecases/postFlow";
 
-const Flow_Index = () => {
+const FlowIndex = () => {
     const [shouldFetch, setShouldFetch] = useState(false)
     const handlePostSuccess = () => {
         setShouldFetch(prev => !prev)
@@ -28,4 +28,4 @@ const Flow_Index = () => {
     );
 }
 
-export default Flow_Index;
+export default FlowIndex;

@@ -1,11 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import style from './wishlists.module.css'
-
-// Component
-import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modules/helpers/converter'
-
-// Modules
+import { getCleanTitleFromCtx, ucFirstWord } from '../../../modules/helpers/converter'
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import OrganismsManageModal from '../../../organisms/organisms_manage'
@@ -24,6 +20,7 @@ export default function GetAllWishlist({ctx}) {
         //Default config
         const keyPage = sessionStorage.getItem("Table_Wishlist")
         const keyOrder = sessionStorage.getItem("Table_order_Wishlist")
+        const keyToken = getLocal("token_key")
 
         if(keyPage == null){
             sessionStorage.setItem("Table_Wishlist", "1");
@@ -32,7 +29,11 @@ export default function GetAllWishlist({ctx}) {
             sessionStorage.setItem("Table_order_Wishlist", "asc");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/wishlists/headers/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:1323/api/v1/wishlists/headers/${keyOrder}?page=${keyPage}`, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {
@@ -132,11 +133,11 @@ export default function GetAllWishlist({ctx}) {
     ]
 
     const getPriorityColor = (val) => {
-        if(val == "high"){
+        if(val === "high"){
             return "text-danger"
-        } else if(val == "med"){ 
+        } else if(val === "med"){ 
             return "text-primary"
-        } else if(val == "low"){ 
+        } else if(val === "low"){ 
             return "text-success"
         }
     }

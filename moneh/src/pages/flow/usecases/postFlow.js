@@ -13,6 +13,7 @@ import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import OrganismsForm from "../../../organisms/organisms_form"
 import AtomsText from "../../../atoms/atoms_text"
+import { getLocal } from "../../../modules/storages/local"
 
 export default function PostFlow({ ctx, onPostSuccess }) {
     const optionFlowType = [
@@ -30,16 +31,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
     const [createdAt, setCreatedAt] = useState(null)
     const [isShared, setIsShared] = useState(false)
 
-    const [resMsgFlowType, setResMsgFlowType] = useState("")
-    const [resMsgCreatedAt, setResMsgCreatedAt] = useState("")
-    const [resMsgFlowCat, setResMsgFlowCat] = useState("")
-    const [resMsgFlowName, setResMsgFlowName] = useState("")
-    const [resMsgFlowDesc, setResMsgFlowDesc] = useState("")
-    const [resMsgFlowAmmount, setResMsgFlowAmmount] = useState("")
-    const [resMsgFlowTag, setResMsgFlowTag] = useState("")
-    const [resMsgIsShared, setResMsgIsShared] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
-
     const builder = [
         {
             type: 'select',
@@ -49,7 +40,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setFlowType(event.target.value)
             },
-            errorMsg: resMsgFlowType,
             url: optionFlowType,
         },
         {
@@ -59,8 +49,7 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             placeholder: 'Select flow category',
             handleChange: (event) => {
                 setFlowCat(event.target.value)
-            },
-            errorMsg: resMsgFlowCat,
+            },            
             url: 'http://127.0.0.1:1323/api/v1/dct/flows_category?page=1'
         },
         {
@@ -74,7 +63,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setFlowName(event.target.value)
             },
-            errorMsg: resMsgFlowName
         },
         {
             type: 'text',
@@ -85,7 +73,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setFlowDesc(event.target.value)
             },
-            errorMsg: resMsgFlowDesc,
         },
         {
             type: 'number',
@@ -97,7 +84,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setFlowAmmount(event.target.value)
             },
-            errorMsg: resMsgFlowAmmount,
         },
         {
             type: 'datetime-local',
@@ -107,7 +93,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setCreatedAt(event.target.value)
             },
-            errorMsg: resMsgCreatedAt,
         },
         {
             type: 'tag',
@@ -116,7 +101,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setFlowTag(event)
             },
-            errorMsg: resMsgFlowTag,
             url: 'http://127.0.0.1:1323/api/v1/tag/desc?page=1'
         },
         {
@@ -126,7 +110,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleChange: (event) => {
                 setIsShared(getBoolCheck(event.target.value))
             },
-            errorMsg: resMsgIsShared,
         },
         {
             type: 'submit',
@@ -137,7 +120,6 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             handleClick: (event) => {
                 handleSubmit(event)
             },
-            errorMsg: resMsgAll
         }
     ]
 
@@ -148,6 +130,8 @@ export default function PostFlow({ ctx, onPostSuccess }) {
 
         try {
             const data = new FormData()
+            const keyToken = getLocal("token_key")
+
             data.append('flows_type', flowType)
             data.append('flows_category', flowCat)
             data.append('flows_name', flowName)
@@ -158,9 +142,11 @@ export default function PostFlow({ ctx, onPostSuccess }) {
             data.append('is_shared', isShared)
 
             const response = await Axios.post("http://127.0.0.1:1323/api/v1/flows", data, {
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: { 
+                    'Content-Type': 'multipart/form-data', 
+                    'Authorization': `Bearer ${keyToken}`
+                }
             })
-
             Swal.close()
             if (response.data.status === 200) {
                 Swal.fire({ 

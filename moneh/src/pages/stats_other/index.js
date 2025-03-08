@@ -3,7 +3,7 @@ import OrganismsFooter from "../../organisms/organisms_footer";
 import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetTotalDctByType from "./usecases/get_total_dct_by_type";
 
-const StatsOther_Index = () => {
+const StatsOtherIndex = () => {
     return (
         <>
             <OrganismsNavbar active="stats" subactive="stats_others"/>
@@ -22,4 +22,4 @@ const StatsOther_Index = () => {
     );
 }
 
-export default StatsOther_Index;
+export default StatsOtherIndex;

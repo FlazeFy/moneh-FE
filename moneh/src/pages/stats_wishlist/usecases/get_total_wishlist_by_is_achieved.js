@@ -1,12 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import AtomsText from '../../../atoms/atoms_text'
-
-// Component
 import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
-
-// Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import MoleculesEmptyMsg from '../../../molecules/molecules_empty_msg'
@@ -20,6 +15,8 @@ export default function GetTotalWishlistByIsAchieved({ctx}) {
     const filter_name = "Wishlist_IsAchieved"
     const [dataStatus, setDataStatus] = useState(null)
     const keyLimit = sessionStorage.getItem(`Pie_limit_${filter_name}`)
+    const keyToken = getLocal("token_key")
+
     if(keyLimit == null){
         sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
     }
@@ -29,7 +26,11 @@ export default function GetTotalWishlistByIsAchieved({ctx}) {
     },[])
 
     const fetchTotalWishlistByIsAchieved = () => {
-        fetch(`http://127.0.0.1:1323/api/v1/stats/wishlistisachieved/desc`)
+        fetch(`http://127.0.0.1:1323/api/v1/stats/wishlistisachieved/desc`, {
+            headers: { 
+                'Authorization': `Bearer ${keyToken}`
+            }
+        })
         .then(res => {
             if(!res.ok){
                 throw new Error(`Something went wrong!`)

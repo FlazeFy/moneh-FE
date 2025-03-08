@@ -71,13 +71,13 @@ export default function OrganismsAllTag({url, cls, func}) {
                     items.map((val, i, index) => {
                         return (
                             <button key={i} title="Select this tag" className={cls} onClick={() => {
-                                if(selectedTag.length == 0){
+                                if(selectedTag.length === 0){
                                     func(val['tags_slug'])
                                     selectTag(i, val['tags_slug'], val['tags_name'])
                                 } else {
                                     let found = false
                                     selectedTag.map((slct, j, index) => {
-                                        if(slct.props.value == val['tags_slug']){
+                                        if(slct.props.value === val['tags_slug']){
                                             found = true
                                         }
                                     })

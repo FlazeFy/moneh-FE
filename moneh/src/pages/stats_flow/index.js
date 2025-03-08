@@ -5,7 +5,7 @@ import OrganismsFooter from "../../organisms/organisms_footer";
 import GetTotalFlowAmountByType from "./usecases/get_total_flow_ammount_by_type";
 import AtomsText from "../../atoms/atoms_text";
 
-const StatsFlow_Index = () => {
+const StatsFlowIndex = () => {
     return (
         <>
             <OrganismsNavbar active="stats" subactive="stats_flow"/>
@@ -32,4 +32,4 @@ const StatsFlow_Index = () => {
     );
 }
 
-export default StatsFlow_Index;
+export default StatsFlowIndex;

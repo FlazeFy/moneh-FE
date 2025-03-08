@@ -1,13 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-
-// Component
 import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
-
-// Modules
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import Swal from 'sweetalert2'
+import { getLocal } from '../../../modules/storages/local'
 
 export default function GetAllPocket({ctx, shouldFetch, onPostSuccess}) {
     //Initial variable
@@ -16,13 +13,13 @@ export default function GetAllPocket({ctx, shouldFetch, onPostSuccess}) {
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
+    const keyToken = getLocal("token_key")
 
     useEffect(() => {
         fetchPocket()
     }, [shouldFetch])
 
     const fetchPocket = () => {
-        //Default config
         const keyPage = sessionStorage.getItem("Table_Pocket")
         const keyOrder = sessionStorage.getItem("Table_order_Pocket")
 
@@ -33,7 +30,11 @@ export default function GetAllPocket({ctx, shouldFetch, onPostSuccess}) {
             sessionStorage.setItem("Table_order_Pocket", "asc");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/pockets/headers/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:1323/api/v1/pockets/headers/${keyOrder}?page=${keyPage}`, {
+            headers: { 
+                'Authorization': `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {

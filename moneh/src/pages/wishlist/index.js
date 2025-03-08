@@ -6,7 +6,7 @@ import GetSummaryWishlist from "./usecases/getSummary";
 import PostWishlist from "./usecases/postWishlist";
 import OrganismsManageDctModal from "../../organisms/organisms_manage_dct";
 
-const Wishlist_Index = () => {
+const WishlistIndex = () => {
     return (
         <>
             <OrganismsNavbar active="wishlist"/>
@@ -30,4 +30,4 @@ const Wishlist_Index = () => {
     );
 }
 
-export default Wishlist_Index;
+export default WishlistIndex;

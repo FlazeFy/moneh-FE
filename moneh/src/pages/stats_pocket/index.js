@@ -3,7 +3,7 @@ import OrganismsFooter from "../../organisms/organisms_footer";
 import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetTotalPocketByType from "./usecases/get_total_pocket_by_type";
 
-const StatsPocket_Index = () => {
+const StatsPocketIndex = () => {
     return (
         <>
             <OrganismsNavbar active="stats" subactive="stats_pocket"/>
@@ -22,4 +22,4 @@ const StatsPocket_Index = () => {
     );
 }
 
-export default StatsPocket_Index;
+export default StatsPocketIndex;

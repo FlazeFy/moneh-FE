@@ -18,12 +18,8 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
-
-    //Initial variable
     const [dctName, setDctName] = useState("")
 
-    const [resMsgDctName, setResMsgDctName] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
 
     // Get list dct
     useEffect(() => {
@@ -60,13 +56,13 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
             })
             window.location.reload(false)
 
-            if(response.data.status != 200){
+            if(response.data.status !== 200){
                 return response.data.message
             } else {
                 return ""
             }
         } catch (error) {
-            setResMsgAll(error)
+            //
         }
     }
 
@@ -78,13 +74,13 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
             const response = await Axios.delete(deleteUrl+id, data)
             window.location.reload(false)
 
-            if(response.data.status != 200){
+            if(response.data.status !== 200){
                 return response.data.message
             } else {
                 return ""
             }
         } catch (error) {
-            setResMsgAll(error)
+            //
         }
     }
 

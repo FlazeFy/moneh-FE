@@ -22,9 +22,9 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
     const [dataStatus, setDataStatus] = useState(null)
-    const [resMsgFlowType, setResMsgFlowType] = useState("")
     const keyType = sessionStorage.getItem("flow_type")
     const keyView = sessionStorage.getItem("flow_total_ammount_view")
+    const keyToken = getLocal("token_key")
 
     useEffect(() => {
         fetchTotalAmmountPerDateByType()
@@ -38,7 +38,11 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
             sessionStorage.setItem("flow_total_ammount_view", "date");
         }
 
-        fetch(`http://127.0.0.1:1323/api/v1/flows/dateammount/${keyType}/${keyView}`)
+        fetch(`http://127.0.0.1:1323/api/v1/flows/dateammount/${keyType}/${keyView}`, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => {
             if (!res.ok) {
                 throw new Error(`Something went wrong!`)
@@ -85,7 +89,6 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
                 sessionStorage.setItem("flow_type", event.target.value)
                 window.location.reload(false)
             },
-            errorMsg: resMsgFlowType,
             url: [
                 {
                     "dictionaries_name": "spending"
@@ -108,7 +111,6 @@ export default function GetTotalAmmountPerDateByType({ctx}) {
                 sessionStorage.setItem("flow_total_ammount_view", event.target.value)
                 window.location.reload(false)
             },
-            errorMsg: resMsgFlowType,
             url: [
                 {
                     "dictionaries_name": "Date"

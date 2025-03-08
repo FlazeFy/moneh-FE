@@ -3,7 +3,7 @@ import TemplateSignOut from "../templates/templates_sign_out";
 
 export default function OrganismsNavbar({active, subactive}) {
     const getActive = (val, curr) => {
-        if(val == curr){
+        if(val === curr){
             return "active"
         } else {
             return ""

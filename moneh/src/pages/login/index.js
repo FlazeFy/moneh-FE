@@ -1,9 +1,7 @@
-"use client"
 import '../../design_tokens/loginregis.css'
-
 import PostLogin from "./usecases/postLogin";
 
-const Login_Index = () => {
+const LoginIndex = () => {
     return <>
         <div className="content-grid">
             <PostLogin/>
@@ -11,4 +9,4 @@ const Login_Index = () => {
     </>
 }
 
-export default Login_Index;
+export default LoginIndex;

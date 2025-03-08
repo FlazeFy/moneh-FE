@@ -5,7 +5,7 @@ import GetTotalWishlistByIsAchieved from "./usecases/get_total_wishlist_by_is_ac
 import GetTotalWishlistByPriority from "./usecases/get_total_wishlist_by_priority";
 import GetTotalWishlistByType from "./usecases/get_total_wishlist_by_type";
 
-const StatsWishlist_Index = () => {
+const StatsWishlistIndex = () => {
     return (
         <>
             <OrganismsNavbar active="stats" subactive="stats_wishlist"/>
@@ -32,4 +32,4 @@ const StatsWishlist_Index = () => {
     );
 }
 
-export default StatsWishlist_Index;
+export default StatsWishlistIndex;

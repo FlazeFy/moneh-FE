@@ -1,7 +1,5 @@
 import Axios from 'axios'
 import { useState } from 'react'
-
-// Component
 import { storeLocal } from '../../../modules/storages/local'
 import OrganismsForm from '../../../organisms/organisms_form'
 
@@ -9,10 +7,6 @@ export default function PostLogin() {
     //Initial variable
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-
-    const [resMsgUsername, setResMsgUsername] = useState("")
-    const [resMsgPassword, setResMsgPassword] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
 
     const builder = [
         {
@@ -26,7 +20,6 @@ export default function PostLogin() {
             handleChange: (event) => {
                 setUsername(event.target.value)
             },
-            errorMsg: resMsgUsername
         },
         {
             type: 'text',
@@ -39,7 +32,6 @@ export default function PostLogin() {
             handleChange: (event) => {
                 setPassword(event.target.value)
             },
-            errorMsg: resMsgPassword
         },
         {
             type: 'submit',
@@ -50,7 +42,6 @@ export default function PostLogin() {
             handleClick: (event) => {
                 handleSubmit(event)
             },
-            errorMsg: resMsgAll
         }
     ]
 
@@ -66,7 +57,7 @@ export default function PostLogin() {
                   'Content-Type': 'multipart/form-data'
                 }
             })
-            if(response.status != 200){
+            if(response.status !== 200){
                 window.location.reload(false)
                 return response.data.message
             } else {
@@ -76,7 +67,7 @@ export default function PostLogin() {
                 window.location.href = '/'
             }
         } catch (error) {
-            setResMsgAll(error)
+            //
         }
     }
 

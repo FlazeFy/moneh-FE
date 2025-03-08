@@ -2,17 +2,14 @@ import Axios from 'axios'
 import React, { useState } from "react"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"
-
-// Component
 import { getBoolCheck, getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import modal from '../../../organisms/organisms.module.css'
 import { storage } from "../../../modules/configs/firebase"
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 import OrganismsForm from '../../../organisms/organisms_form'
 import AtomsText from '../../../atoms/atoms_text'
+import { getLocal } from '../../../modules/storages/local'
 
 export default function PostWishlist({ctx}) {
     //Initial variable
@@ -23,14 +20,6 @@ export default function PostWishlist({ctx}) {
     const [wishlistPriority, setWishlistPriority] = useState("")
     const [wishlistPrice, setWishlistPrice] = useState(0)
     const [isAchieved, setIsAchieved] = useState(false)
-
-    const [resMsgWishlistName, setResMsgWishlistName] = useState("")
-    const [resMsgWishlistDesc, setResMsgWishlistDesc] = useState("")
-    const [resMsgWishlistImgUrl, setResMsgWishlistImgUrl] = useState("")
-    const [resMsgWishlistType, setResMsgWishlistType] = useState("")
-    const [resMsgWishlistPriority, setResMsgWishlistPriority] = useState("")
-    const [resMsgWishlistPrice, setResMsgWishlistPrice] = useState("")
-    const [resMsgIsAchieved, setResMsgIsAchieved] = useState("")
     const [resMsgAll, setResMsgAll] = useState("")
 
     const builder = [
@@ -54,7 +43,6 @@ export default function PostWishlist({ctx}) {
                     );
                 });
             },
-            errorMsg: resMsgWishlistImgUrl,
             // url: galUrl
         },
         {
@@ -68,7 +56,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setWishlistName(event.target.value)
             },
-            errorMsg: resMsgWishlistName
         },
         {
             type: 'text',
@@ -79,7 +66,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setWishlistDesc(event.target.value)
             },
-            errorMsg: resMsgWishlistDesc,
         },
         {
             type: 'number',
@@ -91,7 +77,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setWishlistPrice(event.target.value)
             },
-            errorMsg: resMsgWishlistPrice,
         },
         {
             type: 'select',
@@ -104,7 +89,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setWishlistType(event.target.value)
             },
-            errorMsg: resMsgWishlistType,
             url: "http://127.0.0.1:1323/api/v1/dct/wishlists_type?page=1"
         },
         {
@@ -118,7 +102,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setWishlistPriority(event.target.value)
             },
-            errorMsg: resMsgWishlistPriority,
             url: [
                 {
                     "dictionaries_name": "high"
@@ -138,7 +121,6 @@ export default function PostWishlist({ctx}) {
             handleChange: (event) => {
                 setIsAchieved(getBoolCheck(event.target.value))
             },
-            errorMsg: resMsgIsAchieved,
         },
         {
             type: 'submit',
@@ -156,7 +138,9 @@ export default function PostWishlist({ctx}) {
     // Services
     const handleSubmit = async (e) => {
         try {
+            const keyToken = getLocal("token_key")
             const data = new FormData();
+
             data.append('wishlists_name', wishlistName);
             data.append('wishlists_desc', wishlistDesc);
             data.append('wishlists_img_url', wishlistImgUrl);
@@ -167,12 +151,13 @@ export default function PostWishlist({ctx}) {
             
             const response = await Axios.post("http://127.0.0.1:1323/api/v1/wishlists", data, {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${keyToken}`
                 }
             })
             window.location.reload(false)
 
-            if(response.data.status != 200){
+            if(response.data.status !== 200){
                 return response.data.message
             } else {
                 return ""

@@ -1,13 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-
-// Modules
 import { getLocal } from '../../../modules/storages/local'
-
-// Components
 import AtomsBreakLine from '../../../atoms/atoms_breakline'
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faFacebook, faGithub, faInstagram, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
@@ -20,7 +14,6 @@ export default function GetCreator({ctx}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [itemsCreator, setItemsCreator] = useState([])
     const [itemsSocial, setItemsSocial] = useState([])
-
 
     useEffect(() => {
         fetch(`https://leonardhors.site/api/user`)
@@ -75,7 +68,7 @@ export default function GetCreator({ctx}) {
             <div className='mx-auto d-block text-center'> 
                 {
                     itemsCreator.map((val, i, idx) => {
-                        if(i == 0){
+                        if(i === 0){
                             return (
                                 <>
                                     <img className='img-profile' src='https://media.licdn.com/dms/image/D5603AQHbKizHEv_9fQ/profile-displayphoto-shrink_400_400/0/1693052510059?e=1709164800&v=beta&t=6To_YQYtD_3BKZqS6UWzAfgFNGqXNaaRFu3AMe2QdSQ'/>
@@ -94,7 +87,7 @@ export default function GetCreator({ctx}) {
                 }
                 {
                     itemsSocial.map((val, i, idx) => {
-                        if(i == 0){
+                        if(i === 0){
                             return (
                                 <>
                                     <AtomsText text_type="main_heading" body="Contact Me"/>

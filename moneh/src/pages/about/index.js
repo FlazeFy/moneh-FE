@@ -1,13 +1,8 @@
-"use client"
-
 import OrganismsFooter from "../../organisms/organisms_footer";
-// Components
 import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetCreator from "./usecases/get_creator"
 
-// Usecases
-
-const About_Index = () => {
+const AboutIndex = () => {
     return <>
         <OrganismsNavbar active="about"/>
         <div className="content-grid">
@@ -19,4 +14,4 @@ const About_Index = () => {
     </>
 }
 
-export default About_Index;
+export default AboutIndex;

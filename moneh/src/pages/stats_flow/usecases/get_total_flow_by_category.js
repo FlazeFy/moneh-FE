@@ -1,11 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-
-// Component
 import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
-
-// Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import Swal from 'sweetalert2'
@@ -19,6 +15,8 @@ export default function GetTotalFlowByCategory({ctx}) {
     const filter_name = "Flows_category"
     const [dataStatus, setDataStatus] = useState(null)
     const keyLimit = sessionStorage.getItem(`Bar_limit_${filter_name}`)
+    const keyToken = getLocal("token_key")
+
     if(keyLimit == null){
         sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
     }
@@ -28,7 +26,11 @@ export default function GetTotalFlowByCategory({ctx}) {
     },[])
 
     const fetchTotalFlowByCategory = () => {
-        fetch(`http://127.0.0.1:1323/api/v1/stats/flowcat/desc`)
+        fetch(`http://127.0.0.1:1323/api/v1/stats/flowcat/desc`, {
+            headers: { 
+                'Authorization': `Bearer ${keyToken}`
+            }
+        })
         .then(res => {
             if(!res.ok){
                 throw new Error(`Something went wrong!`)

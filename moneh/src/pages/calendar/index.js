@@ -1,13 +1,8 @@
-"use client"
-
 import OrganismsFooter from "../../organisms/organisms_footer";
-// Components
 import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetDailyCalendar from "./usecases/get_daily_calendar";
 
-// Usecases
-
-const Calendar_Index = () => {
+const CalendarIndex = () => {
     return <>
         <OrganismsNavbar active="calendar"/>
         <div className="content-grid">
@@ -19,4 +14,4 @@ const Calendar_Index = () => {
     </>
 }
 
-export default Calendar_Index;
+export default CalendarIndex;

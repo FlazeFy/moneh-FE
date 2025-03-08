@@ -1,16 +1,13 @@
 import React, { useState } from "react"
 import Axios from 'axios'
-
-// Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import modal from '../../../organisms/organisms.module.css'
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 import OrganismsForm from "../../../organisms/organisms_form"
 import Swal from "sweetalert2"
 import AtomsText from "../../../atoms/atoms_text"
+import { getLocal } from "../../../modules/storages/local"
 
 export default function PostPocket({ctx,onPostSuccess}) {
     //Initial variable
@@ -18,12 +15,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
     const [pocketDesc, setPocketDesc] = useState("")
     const [pocketType, setPocketType] = useState("")
     const [pocketLimit, setPocketLimit] = useState(0)
-
-    const [resMsgPocketName, setResMsgPocketName] = useState("")
-    const [resMsgPocketDesc, setResMsgPocketDesc] = useState("")
-    const [resMsgPocketType, setResMsgPocketType] = useState("")
-    const [resMsgPocketLimit, setResMsgPockeLimit] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
 
     const builder = [
         {
@@ -37,7 +28,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
             handleChange: (event) => {
                 setPocketName(event.target.value)
             },
-            errorMsg: resMsgPocketName
         },
         {
             type: 'textarea',
@@ -51,7 +41,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
             handleChange: (event) => {
                 setPocketDesc(event.target.value)
             },
-            errorMsg: resMsgPocketDesc
         },
         {
             type: 'select',
@@ -61,7 +50,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
             handleChange: (event) => {
                 setPocketType(event.target.value)
             },
-            errorMsg: resMsgPocketType,
             url: 'http://127.0.0.1:1323/api/v1/dct/pockets_type?page=1'
         },
         {
@@ -74,7 +62,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
             handleChange: (event) => {
                 setPocketLimit(event.target.value)
             },
-            errorMsg: resMsgPocketLimit,
         },
         {
             type: 'submit',
@@ -85,7 +72,6 @@ export default function PostPocket({ctx,onPostSuccess}) {
             handleClick: (event) => {
                 handleSubmit(event)
             },
-            errorMsg: resMsgAll
         }
     ]
 
@@ -93,6 +79,8 @@ export default function PostPocket({ctx,onPostSuccess}) {
     const handleSubmit = async (e) => {
         try {
             const data = new FormData();
+            const keyToken = getLocal("token_key")
+
             data.append('pockets_name', pocketName);
             data.append('pockets_desc', pocketDesc);
             data.append('pockets_type', pocketType);
@@ -100,7 +88,8 @@ export default function PostPocket({ctx,onPostSuccess}) {
             
             const response = await Axios.post("http://127.0.0.1:1323/api/v1/pockets", data, {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${keyToken}`
                 }
             })
 

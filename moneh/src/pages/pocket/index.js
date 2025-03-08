@@ -5,7 +5,7 @@ import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetAllPocket from "./usecases/getAllPocket";
 import PostPocket from "./usecases/postPocket";
 
-const Pocket_Index = () => {
+const PocketIndex = () => {
     const [shouldFetch, setShouldFetch] = useState(false)
     const handlePostSuccess = () => {
         setShouldFetch(prev => !prev)
@@ -26,4 +26,4 @@ const Pocket_Index = () => {
     );
 }
 
-export default Pocket_Index;
+export default PocketIndex;

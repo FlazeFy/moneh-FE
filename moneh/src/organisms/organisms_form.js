@@ -12,7 +12,7 @@ import MoleculesDropDownDctDynamic from '../molecules/molecules_dropdown_dct_dyn
 import OrganismsAllTag from './organisms_tag'
 
 export default function OrganismsForm({type, props}) {
-    if (type == "single-line"){
+    if (type === "single-line"){
         return (
             <div key={type}>
                 <div className='row'>
@@ -50,7 +50,7 @@ export default function OrganismsForm({type, props}) {
                                                 <input placeholder={elmt.placeholder}
                                                     className={elmt.class + " w-100"} 
                                                     onChange={elmt.handleChange}
-                                                    type={elmt.is_obsecure == true ? 'password' : elmt.type}
+                                                    type={elmt.is_obsecure === true ? 'password' : elmt.type}
                                                     maxLength={elmt.max}
                                                 />
                                         }

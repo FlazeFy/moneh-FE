@@ -1,24 +1,15 @@
 import Axios from 'axios'
-import { useState } from 'react'
-
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket, faXmark} from "@fortawesome/free-solid-svg-icons"
-
-// Module
 import { getLocal } from "../modules/storages/local";
 import { isLogged } from "../modules/helpers/auth";
-
-// Component
 import modal from '../organisms/organisms.module.css'
 
 export default function TemplateSignOut({active}) {
     const keyToken = getLocal("token_key")
-    const [resMsgAll, setResMsgAll] = useState("")
 
     const getActive = (val, curr) => {
-        if(val == curr){
+        if(val === curr){
             return "active";
         } else {
             return "";
@@ -33,7 +24,7 @@ export default function TemplateSignOut({active}) {
                     Authorization: `Bearer ${keyToken}`
                 }
             })
-            if(response.status != 200){
+            if(response.status !== 200){
                 window.location.reload(false)
                 return response.data.message
             } else {
@@ -41,7 +32,7 @@ export default function TemplateSignOut({active}) {
                 window.location.href = '/'
             }
         } catch (error) {
-            setResMsgAll(error)
+            //
         }
     }
 

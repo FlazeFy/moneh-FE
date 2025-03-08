@@ -10,7 +10,7 @@ export default function FilterFlowType() {
         Swal.fire({ 
             icon: "success", 
             title: "Success", 
-            html: `Calendar item has filtered to show <span class='text-primary'>${val == 'all' ? 'all':`${cleanSlugToText(val)}'s category`}</span> item`
+            html: `Calendar item has filtered to show <span class='text-primary'>${val === 'all' ? 'all':`${cleanSlugToText(val)}'s category`}</span> item`
         }).then(() => {
             window.location.reload(false)
         })

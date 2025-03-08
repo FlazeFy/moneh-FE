@@ -1,15 +1,12 @@
-// Components
 import AtomsBreakLine from "../../atoms/atoms_breakline";
 import AtomsText from "../../atoms/atoms_text";
 import OrganismsFooter from "../../organisms/organisms_footer";
 import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetControlPanel from "./usecases/getControlPanel";
-
-// Usecases
 import GetDashboardSummary from "./usecases/getDashboardSummary";
 import GetTotalAmmountPerDateByType from "./usecases/getTotalAmmountPerDateByType";
 
-const Dashboard_Index = () => {    
+const DashboardIndex = () => {    
     return (
         <>
             <OrganismsNavbar active="dashboard"/>
@@ -34,4 +31,4 @@ const Dashboard_Index = () => {
     );
 }
 
-export default Dashboard_Index;
+export default DashboardIndex;

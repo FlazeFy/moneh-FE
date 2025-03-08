@@ -1,10 +1,7 @@
-"use client"
 import React from 'react'
 import { useState, useEffect } from "react"
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-
-// Modules
 import { getTodayDate } from '../../../modules/helpers/generator'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import FilterFlowType from './filter_flow_type'
@@ -22,22 +19,27 @@ export default function GetDailyCalendar({ctx}) {
 
     useEffect(() => {
         const keyType = getLocal("calendar_filter_flow_type_"+ctx)
+        const keyToken = getLocal("token_key")
 
         if(keyType === null){
             storeLocal("calendar_filter_flow_type_"+ctx, "all")
         }
 
-        if(keyType == 'all' || keyType == 'spending' || keyType == 'income'){
+        if(keyType === 'all' || keyType === 'spending' || keyType === 'income'){
             url = `http://127.0.0.1:1323/api/v1/flows/month_item/${month}/${year}/${keyType}`
         } else {
             let fixType = keyType
-            if(fixType != 'final_total'){
+            if(fixType !== 'final_total'){
                 fixType = fixType.replace('total_','')
             } 
             url = `http://127.0.0.1:1323/api/v1/flows/month_total/${month}/${year}/${fixType}`
         }
 
-        fetch(url)
+        fetch(url, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {
@@ -74,7 +76,7 @@ export default function GetDailyCalendar({ctx}) {
             items.forEach((el)=> {
                 event.push(
                     { 
-                        title: el['type'] == 'spending' ? '+ '+el['title'] : '- '+el['title'], 
+                        title: el['type'] === 'spending' ? '+ '+el['title'] : '- '+el['title'], 
                         date: el['context'] 
                     }
                 )

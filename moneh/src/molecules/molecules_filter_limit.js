@@ -10,7 +10,7 @@ export default function MoleculesFilterLimit({ctx, type}) {
     }
 
     function getCollection(type){ 
-        if(type == "table"){
+        if(type === "table"){
             return [
                 {
                     context: "15 Item/Page",
@@ -29,7 +29,7 @@ export default function MoleculesFilterLimit({ctx, type}) {
                     value: 100
                 },
             ]
-        } else if(type == "pie"){
+        } else if(type === "pie"){
             return [
                 {
                     context: "5 Item/Chart",
@@ -48,7 +48,7 @@ export default function MoleculesFilterLimit({ctx, type}) {
                     value: 8
                 },
             ]
-        } else if(type == "bar"){
+        } else if(type === "bar"){
             return [
                 {
                     context: "10 Item/Chart",

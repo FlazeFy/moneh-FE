@@ -1,11 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-
-// Component
 import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
-
-// Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import Swal from 'sweetalert2'
@@ -19,6 +15,8 @@ export default function GetTotalFlowAmountByType({ctx}) {
     const [dataStatus, setDataStatus] = useState(null)
     const filter_name = "Flows_Type"
     const keyLimit = sessionStorage.getItem(`Pie_limit_${filter_name}`)
+    const keyToken = getLocal("token_key")
+
     if(keyLimit == null){
         sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
     }
@@ -28,7 +26,11 @@ export default function GetTotalFlowAmountByType({ctx}) {
     },[])
 
     const fetchTotalFlowAmountByType = () => {
-        fetch(`http://127.0.0.1:1323/api/v1/stats/ammountflowtype/desc`)
+        fetch(`http://127.0.0.1:1323/api/v1/stats/ammountflowtype/desc`, {
+            headers: { 
+                'Authorization': `Bearer ${keyToken}`
+            }
+        })
         .then(res => {
             if(!res.ok){
                 throw new Error(`Something went wrong!`)

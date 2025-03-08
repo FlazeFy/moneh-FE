@@ -1,11 +1,7 @@
 import React, {  useState } from "react"
 import modal from './organisms.module.css'
 import Axios from "axios"
-
-// Modules
 import MoleculesDropDownDctDynamic from "../molecules/molecules_dropdown_dct_dynamic"
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 import AtomsBreakLine from "../atoms/atoms_breakline"
@@ -15,7 +11,6 @@ import Swal from "sweetalert2"
 import { datetimeLocal } from "../modules/helpers/converter"
 
 export default function OrganismsManageModal({builder, items, id, funDel, funPut, is_with_btn, onPostSuccess}) {
-    const [resMsgAll, setResMsgAll] = useState("")
     const [objectUpdate, setObjectUpdate] = useState([])
 
     // Services
@@ -38,7 +33,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
             })
 
             Swal.close()
-            if(response.data.status == 200){
+            if(response.data.status === 200){
                 Swal.fire({ 
                     icon: "success", 
                     title: "Success", 
@@ -59,7 +54,6 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                 title: "Oops...", 
                 text: "Something went wrong!" 
             })
-            setResMsgAll(error)
         }
     }
 
@@ -81,7 +75,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                         <div className="modal-body">
                             {
                                 builder.map((build, idx) => {
-                                    if(build['object_name'] != null && build['object_name'] != "period"){
+                                    if(build['object_name'] !== null && build['object_name'] !== "period"){
                                         if (build['type'] === 'text' || build['type'] === 'number' || build['type'] === 'range' || build['type'] === 'datetime') {
                                             return (
                                                 <div key={idx}>
@@ -97,8 +91,8 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                                         />
                                                     :
                                                         <input className='form-control mb-2' onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}} 
-                                                            defaultValue={build['type'] == 'datetime' ? datetimeLocal(items[build['object_name']])  : items[build['object_name']]}
-                                                            type={build['type'] == 'datetime' ? 'datetime-local' :build['type']} placeholder={build['placeholder']}
+                                                            defaultValue={build['type'] === 'datetime' ? datetimeLocal(items[build['object_name']])  : items[build['object_name']]}
+                                                            type={build['type'] === 'datetime' ? 'datetime-local' :build['type']} placeholder={build['placeholder']}
                                                         ></input>
                                                     }
                                                 </div>
@@ -127,7 +121,7 @@ export default function OrganismsManageModal({builder, items, id, funDel, funPut
                                         } else if (build['type'] === 'checkbox') {
                                             return (
                                                 <div className="form-check ms-3" key={idx}>
-                                                    <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] == 1 ? true : false}
+                                                    <input className='form-check-input mb-2' type={build['type']} checked={items[build['object_name']] === 1 ? true : false}
                                                         onChange={(e) => {setObjectUpdate({...objectUpdate, [build['object_name']]: e.target.value})}}></input>
                                                     <AtomsText text_type="form_label" body={build['column_name']}/>
                                                 </div>

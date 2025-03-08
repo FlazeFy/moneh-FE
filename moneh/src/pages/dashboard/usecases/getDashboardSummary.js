@@ -1,7 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import { commaThousandFormat } from '../../../modules/helpers/math';
-
 import { getLocal } from "../../../modules/storages/local";
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 import MoleculesCurrency from '../../../molecules/molecules_currency';
@@ -12,9 +10,14 @@ export default function GetDashboardSummary({ctx}) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
+    const keyToken = getLocal("token_key")
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:1323/api/v1/dashboard`)
+        fetch(`http://127.0.0.1:1323/api/v1/dashboard`, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {

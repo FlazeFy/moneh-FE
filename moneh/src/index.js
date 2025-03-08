@@ -19,18 +19,18 @@ import './design_tokens/modal.css';
 import './design_tokens/form.css';
 
 // Pages
-import Flow_Index from './pages/flow/index';
-import StatsFlow_Index from "./pages/stats_flow";
-import StatsOther_Index from "./pages/stats_other";
-import About_Index from "./pages/about";
-import Pocket_Index from "./pages/pocket";
-import StatsPocket_Index from "./pages/stats_pocket";
-import StatsWishlist_Index from "./pages/stats_wishlist";
-import Wishlist_Index from "./pages/wishlist";
-import Home_Index from "./pages/home";
-import Dashboard_Index from "./pages/dashboard";
-import Calendar_Index from "./pages/calendar";
-import Login_Index from "./pages/login";
+import FlowIndex from './pages/flow/index';
+import StatsFlowIndex from "./pages/stats_flow";
+import StatsOtherIndex from "./pages/stats_other";
+import AboutIndex from "./pages/about";
+import PocketIndex from "./pages/pocket";
+import StatsPocketIndex from "./pages/stats_pocket";
+import StatsWishlistIndex from "./pages/stats_wishlist";
+import WishlistIndex from "./pages/wishlist";
+import HomeIndex from "./pages/home";
+import DashboardIndex from "./pages/dashboard";
+import CalendarIndex from "./pages/calendar";
+import LoginIndex from "./pages/login";
 import { ToastContainer } from "react-toastify";
 
 export default function App() {
@@ -43,18 +43,18 @@ export default function App() {
       <ToastContainer />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home_Index />}></Route>
-          <Route path="/login" element={<Login_Index />}></Route>
-          <Route path="/calendar" element={<Calendar_Index />}></Route>
-          <Route path="/dashboard" element={<Dashboard_Index />}></Route>
-          <Route path="/flow" element={<Flow_Index />}></Route>
-          <Route path="/pocket" element={<Pocket_Index />}></Route>
-          <Route path="/wishlist" element={<Wishlist_Index />}></Route>
-          <Route path="/stats_flow" element={<StatsFlow_Index />}></Route>
-          <Route path="/stats_pocket" element={<StatsPocket_Index />}></Route>
-          <Route path="/stats_wishlist" element={<StatsWishlist_Index />}></Route>
-          <Route path="/stats_others" element={<StatsOther_Index />}></Route>
-          <Route path="/about" element={<About_Index />}></Route>
+          <Route path="/" element={<HomeIndex />}></Route>
+          <Route path="/login" element={<LoginIndex />}></Route>
+          <Route path="/calendar" element={<CalendarIndex />}></Route>
+          <Route path="/dashboard" element={<DashboardIndex />}></Route>
+          <Route path="/flow" element={<FlowIndex />}></Route>
+          <Route path="/pocket" element={<PocketIndex />}></Route>
+          <Route path="/wishlist" element={<WishlistIndex />}></Route>
+          <Route path="/stats_flow" element={<StatsFlowIndex />}></Route>
+          <Route path="/stats_pocket" element={<StatsPocketIndex />}></Route>
+          <Route path="/stats_wishlist" element={<StatsWishlistIndex />}></Route>
+          <Route path="/stats_others" element={<StatsOtherIndex />}></Route>
+          <Route path="/about" element={<AboutIndex />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

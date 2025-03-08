@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Axios from 'axios'
-
-// Components
 import AtomsBreakLine from "../../../atoms/atoms_breakline"
 import OrganismsForm from "../../../organisms/organisms_form"
 import AtomsText from "../../../atoms/atoms_text"
@@ -10,10 +8,6 @@ export default function GetFeedback({ctx}) {
     //Initial variable
     const [feedbackRate, setFeedbackRate] = useState(0)
     const [feedbackDesc, setFeedbackDesc] = useState("")
-
-    const [resMsgFeedbackRate, setResMsgFeedbackRate] = useState("")
-    const [resMsgFeedbackDesc, setResMsgFeedbackDesc] = useState("")
-    const [resMsgAll, setResMsgAll] = useState("")
 
     const builder = [
         {
@@ -27,7 +21,6 @@ export default function GetFeedback({ctx}) {
             handleChange: (event) => {
                 setFeedbackRate(event.target.value)
             },
-            errorMsg: resMsgFeedbackRate
         },
         {
             type: 'textarea',
@@ -41,7 +34,6 @@ export default function GetFeedback({ctx}) {
             handleChange: (event) => {
                 setFeedbackDesc(event.target.value)
             },
-            errorMsg: resMsgFeedbackDesc
         },
         {
             type: 'submit',
@@ -52,7 +44,6 @@ export default function GetFeedback({ctx}) {
             handleClick: (event) => {
                 handleSubmit(event)
             },
-            errorMsg: resMsgAll
         }
     ]
 
@@ -70,13 +61,13 @@ export default function GetFeedback({ctx}) {
             })
             window.location.reload(false)
 
-            if(response.data.status != 200){
+            if(response.data.status !== 200){
                 return response.data.message
             } else {
                 return ""
             }
         } catch (error) {
-            setResMsgAll(error)
+            //
         }
     }
 

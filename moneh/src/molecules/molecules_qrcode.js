@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import QRCode from 'qrcode'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQrcode, faXmark } from '@fortawesome/free-solid-svg-icons'
 import AtomsText from '../atoms/atoms_text'
 
 export default function MoleculesQrCode(props) {
@@ -41,19 +39,17 @@ export default function MoleculesQrCode(props) {
         )
     } else {
         return (
-            <>
-                <div className="text-center p-4">
-                    <img src={qrCodeUrl} style={{width:'250px'}}/>
-                    <div className='text-start mt-4'>
-                        <AtomsText text_type="mini_sub_heading" body="How to Connect :"/>
-                        <ol>
-                            <li>Open your <b>Telegram</b> Apps</li>
-                            <li>Search and chat with Bot <b>@MonehAppBot</b> or click this link <a href='https://t.me/MonehAppBot'>t.me/MonehAppBot</a></li>
-                            <li>Capture and Send this QR to chat box</li>
-                        </ol>
-                    </div>
+            <div className="text-center p-4">
+                <img src={qrCodeUrl} style={{width:'250px'}}/>
+                <div className='text-start mt-4'>
+                    <AtomsText text_type="mini_sub_heading" body="How to Connect :"/>
+                    <ol>
+                        <li>Open your <b>Telegram</b> Apps</li>
+                        <li>Search and chat with Bot <b>@MonehAppBot</b> or click this link <a href='https://t.me/MonehAppBot'>t.me/MonehAppBot</a></li>
+                        <li>Capture and Send this QR to chat box</li>
+                    </ol>
                 </div>
-            </>
+            </div>
         )
     }
 }

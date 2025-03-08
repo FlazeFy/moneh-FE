@@ -1,7 +1,5 @@
 import React from 'react'
 import Axios from "axios"
-import $ from 'jquery';
-
 import MoleculesFilterOrder from './molecules_filter_order'
 import { parseJSON } from '../modules/helpers/decode'
 import { getCleanTitleFromCtx, removeHTMLTags, ucFirstChar } from '../modules/helpers/converter'
@@ -16,18 +14,18 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
         if(Array.isArray(ext)){
             let start, end
             ext.forEach(el => {
-                if(el.pos == 'start'){
+                if(el.pos === 'start'){
                     start = el.desc
-                } else if(el.pos == 'end'){
+                } else if(el.pos === 'end'){
                     end = el.desc
                 }
             });
             return `${start}${val}${end}`
         } else {
-            if(ext != null){
-                if(ext['pos'] == "start"){
+            if(ext !== null){
+                if(ext['pos'] === "start"){
                     return `${ext['desc']}${val}`
-                } else if(ext['pos'] == "end") {
+                } else if(ext['pos'] === "end") {
                     return `${val}${ext['desc']}`
                 } 
             } else {
@@ -53,8 +51,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                     const response = await Axios.delete(url)
 
                     Swal.close()
-                    if (response.data.status == 200) {
-                        // $(`#manageModal${id}`).modal({ backdrop: 'static' }).modal('hide')
+                    if (response.data.status === 200) {
                         Swal.fire({ 
                             icon: "success", 
                             title: "Success", 
@@ -109,13 +106,13 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                     <tr key={idx}>
                                     {
                                         builder.map((build, jdx) => {
-                                            if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
-                                                if(build['type'] == "html"){
+                                            if(item[build['column_name']] !== 'Manage' && item[build['object_name']] !== null){
+                                                if(build['type'] === "html"){
                                                     return (
                                                         <th key={`tbody_${idx}_${jdx}`}>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
                                                     );
-                                                } else if(build['type'] == "tag"){
-                                                    if(item[build['object_name']] != ""){
+                                                } else if(build['type'] === "tag"){
+                                                    if(item[build['object_name']] !== ""){
                                                         const tags = parseJSON(item[build['object_name']])
                                                         return (
                                                             <th className='p-3' key={`tbody_${idx}_${jdx}`}>
@@ -132,7 +129,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                     } else {
                                                         return <th className='p-3' key={`tbody_${idx}_${jdx}`}>-</th>
                                                     }
-                                                } else if(build['type'] == "image"){
+                                                } else if(build['type'] === "image"){
                                                     return (
                                                         <th className='p-3' key={`tbody_${idx}_${jdx}`}>
                                                             <img className='img img-fluid img-profile' style={{width:"75px", height:"75px", borderWidth:"2.5px"}} src={item[build['object_name']]}/>
@@ -140,11 +137,11 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                     );
                                                 } else {
                                                     let val = item[build['object_name']]
-                                                    if(build['formatter'] == 'currency'){
+                                                    if(build['formatter'] === 'currency'){
                                                         val = <MoleculesCurrency val={val}/>
                                                     }
 
-                                                    if(idx == 0){
+                                                    if(idx === 0){
                                                         return (
                                                             <th scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</th>
                                                         );

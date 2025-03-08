@@ -1,13 +1,8 @@
-// Modules CSS
 import style from './organisms.module.css'
-
-// Components
 import AtomsBreakLine from '../atoms/atoms_breakline'
-
-//Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCompress } from "@fortawesome/free-solid-svg-icons"
-import { numberToPrice, ucFirstWord } from '../modules/helpers/converter'
+import { ucFirstWord } from '../modules/helpers/converter'
 
 export default function OrganismsDashboardBox({ctx, value, subvalue, ref}) {
     return (

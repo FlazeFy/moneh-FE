@@ -1,11 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import AtomsText from '../../../atoms/atoms_text'
-
-// Component
-import { getCleanTitleFromCtx, numberToPrice, ucFirstWord } from '../../../modules/helpers/converter'
-
-// Modules
+import { getCleanTitleFromCtx, ucFirstWord } from '../../../modules/helpers/converter'
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import MoleculesCurrency from '../../../molecules/molecules_currency'
@@ -15,9 +11,18 @@ export default function GetSummaryWishlist({ctx}) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
+    const keyToken = getLocal("token_key")
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:1323/api/v1/wishlists/summary`)
+        fetchSummary()
+    },[])
+
+    const fetchSummary = () => {
+        fetch(`http://127.0.0.1:1323/api/v1/wishlists/summary`, {
+            headers: {
+                Authorization: `Bearer ${keyToken}`
+            }
+        })
         .then(res => res.json())
             .then(
             (result) => {
@@ -34,7 +39,7 @@ export default function GetSummaryWishlist({ctx}) {
                 }
             }
         )
-    },[])
+    }
 
     if (error) {
         return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
