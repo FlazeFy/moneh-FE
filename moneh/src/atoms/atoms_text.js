@@ -4,7 +4,7 @@ import style from './atoms.module.css'
 
 export default function AtomsText(props){
     if(props.text_type === 'main_heading'){
-        return <h2 className='my-4 text-primary' style={props.style}>{props.body}</h2>
+        return <h1 className={props.class}>{props.body}</h1>
     } else if(props.text_type === 'sub_heading'){
         return <h4 className='my-2 text-primary'>{props.body}</h4>
     } else if(props.text_type === 'mini_sub_heading'){

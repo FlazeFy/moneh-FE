@@ -4,7 +4,7 @@ import AtomsBreakLine from "../../../atoms/atoms_breakline"
 import OrganismsForm from "../../../organisms/organisms_form"
 import AtomsText from "../../../atoms/atoms_text"
 
-export default function GetFeedback({ctx}) {
+export default function PostFeedback({ctx}) {
     //Initial variable
     const [feedbackRate, setFeedbackRate] = useState(0)
     const [feedbackDesc, setFeedbackDesc] = useState("")
@@ -74,14 +74,14 @@ export default function GetFeedback({ctx}) {
     return (
         <>
             <AtomsBreakLine length={3}/>
-            <div className='mt-4 text-center row' id={ctx}>
-                <div className='col-lgl-6 col-md-6 col-sm-12'>
+            <div className='mt-4 text-center row mx-auto' id={ctx} style={{maxWidth:"1080px"}}>
+                <div className='col-lgl-6 col-md-6 col-sm-12 col-12 px-3 d-flex flex-column justify-content-center'>
                     <AtomsBreakLine length={5}/>
-                    <AtomsText text_type="main_heading" body="SEND FEEDBACK" style={{fontSize:"var(--textXJumbo)"}}/>
-                    <AtomsBreakLine length={1}/>
-                    <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>This app is still at development, so your feedback will be very helpfull</h6>
+                    <AtomsText text_type="main_heading" body="SEND FEEDBACK" class="text-primary"/>
+                    <hr></hr>
+                    <h6 style={{fontSize:"var(--textJumbo)"}}>This app is still at development, so your feedback will be very helpfull</h6>
                 </div> 
-                <div className='col-lgl-6 col-md-6 col-sm-12'>
+                <div className='col-lgl-6 col-md-6 col-sm-12 col-12'>
                     <AtomsBreakLine length={3}/>
                     <div className='container-form'>
                         <OrganismsForm type={"single-line"} props={builder} />

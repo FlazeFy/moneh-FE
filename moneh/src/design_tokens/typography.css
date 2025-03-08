@@ -9,3 +9,15 @@
     padding: var(--spaceXLG);
     margin: var(--spaceXLG) 0;
 }
+
+h1 {    
+    font-size: calc(var(--spaceJumbo)*1.5) !important;
+    font-weight: 800 !important;
+}
+h2 {
+    font-size: var(--spaceJumbo) !important;
+    font-weight: 700 !important;
+}
+h1, h2 {
+    font-family: 'Lexend' !important;
+}

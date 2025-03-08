@@ -1,22 +1,39 @@
 .btn {
     border: none !important;
 }
-.btn-danger {
-    background: var(--warningBG) !important;
+.btn-tag, .btn-info {
+    padding: var(--spaceXSM) var(--spaceSM);
+    margin-right: var(--spaceXXSM);
+    border-radius: var(--roundedJumbo);
+    font-weight: 500 !important;
 }
-.btn-primary {
-    background: var(--primaryColor) !important;
+.btn-primary, .btn-link {
+    padding: var(--spaceXMD) var(--spaceXLG);
+    margin-right: var(--spaceXXSM);
+    border-radius: var(--roundedJumbo);
+    font-weight: 600 !important;
+    font-size: var(--textXLG);
 }
-.btn-info {
-    background: var(--infoBG) !important;
+.btn-primary:hover, .btn-link:hover {
+    transform: scale(1.05) !important;
 }
-.btn-success {
-    background: var(--successBG) !important;
+.btn-primary, .btn-link, .btn-tag, .btn-info {
+    text-decoration: none;
+    color: var(--whiteColor);
+    cursor: pointer;
 }
 .btn-tag {
-    background: var(--primaryColor) !important;
-    border-radius: var(--roundedMD);
-    margin-right: var(--spaceXSM);
+    background: var(--infoBG);
+}
+.btn-info {
+    background: var(--infoBG);
+}
+.btn-primary {
+    background: var(--primaryColor);
+}
+.btn-link {
+    color: var(--primaryColor);
+    background: var(--whiteColor);
 }
 .dropdown-toggle {
     font-size: var(--textLG) !important;

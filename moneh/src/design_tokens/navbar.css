@@ -3,6 +3,11 @@
     padding: 0 !important;
     margin: 0 !important;
 }
+.navbar {
+    position: sticky !important;
+    top: 0;
+    z-index: 999 !important;
+}
 .navbar ul, .footer {
     margin: 0;
     padding: var(--spaceMD);
@@ -10,10 +15,9 @@
     list-style: none;
     align-items: center;
     margin-inline: auto;
-    border: 2px solid var(--primaryColor) !important;
     border-top: none !important;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--darkColor) !important;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    background: var(--primaryColor) !important;
 }
 .navbar ul {
     border-radius: 0 0 var(--roundedJumbo) var(--roundedJumbo);
@@ -32,11 +36,10 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spaceLG) var(--spaceXLG);
-    color: var(--primaryColor);
+    color: var(--whiteColor);
     white-space: nowrap;
     transition: 0.3s;
     font-size: 12px;
-    font-family: "Raleway", sans-serif;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;

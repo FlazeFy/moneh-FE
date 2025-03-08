@@ -10,20 +10,3 @@ label.error{
     color: var(--warningBG);
     margin: 0;
 }
-
-.btn_tag, .btn_info, .btn_primary {
-    text-decoration: none;
-    color: var(--whiteColor);
-    padding: var(--spaceXSM) var(--spaceSM);
-    margin-right: var(--spaceXXSM);
-    border-radius: var(--roundedMD);
-}
-.btn_tag {
-    background: var(--infoBG);
-}
-.btn_info {
-    background: var(--infoBG);
-}
-.btn_primary {
-    background: var(--primaryColor);
-}

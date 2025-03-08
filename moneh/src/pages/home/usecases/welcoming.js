@@ -1,21 +1,19 @@
 import React from 'react'
 import AtomsBreakLine from '../../../atoms/atoms_breakline'
+import AtomsButton from '../../../atoms/atoms_button'
 import AtomsText from '../../../atoms/atoms_text'
 
-export default function GetWelcoming({ctx}) {
+export default function GetWelcoming() {
     return (
-        <div className='mt-4 text-center row' id={ctx}>
-            <div className='col-lgl-6 col-md-6 col-sm-12 py-5'>
-                <AtomsBreakLine length={2}/>
-                <AtomsText text_type="main_heading" body="WELCOME, TO" style={{fontSize:"var(--textXJumbo)"}}/>
-                <AtomsText text_type="main_heading" body="MONEH" style={{fontSize:"var(--textXJumbo)"}}/>
-                <h5 style={{fontSize:"var(--textJumbo)"}} className='text-white'>Manage your money, analyze it, and save it!</h5>
-                <AtomsBreakLine length={2}/>
-                <button className='btn btn-primary rounded-pill py-3 px-5 fw-bold' style={{fontSize:"var(--textXLG)"}}>Show Me How It Works!</button>
-            </div> 
-            <div className='col-lgl-6 col-md-6 col-sm-12'>
-                <img src="http://localhost:3000/assets/moneh_illust.png" className="img img-fluid"></img>
-            </div> 
+        <div className='text-center mx-auto' style={{maxWidth:"1080px"}}>
+            <AtomsBreakLine length={5}/>
+            <img src="http://localhost:3000/assets/moneh_illust.png" className="img img-fluid" style={{maxWidth:"300px"}}></img>
+            <AtomsBreakLine length={2}/>
+            <AtomsText class='text-white' text_type="main_heading" body={<>Manage your money, analyze it,<br></br> and save it!</>}/>
+            <hr></hr>
+            <AtomsText class='text-white' text_type="main_content" body={<p>Moneh helps you track, analyze, and manage your daily or monthly spending and income. Save your wishlist to align with your financial goals, ensuring your money and time are well spent. Enjoy a superior experience with insightful charts that go beyond regular expense tracking.</p>}/>
+            <AtomsBreakLine length={1}/>
+            <AtomsButton button_type="btn_link" title="Show Me How It Works!"/>
         </div>
     )
 }
