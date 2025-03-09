@@ -5,7 +5,7 @@ import { getLocal } from "../modules/storages/local";
 import { isLogged } from "../modules/helpers/auth";
 import modal from '../organisms/organisms.module.css'
 
-export default function TemplateSignOut({active}) {
+export default function TemplateSignOut(props) {
     const keyToken = getLocal("token_key")
 
     const getActive = (val, curr) => {
@@ -41,8 +41,8 @@ export default function TemplateSignOut({active}) {
             {
                 isLogged(
                     <>
-                        <a className={"nav-link bg-danger text-white" + getActive(active,"login")} data-bs-toggle="modal" data-bs-target={"#signoutModal"}>
-                            <FontAwesomeIcon icon={faXmark} size="2xl"/>
+                        <a className={"nav-link " + getActive(props.active,"login")} data-bs-toggle="modal" data-bs-target={"#signoutModal"}>
+                            <span className='icon-box bg-danger'><FontAwesomeIcon icon={faXmark} size="xl"/></span> {props.is_side_bar && <>Sign Out</>}
                         </a>
                         <div className="modal fade" id={"signoutModal"} aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
@@ -60,7 +60,7 @@ export default function TemplateSignOut({active}) {
                         </div>
                     </>
                     ,
-                    <a className={"nav-link bg-success text-white" +  getActive(active,"login")} href="/login">
+                    <a className={"nav-link bg-success text-white" +  getActive(props.active,"login")} href="/login">
                         <FontAwesomeIcon icon={faRightFromBracket} size="xl"/>
                     </a>
                 )

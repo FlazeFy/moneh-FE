@@ -35,13 +35,13 @@ export default function GetTotalUser(props) {
         )
     } else {
         return (
-            <div className='text-center mx-auto' style={{maxWidth:"1080px"}}>
+            <div className='text-center mx-auto' style={{maxWidth:"1080px"}} id="visualization">
                 <AtomsBreakLine length={5}/>
-                <AtomsText class='text-white' text_type="main_heading" body={<>About <b className='text-primary'>{item.total_user}</b> User Use Ours Apps</>}/>
+                <AtomsText text_type="main_heading" body={<>About <b className='text-primary'>{item.total_user}</b> User Use Ours Apps</>}/>
                 <hr></hr>
-                <AtomsText class='text-white' text_type="sub_heading" body={<p className='text-white'>We've managed about <b className='text-primary'>{item.total_flows}</b> money flow, <b className='text-primary'>{item.total_pockets}</b> wallet, and <b className='text-primary'>{item.total_wishlist}</b> wishlist stored in our apps</p>}/>
+                <AtomsText text_type="sub_heading" body={<p className='text-dark'>We've managed about <b className='text-primary'>{item.total_flows}</b> money flow, <b className='text-primary'>{item.total_pockets}</b> wallet, and <b className='text-primary'>{item.total_wishlist}</b> wishlist stored in our apps</p>}/>
                 <AtomsBreakLine length={1}/>
-                <AtomsText class='text-white' text_type="main_content" body={<p>Wanna see Moneh Chart Playground?</p>}/>
+                <AtomsText text_type="main_content" body={<p className='text-dark'>Wanna see Moneh Chart Playground?</p>}/>
                 <AtomsBreakLine length={1}/>
                 <AtomsButton button_type="btn_link" title="See Our Data Visualization"/>
             </div>
