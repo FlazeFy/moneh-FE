@@ -83,7 +83,7 @@ export default function PostFeedback({ctx}) {
                 </div> 
                 <div className='col-lgl-6 col-md-6 col-sm-12 col-12'>
                     <AtomsBreakLine length={3}/>
-                    <div className='container-form'>
+                    <div className='container'>
                         <OrganismsForm type={"single-line"} props={builder} />
                     </div>
                 </div> 

@@ -33,7 +33,6 @@ import './design_tokens/form.css';
 // Pages
 import FlowIndex from './pages/flow/index';
 import StatsFlowIndex from "./pages/stats_flow";
-import StatsOtherIndex from "./pages/stats_other";
 import AboutIndex from "./pages/about";
 import PocketIndex from "./pages/pocket";
 import StatsPocketIndex from "./pages/stats_pocket";
@@ -65,7 +64,6 @@ export default function App() {
           <Route path="/stats_flow" element={<StatsFlowIndex />}></Route>
           <Route path="/stats_pocket" element={<StatsPocketIndex />}></Route>
           <Route path="/stats_wishlist" element={<StatsWishlistIndex />}></Route>
-          <Route path="/stats_others" element={<StatsOtherIndex />}></Route>
           <Route path="/about" element={<AboutIndex />}></Route>
         </Routes>
       </BrowserRouter>

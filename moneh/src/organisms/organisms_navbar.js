@@ -25,7 +25,6 @@ export default function OrganismsNavbar({active, subactive}) {
                         <AtomsButton active={subactive} state="stats_flow" url="stats_flow" title="Stats Flows" button_type="sub_nav"/>
                         <AtomsButton active={subactive} state="stats_pocket" url="stats_pocket" title="Stats Pocket" button_type="sub_nav"/>
                         <AtomsButton active={subactive} state="stats_wishlist" url="stats_wishlist" title="Stats Wishlist" button_type="sub_nav"/>
-                        <AtomsButton active={subactive} state="stats_others" url="stats_others" title="Stats Others" button_type="sub_nav"/>
                     </div>
                 </li>
                 <li><AtomsButton active={active} state="about" url="about" title="About" button_type="main_nav"/></li>

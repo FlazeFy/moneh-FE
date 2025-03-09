@@ -11,7 +11,7 @@ export default function GetMultiEnv({ctx}) {
                     <AtomsText text_type="main_heading" body="We're Available At Any Device" style={{fontSize:"var(--textXJumbo)"}}/>
                     <hr></hr>
                     <AtomsBreakLine length={1}/>
-                    <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>Moneh is available for development version, mobile version, apps version, and Telegram Bot</h6>
+                    <h6 className="text-white" style={{fontSize:"var(--textJumbo)"}}>Moneh is available for web version, mobile version, apps version, and Telegram Bot</h6>
                 </div> 
                 <div className='col-lgl-6 col-md-6 col-sm-12 d-flex flex-column justify-content-center'>
                     <AtomsBreakLine length={6}/>

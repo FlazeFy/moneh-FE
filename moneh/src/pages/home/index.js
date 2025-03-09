@@ -4,6 +4,7 @@ import OrganismsNavbar from "../../organisms/organisms_navbar";
 import GetFeature from "./usecases/feature";
 import PostFeedback from "./usecases/feedback";
 import GetMultiEnv from "./usecases/multi_env";
+import GetTotalUser from "./usecases/total_user";
 import GetWelcoming from "./usecases/welcoming";
 
 const HomeIndex = () => {
@@ -22,6 +23,7 @@ const HomeIndex = () => {
                 <div className="bg-third-landing">
                     <AtomsBreakLine length={2}/>
                     <GetMultiEnv/>
+                    <GetTotalUser ctx="Summary Apps"/>
                 </div>
                 <div className="bg-fourth-landing">
                     <PostFeedback ctx="feedback"/>

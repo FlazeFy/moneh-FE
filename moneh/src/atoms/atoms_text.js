@@ -6,7 +6,7 @@ export default function AtomsText(props){
     if(props.text_type === 'main_heading'){
         return <h1 className={props.class}>{props.body}</h1>
     } else if(props.text_type === 'sub_heading'){
-        return <h4 className='my-2 text-primary'>{props.body}</h4>
+        return <h2 className='my-2 text-primary'>{props.body}</h2>
     } else if(props.text_type === 'mini_sub_heading'){
         return <h5 className="mb-2 text-primary">{props.body}</h5>
     } else if(props.text_type === 'main_content'){

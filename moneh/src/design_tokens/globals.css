@@ -38,23 +38,6 @@
   --tcolMinJumbo : 240px;
   --tcolMinHuge : 360px;
 
-  /* Color Pallete */
-  /* --primaryLightBG : #DEF8D6;
-  --successBG : #3D9B52;
-  --successDarkBG : #009B56;
-  --warningBG : #FF0063;
-  --warningDarkBG : #c6044e;
-  --infoBG : #006CD0;
-  --infoLightBG : #2e3439;
-  --hoverBG : #F2F2F2;
-
-  --primaryColor : #f9aa0c;
-  --blackColor : #212121;
-  --darkColor : #5B5B5B;
-  --whiteColor : #FFFFFF;
-  --greyColor : #C3C3C3;
-  --shadowColor : #808080; */
-
   --primaryLightBG : #a698cd;
   --successBG : #009b77;
   --successDarkBG : #68baa6;
@@ -200,10 +183,18 @@ a {
 .bg-fourth-landing {
   background: var(--shadowColor) !important;
   height: 280vh;
-  top: 240vh;
+  top: 280vh;
   z-index: 7 !important;
 }
 
 .image-custom {
   border-radius: var(--roundedJumbo);
+}
+
+.container {
+  background: var(--primaryColor) !important;
+  border-radius: var(--roundedJumbo) !important;
+  padding: var(--spaceJumbo) !important;
+  border: var(--spaceMini) solid var(--whiteColor) !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

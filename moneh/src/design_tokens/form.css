@@ -10,12 +10,6 @@
     border: 1px solid var(--whiteColor);
     border-radius: var(--roundedSM) !important;
 }
-.container-form {
-    background: var(--blackColor);
-    border-radius: var(--roundedLG);
-    padding: var(--spaceLG);
-    border: 2px solid var(--primaryColor);
-}
 .form-select, .form-floating > .form-select ~ label::after {
     background: var(--blackColor) !important;
     color: var(--whiteColor) !important;
