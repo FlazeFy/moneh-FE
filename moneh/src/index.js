@@ -44,6 +44,7 @@ import DashboardIndex from "./pages/dashboard";
 import CalendarIndex from "./pages/calendar";
 import LoginIndex from "./pages/login";
 import { ToastContainer } from "react-toastify";
+import ProfileIndex from "./pages/profile";
 
 export default function App() {
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="/stats_pocket" element={<StatsPocketIndex />}></Route>
           <Route path="/stats_wishlist" element={<StatsWishlistIndex />}></Route>
           <Route path="/about" element={<AboutIndex />}></Route>
+          <Route path="/profile" element={<ProfileIndex />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -52,6 +52,7 @@ export default function OrganismsForm({type, props}) {
                                                     onChange={elmt.handleChange}
                                                     type={elmt.is_obsecure === true ? 'password' : elmt.type}
                                                     maxLength={elmt.max}
+                                                    defaultValue={elmt.defaultValue ?? ''}
                                                 />
                                         }
                                     </div>
