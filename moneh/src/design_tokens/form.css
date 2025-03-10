@@ -4,7 +4,7 @@
     margin-bottom: var(--spaceMD) !important;
     color: var(--whiteColor);
 }
-.form-control {
+.form-control, .form-select {
     background: transparent !important;
     border: 1.5px solid var(--darkColor) !important;
     margin-bottom: var(--spaceXMD);
@@ -12,8 +12,8 @@
     padding: var(--spaceXMD);
 }
 .form-select, .form-floating > .form-select ~ label::after {
-    background: var(--blackColor) !important;
-    color: var(--whiteColor) !important;
+    background: transparent !important;
+    color: var(--darkColor) !important;
 }
 .form-floating label {
     color: var(--whiteColor) !important;

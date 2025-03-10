@@ -20,5 +20,7 @@ export default function AtomsButton(props){
         return <a className='btn-primary' onClick={props.onclick} title={props.title}>{props.title}</a>
     } else if(props.button_type === 'btn_link'){
         return <a className='btn-link' onClick={props.onclick} title={props.title}>{props.title}</a>
+    } else if(props.button_type === 'btn_danger'){
+        return <a className='btn-danger' onClick={props.onclick} title={props.title}>{props.title}</a>
     }
 }

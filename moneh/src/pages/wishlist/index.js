@@ -18,7 +18,7 @@ const WishlistIndex = () => {
                         <PostWishlist ctx="post_wishlist"/>
                         <OrganismsManageDctModal cls="ms-2" ctx="wishlists_type" fetchUrl="http://127.0.0.1:1323/api/v1/dct/wishlists_type?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/"/>
                         <GetSummaryWishlist ctx="summary"/>
-                        <GetAllWishlist ctx="get_all_wishlist"/>
+                        <GetAllWishlist ctx="all_wishlist"/>
                         <AtomsBreakLine length={1}/>
                         <OrganismsFooter/>
                     </div>

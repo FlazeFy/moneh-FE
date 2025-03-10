@@ -16,14 +16,16 @@ const DashboardIndex = () => {
                 <div className='content-grid'>
                     <div style={{minHeight:"100vh"}}>
                         <GetControlPanel/>
+                        <AtomsBreakLine length={1}/>
                         <GetDashboardSummary ctx="get_dashboard_summary"/>
                         <div className="row mt-4">
-                            <div className="col-lg-6 col-md-6 col-sm-12">
-                                <AtomsBreakLine length={2}/>
-                                <AtomsText text_type="main_heading" body={"Total Ammount Per Date By Type"}/>
-                                <GetTotalAmmountPerDateByType ctx="Total Ammount Per Date By Type"/>
+                            <div className="col-lg-9 col-md-10 col-sm-12">
+                                <div className="container">
+                                    <AtomsText text_type="sub_heading" body={"Total Ammount Per Date By Type"}/>
+                                    <GetTotalAmmountPerDateByType ctx="Total Ammount Per Date By Type"/>
+                                </div>
                             </div>
-                            <div className="col-lg-6 col-md-6 col-sm-12">
+                            <div className="col-lg-3 col-md-2 col-sm-12">
 
                             </div>
                         </div>

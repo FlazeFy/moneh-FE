@@ -44,6 +44,7 @@
   --dangerBG : #ff5791;
   --warningBG : #ff8b68;
   --warningDarkBG : #ffc455;
+  --warningLightBG : #fceddb;
   --infoBG : #0074f6;
   --infoLightBG : #0087f0;
   --hoverBG : #F2F2F2;
@@ -147,7 +148,7 @@ body {
   background: #fcdbf5;
 }
 .bg-warning-light {
-  background: #fceddb;
+  background: var(--warningLightBG);
 }
 .bg-success-light {
   background: #dbfce5;

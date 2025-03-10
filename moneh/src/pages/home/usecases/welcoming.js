@@ -11,7 +11,7 @@ export default function GetWelcoming() {
             <AtomsBreakLine length={2}/>
             <AtomsText class='text-white' text_type="main_heading" body={<>Manage your money, analyze it,<br></br> and save it!</>}/>
             <hr></hr>
-            <AtomsText class='text-white' text_type="main_content" body={<p>Moneh helps you track, analyze, and manage your daily or monthly spending and income. Save your wishlist to align with your financial goals, ensuring your money and time are well spent. Enjoy a superior experience with insightful charts that go beyond regular expense tracking.</p>}/>
+            <AtomsText text_type="main_content" body={<p className='text-white'>Moneh helps you track, analyze, and manage your daily or monthly spending and income. Save your wishlist to align with your financial goals, ensuring your money and time are well spent. Enjoy a superior experience with insightful charts that go beyond regular expense tracking.</p>}/>
             <AtomsBreakLine length={1}/>
             <AtomsButton button_type="btn_link" title="Show Me How It Works!"/>
         </div>

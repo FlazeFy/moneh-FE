@@ -19,7 +19,8 @@ export default function FilterFlowType() {
     const selectedConsumeType = getLocal("calendar_filter_flow_type_all_flow")
 
     return (
-        <div className="form-floating mb-3 ms-3">
+        <div className='bg-danger-light py-3 px-4' style={{borderRadius:"var(--roundedJumbo)"}}>
+            <AtomsText text_type="mini_sub_heading" body="Calendar Type"/>
             <select className="form-select" id="floatingSelect" style={{minWidth:"150px"}} onChange={(e) => toogle(e.target.value)}>
                 <option value="all" selected={selectedConsumeType === 'all' ? true : false}>All</option>
                 <option value="spending" selected={selectedConsumeType === 'spending' ? true : false}>Spending</option>
@@ -28,7 +29,6 @@ export default function FilterFlowType() {
                 <option value="total_income" selected={selectedConsumeType === 'total_income' ? true : false}>Total Income</option>
                 <option value="final_total" selected={selectedConsumeType === 'final_total' ? true : false}>Final Total</option>
             </select>
-            <AtomsText text_type="form_label" body="Filter By Type"/>
         </div>
     )
 }

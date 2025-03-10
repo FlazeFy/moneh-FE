@@ -124,9 +124,9 @@ export default function PostPocket({ctx,onPostSuccess}) {
             <div className="modal fade" id={"addModal"+ctx} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header d-flex justify-content-between">
                             <AtomsText text_type="sub_heading" body={getCleanTitleFromCtx(ctx)}/>
-                            <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
                             <OrganismsForm type={"single-line"} props={builder} />

@@ -48,6 +48,25 @@
     color: var(--primaryColor);
     background: var(--whiteColor);
 }
+.btn-custom-icon {
+    width: 100%;
+    padding: var(--spaceLG);
+    background: var(--warningLightBG);
+    border-radius: var(--roundedJumbo);
+    display: flex !important;
+    justify-content: start !important;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn-custom-icon:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-custom-icon img {
+    width: 100px;
+}
+
 .dropdown-toggle {
     font-size: var(--textLG) !important;
     border-radius: var(--roundedMD) !important;

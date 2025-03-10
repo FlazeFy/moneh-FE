@@ -54,7 +54,6 @@ export default function OrganismsForm({type, props}) {
                                                     maxLength={elmt.max}
                                                 />
                                         }
-                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'textarea') {
@@ -62,7 +61,6 @@ export default function OrganismsForm({type, props}) {
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                         <AtomsText text_type="form_label" body={elmt.label}/>
                                         <textarea className={elmt.class + " w-100"} rows={elmt.line} onChange={elmt.handleChange}></textarea>
-                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'upload') {
@@ -71,7 +69,6 @@ export default function OrganismsForm({type, props}) {
                                         <AtomsText text_type="form_label" body={elmt.label}/>
                                         <AtomsBreakLine length={2}/>
                                         <input className="form-control" type="file" onChange={elmt.handleChange} /> 
-                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'select') {
@@ -79,7 +76,6 @@ export default function OrganismsForm({type, props}) {
                                     <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                         <AtomsText text_type="form_label" body={elmt.label}/>
                                         <MoleculesDropDownDctDynamic url={elmt.url} elmt={elmt} ctx="dropdown"/>
-                                        <AtomsText text_type="form_error" body={elmt.errorMsg}/>
                                     </div>
                                 )
                             } else if (elmt.type === 'checkbox') {

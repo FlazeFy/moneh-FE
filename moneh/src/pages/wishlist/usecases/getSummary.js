@@ -4,6 +4,7 @@ import AtomsText from '../../../atoms/atoms_text'
 import { getCleanTitleFromCtx, ucFirstWord } from '../../../modules/helpers/converter'
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesButtonCustomIcon from '../../../molecules/molecules_button_custom_icon'
 import MoleculesCurrency from '../../../molecules/molecules_currency'
 import MoleculesSummaryBox from '../../../molecules/molecules_summary_box'
 
@@ -76,6 +77,9 @@ export default function GetSummaryWishlist({ctx}) {
                                     </div>
                                     <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
                                         <MoleculesSummaryBox title="Total Ammount" value={<MoleculesCurrency val={val['total_ammount']}/>}/>
+                                    </div>
+                                    <div className='col-lgl-4 col-md-4 col-sm-12'>
+                                        <MoleculesButtonCustomIcon title="Wishlist" content="See Stats about your wishlist" img_url={'/assets/stats2.png'} url="/stats_wishlist"/>
                                     </div>
                                 </>
                             );

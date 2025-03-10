@@ -4,7 +4,6 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { getTodayDate } from '../../../modules/helpers/generator'
 import { getLocal, storeLocal } from '../../../modules/storages/local'
-import FilterFlowType from './filter_flow_type'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetDailyCalendar({ctx}) {
@@ -84,17 +83,12 @@ export default function GetDailyCalendar({ctx}) {
         }
 
         return (
-            <div>
-                <div className="d-flex justify-content-start">
-                    <FilterFlowType/>
-                </div>
-                <FullCalendar
-                    plugins={[ dayGridPlugin ]}
-                    initialView="dayGridMonth"
-                    events={event}
-                    datesSet={handleMonthChange}
-                />
-            </div>
+            <FullCalendar
+                plugins={[ dayGridPlugin ]}
+                initialView="dayGridMonth"
+                events={event}
+                datesSet={handleMonthChange}
+            />
         )
     }
 }
