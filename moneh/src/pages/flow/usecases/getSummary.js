@@ -51,7 +51,7 @@ export default function GetSummary({ctx,shouldFetch}) {
         )
     } else {
         return (
-            <> 
+            <div className='container'>
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 {
                     items.map((val, idx) => {
@@ -59,24 +59,21 @@ export default function GetSummary({ctx,shouldFetch}) {
                             <div className='row text-center' key={idx}>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
                                     <AtomsText text_type="sub_heading" body="Average"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['average']}/>}</h5>
-                                    <hr className='text-white'></hr>
+                                    <AtomsText text_type="mini_sub_heading" body={<MoleculesCurrency val={val['average']}/>}/>
                                 </div>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
                                     <AtomsText text_type="sub_heading" body="Total Item"/>
-                                    <h5 className='text-white'>{val['total_item']}</h5>
-                                    <hr className='text-white'></hr>
+                                    <AtomsText text_type="mini_sub_heading" body={<MoleculesCurrency val={val['total_item']}/>}/>
                                 </div>
                                 <div className='col-lg-4 col-md-4 col-sm-12'>
                                     <AtomsText text_type="sub_heading" body="Total Ammount"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['total_ammount']}/>}</h5>
-                                    <hr className='text-white'></hr>
+                                    <AtomsText text_type="mini_sub_heading" body={<MoleculesCurrency val={val['total_ammount']}/>}/>
                                 </div>
                             </div>
                         );
                     })
                 }
-            </>
+            </div>
         )
     }
 }

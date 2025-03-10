@@ -16,8 +16,6 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
     const [items, setItems] = useState([])
     const [dctName, setDctName] = useState("")
 
-
-    // Get list dct
     useEffect(() => {
         fetch(fetchUrl)
         .then(res => res.json())
@@ -86,9 +84,9 @@ export default function OrganismsManageDctModal({cls, ctx, fetchUrl, postUrl, de
             <div className="modal fade" id={"manageModalDct"+ctx} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header d-flex justify-content-between">
                             <AtomsText text_type="sub_heading" body={<>Manage {getCleanTitleFromCtx(ctx)}</>}/>
-                            <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
+                            <button type="button" className='btn btn-danger' data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
                             <div className='row'>

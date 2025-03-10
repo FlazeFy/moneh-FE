@@ -10,6 +10,9 @@
     margin: var(--spaceXLG) 0;
 }
 
+a {
+    text-decoration: none !important;
+}
 h1 {    
     font-size: calc(var(--spaceJumbo)*1.5) !important;
     font-weight: 800 !important;

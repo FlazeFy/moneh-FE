@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AtomsBreakLine from "../../atoms/atoms_breakline";
 import OrganismsFooter from "../../organisms/organisms_footer";
 import OrganismsManageDctModal from "../../organisms/organisms_manage_dct";
 import OrganismsSidebar from "../../organisms/organisms_sidebar";
@@ -22,7 +23,9 @@ const FlowIndex = () => {
                     <div style={{minHeight:"100vh"}}>
                         <PostFlow ctx="post_flow" onPostSuccess={handlePostSuccess}/>
                         <OrganismsManageDctModal cls="ms-2" ctx="flows_category" fetchUrl="http://127.0.0.1:1323/api/v1/dct/flows_category?page=1" postUrl="http://127.0.0.1:1323/api/v1/dct" deleteUrl="http://127.0.0.1:1323/api/v1/dct/destroy/" table="flows" column={"flows_category"}/>
+                        <AtomsBreakLine length={2}/>
                         <GetSummary ctx="summary" shouldFetch={shouldFetch}/>
+                        <AtomsBreakLine length={1}/>
                         <GetAllFlow ctx="get_all_flow" shouldFetch={shouldFetch} onPostSuccess={handlePostSuccess}/>
                     </div>
                     <OrganismsFooter/>

@@ -5,6 +5,7 @@ import { getCleanTitleFromCtx, ucFirstWord } from '../../../modules/helpers/conv
 import { getLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import MoleculesCurrency from '../../../molecules/molecules_currency'
+import MoleculesSummaryBox from '../../../molecules/molecules_summary_box'
 
 export default function GetSummaryWishlist({ctx}) {
     //Initial variable
@@ -57,31 +58,26 @@ export default function GetSummaryWishlist({ctx}) {
                     {
                         items.map((val, idx) => {
                             return (
-                                <div key={idx}>
-                                    <AtomsText text_type="sub_heading" body="Average Price"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['average']}/>}</h5>
-                                    <hr className='text-white'></hr>
-
-                                    <AtomsText text_type="sub_heading" body="Most Expensive"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['most_expensive']}/>} - {ucFirstWord(val['most_expensive_name'])}</h5>
-                                    <hr className='text-white'></hr>
-
-                                    <AtomsText text_type="sub_heading" body="The Cheapest"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['cheapest']}/>} - {ucFirstWord(val['cheapest_name'])}</h5>
-                                    <hr className='text-white'></hr>
-
-                                    <AtomsText text_type="sub_heading" body="Achieved / Total Item"/>
-                                    <h5 className='text-white'>{val['achieved']} / {val['total_item']}</h5>
-                                    <hr className='text-white'></hr>
-
-                                    <AtomsText text_type="sub_heading" body="Most Type"/>
-                                    <h5 className='text-white'>{ucFirstWord(val['most_type'])}</h5>
-                                    <hr className='text-white'></hr>
-
-                                    <AtomsText text_type="sub_heading" body="Total Ammount"/>
-                                    <h5 className='text-white'>{<MoleculesCurrency val={val['total_ammount']}/>}</h5>
-                                    <hr className='text-white'></hr>
-                                </div>
+                                <>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="Average Price" value={<MoleculesCurrency val={val['average']}/>}/>
+                                    </div>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="Most Expensive" value={<>{<MoleculesCurrency val={val['most_expensive']}/>} - {ucFirstWord(val['most_expensive_name'])}</>}/>
+                                    </div>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="The Cheapest" value={<>{<MoleculesCurrency val={val['cheapest']}/>} - {ucFirstWord(val['cheapest_name'])}</>}/>
+                                    </div>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="Achieved / Total Item" value={<>{val['achieved']} / {val['total_item']}</>}/>
+                                    </div>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="Most Type" value={ucFirstWord(val['most_type'])}/>
+                                    </div>
+                                    <div className='col-lg-4 col-md-4 col-sm-12 pb-4'>
+                                        <MoleculesSummaryBox title="Total Ammount" value={<MoleculesCurrency val={val['total_ammount']}/>}/>
+                                    </div>
+                                </>
                             );
                         })
                     }

@@ -27,6 +27,7 @@ import './design_tokens/navbar.css';
 import './design_tokens/table.css';
 import './design_tokens/button.css';
 import './design_tokens/typography.css';
+import './design_tokens/container.css';
 import './design_tokens/modal.css';
 import './design_tokens/form.css';
 

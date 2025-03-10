@@ -27,8 +27,8 @@ const DashboardIndex = () => {
 
                             </div>
                         </div>
+                        <OrganismsFooter/>
                     </div>
-                    <OrganismsFooter/>
                 </div>
             </div>
         </div>

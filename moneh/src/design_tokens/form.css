@@ -1,14 +1,15 @@
 .form-lable {
     font-weight: 500;
     margin-top: var(--spaceSM);
-    margin-bottom: var(--spaceMini);
+    margin-bottom: var(--spaceMD) !important;
     color: var(--whiteColor);
 }
 .form-control {
     background: transparent !important;
-    color: var(--whiteColor) !important;
-    border: 1px solid var(--whiteColor);
-    border-radius: var(--roundedSM) !important;
+    border: 1.5px solid var(--darkColor) !important;
+    margin-bottom: var(--spaceXMD);
+    border-radius: var(--roundedLG) !important;
+    padding: var(--spaceXMD);
 }
 .form-select, .form-floating > .form-select ~ label::after {
     background: var(--blackColor) !important;

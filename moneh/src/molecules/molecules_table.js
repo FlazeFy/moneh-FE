@@ -92,7 +92,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                     {
                         builder.map((val, idx) => {
                             return (
-                                <td key={idx}><b>{val['column_name']}</b></td>
+                                <th key={idx}><b>{val['column_name']}</b></th>
                             );
                         })
                     }
@@ -109,13 +109,13 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                             if(item[build['column_name']] !== 'Manage' && item[build['object_name']] !== null){
                                                 if(build['type'] === "html"){
                                                     return (
-                                                        <th key={`tbody_${idx}_${jdx}`}>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
+                                                        <td key={`tbody_${idx}_${jdx}`}>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</td>
                                                     );
                                                 } else if(build['type'] === "tag"){
                                                     if(item[build['object_name']] !== ""){
                                                         const tags = parseJSON(item[build['object_name']])
                                                         return (
-                                                            <th className='p-3' key={`tbody_${idx}_${jdx}`}>
+                                                            <td className='p-3' key={`tbody_${idx}_${jdx}`}>
                                                                 {
                                                                     tags && tags.length > 0 ?
                                                                         tags.map((tag, jdx) => {
@@ -124,16 +124,16 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                                                     : 
                                                                         <span className='fst-italic'>- No Tag Found -</span>
                                                                 }
-                                                            </th>
+                                                            </td>
                                                         );
                                                     } else {
-                                                        return <th className='p-3' key={`tbody_${idx}_${jdx}`}>-</th>
+                                                        return <td className='p-3' key={`tbody_${idx}_${jdx}`}>-</td>
                                                     }
                                                 } else if(build['type'] === "image"){
                                                     return (
-                                                        <th className='p-3' key={`tbody_${idx}_${jdx}`}>
+                                                        <td className='p-3' key={`tbody_${idx}_${jdx}`}>
                                                             <img className='img img-fluid img-profile' style={{width:"75px", height:"75px", borderWidth:"2.5px"}} src={item[build['object_name']]}/>
-                                                        </th>
+                                                        </td>
                                                     );
                                                 } else {
                                                     let val = item[build['object_name']]
@@ -143,16 +143,16 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
 
                                                     if(idx === 0){
                                                         return (
-                                                            <th scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</th>
+                                                            <td scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</td>
                                                         );
                                                     } else {
                                                         return (
-                                                            <th key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</th>
+                                                            <td key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], val)}</td>
                                                         );
                                                     }
                                                 }
                                             } else {
-                                                return <th key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, idx, urlDel+item['id'])} is_with_btn={true} onPostSuccess={onPostSuccess}/></th>
+                                                return <td key={`tbody_${idx}_${jdx}`}><OrganismsManageModal builder={builder} items={item} id={idx} funPut={urlPut+item['id']} funDel={(e) => deleteItem(e, idx, urlDel+item['id'])} is_with_btn={true} onPostSuccess={onPostSuccess}/></td>
                                             }
                                         })
                                     }

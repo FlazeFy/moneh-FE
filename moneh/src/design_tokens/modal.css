@@ -1,8 +1,10 @@
-.swal2-popup {
+.swal2-popup, .modal-content {
     border-radius: var(--roundedMD);
-    background: var(--blackColor);
+    background: var(--whiteColor);
     border: calc(var(--spaceMini)/2) solid var(--primaryColor);
-    color: var(--whiteColor);
+    color: var(--blackColor);
+    border-radius: var(--roundedJumbo);
+    padding: var(--spaceSM) var(--spaceXMD);
 }
 .swal2-confirm {
     background: var(--successBG) !important;

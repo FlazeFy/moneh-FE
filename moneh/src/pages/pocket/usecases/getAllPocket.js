@@ -119,10 +119,10 @@ export default function GetAllPocket({ctx, shouldFetch, onPostSuccess}) {
         )
     } else {
         return (
-            <> 
+            <div className='container'> 
                 <h2 className='mt-4'>{getCleanTitleFromCtx(ctx)}</h2>
                 <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Pocket"} urlPut={"http://127.0.0.1:1323/api/v1/pockets/by/"} urlDel={"http://127.0.0.1:1323/api/v1/pockets/destroy/"} onPostSuccess={onPostSuccess}/>  
-            </>
+            </div>
         )
     }
 }

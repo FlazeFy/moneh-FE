@@ -1,14 +1,25 @@
-thead tr td {
+/* Table */
+table {
+    border-collapse: separate; 
+    border-spacing: 0;
+    border-radius: var(--roundedLG); 
+    overflow: hidden;
+}
+table, th, td {
+    border: 1px solid var(--darkColor) !important;
+}
+table {
+    outline: 1px solid var(--darkColor);
+}
+table thead tr th {
+    color: var(--whiteColor) !important;
+    font-size: var(--textLG);
+    font-weight: 500 !important;
+    text-align: center;
+}
+table thead tr th {
     background: var(--infoBG) !important;
-    color: var(--whiteColor) !important;
 }
-table th {
-    font-weight: normal;
-}
-table td {
-    color: var(--primaryColor);
-}
-table tbody th {
-    background: transparent !important;
-    color: var(--whiteColor) !important;
+table tbody tr td {
+    background: var(--greyColor) !important;
 }

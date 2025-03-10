@@ -8,16 +8,29 @@
     font-weight: 500 !important;
 }
 .btn-primary, .btn-link {
+    background: var(--primaryColor);
+}
+.btn-danger {
+    background: var(--dangerBG);
+}
+.btn-warning {
+    background: var(--warningBG);
+}      
+.btn-success {
+    background: var(--successBG);
+}
+.btn-primary, .btn-link, .btn-danger, .btn-warning, .btn-success {
+    transform: scale(1.05) !important;
     padding: var(--spaceXMD) var(--spaceXLG);
-    margin-right: var(--spaceXXSM);
+    margin-right: var(--spaceMD);
     border-radius: var(--roundedJumbo);
     font-weight: 600 !important;
     font-size: var(--textXLG);
 }
-.btn-primary:hover, .btn-link:hover {
+.btn-primary:hover, .btn-link:hover, .btn-danger:hover {
     transform: scale(1.05) !important;
 }
-.btn-primary, .btn-link, .btn-tag, .btn-info {
+.btn-primary, .btn-link, .btn-tag, .btn-info, .btn-danger, .btn-warning {
     text-decoration: none;
     color: var(--whiteColor);
     cursor: pointer;

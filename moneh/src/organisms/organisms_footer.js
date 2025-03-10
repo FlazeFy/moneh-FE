@@ -6,13 +6,13 @@ export default function OrganismsFooter() {
             <div className="container-fluid pb-2 py-4 px-4">
                 <div className="row text-center">
                     <div className="col-lg-4 col-md-4 col-sm-12 pb-2">
-                        <AtomsText text_type="mini_sub_heading" body="Moneh"/>
+                        <AtomsText text_type="mini_sub_heading" body={<span className="text-white">Moneh</span>}/>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 pb-2">
-                        <AtomsText text_type="mini_sub_heading" body="© 2024 FlazeFy, Leo"/>
+                        <AtomsText text_type="mini_sub_heading" body={<span className="text-white">2024 FlazeFy, Leo</span>}/>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 pb-2">
-                        <AtomsText text_type="mini_sub_heading" body="Parts Of FlazenApps"/>
+                        <AtomsText text_type="mini_sub_heading" body={<span className="text-white">Parts Of FlazenApps</span>}/>
                     </div>
                 </div>
             </div>
